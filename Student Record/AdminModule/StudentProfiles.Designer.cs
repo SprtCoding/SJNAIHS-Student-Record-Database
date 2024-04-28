@@ -110,7 +110,7 @@
             female_panel.Cursor = Cursors.Hand;
             female_panel.Dock = DockStyle.Fill;
             female_panel.Location = new Point(562, 15);
-            female_panel.Margin = new Padding(10, 10, 10, 10);
+            female_panel.Margin = new Padding(10);
             female_panel.Name = "female_panel";
             female_panel.Padding = new Padding(6, 5, 6, 5);
             female_panel.Size = new Size(526, 282);
@@ -161,7 +161,7 @@
             male_panel.Cursor = Cursors.Hand;
             male_panel.Dock = DockStyle.Fill;
             male_panel.Location = new Point(16, 15);
-            male_panel.Margin = new Padding(10, 10, 10, 10);
+            male_panel.Margin = new Padding(10);
             male_panel.Name = "male_panel";
             male_panel.Padding = new Padding(6, 5, 6, 5);
             male_panel.Size = new Size(526, 282);

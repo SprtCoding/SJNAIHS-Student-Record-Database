@@ -22,6 +22,7 @@ using System.Security.Cryptography;
 using Google.Cloud.Firestore.V1;
 using Student_Record.TeachersModule.GradingSheetPrint;
 using System.IO;
+using Student_Record.TeachersModule.Docs;
 
 namespace Student_Record.TeachersModule
 {
@@ -435,6 +436,31 @@ namespace Student_Record.TeachersModule
                             };
 
                             var info = await colRef.Document(new_uid).CreateAsync(data);
+
+                            DocumentReference collectionRef = db.Collection("students").Document(new_uid);
+
+                            CollectionReference other_docs_ref = collectionRef.Collection("other_docs");
+
+                            if(AddNewDocs.data != null)
+                            {
+                                foreach (var item in AddNewDocs.data)
+                                {
+                                    Guid uid = Guid.NewGuid();
+                                    string docs_uid = uid.ToString();
+
+                                    Dictionary<string, object> docs_data = new Dictionary<string, object>()
+                                    {
+                                        { "docs_name", item.fileName },
+                                        { "docs_path", item.filePath },
+                                        { "docs_url", item.fileURL },
+                                        { "docs_id", docs_uid }
+                                    };
+
+                                    await other_docs_ref.Document(new_uid).SetAsync(docs_data);
+                                }
+                                AddNewDocs.data.Clear();
+                            }
+
                             MessageBox.Show(first_name + " " + middle_name + " " + last_name + " " + suffix + " registered successfully!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             loadData();
                             clearField();
@@ -954,7 +980,7 @@ namespace Student_Record.TeachersModule
                         generate_btn.Text = "Cancel Edit";
                         generate_btn.Normalcolor = Color.FromArgb(191, 64, 64);
                         generate_btn.OnHovercolor = Color.FromArgb(203, 102, 102);
-                        if(data.ImageStr != null)
+                        if (data.ImageStr != null)
                         {
                             student_pic.Image = Base64StringIntoImage(data.ImageStr);
                         }
@@ -1015,6 +1041,12 @@ namespace Student_Record.TeachersModule
                 fileName_tb.Text = fileName;
                 student_pic.Load(filePath);
             }
+        }
+
+        private void addDocsBtn_Click(object sender, EventArgs e)
+        {
+            AddNewDocs addDocs = new AddNewDocs();
+            addDocs.ShowDialog();
         }
     }
 }

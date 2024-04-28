@@ -44,12 +44,12 @@
             label1 = new Label();
             pictureBox1 = new PictureBox();
             tableLayoutPanel1 = new TableLayoutPanel();
-            report_card_panel = new Panel();
-            label10 = new Label();
-            label6 = new Label();
             grade_panel = new Panel();
             grade_lbl = new Label();
             label4 = new Label();
+            report_card_panel = new Panel();
+            label10 = new Label();
+            label6 = new Label();
             dtg_rad = new Bunifu.Framework.UI.BunifuElipse(components);
             bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(components);
             bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(components);
@@ -68,8 +68,8 @@
             male_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tableLayoutPanel1.SuspendLayout();
-            report_card_panel.SuspendLayout();
             grade_panel.SuspendLayout();
+            report_card_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)report_dtg).BeginInit();
             SuspendLayout();
             // 
@@ -78,10 +78,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Poppins Black", 16F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.ControlText;
-            label2.Location = new Point(8, 5);
-            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Location = new Point(11, 8);
             label2.Name = "label2";
-            label2.Size = new Size(108, 39);
+            label2.Size = new Size(155, 56);
             label2.TabIndex = 7;
             label2.Text = "Reports";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -135,7 +134,7 @@
             label3.ForeColor = Color.WhiteSmoke;
             label3.Location = new Point(28, 30);
             label3.Name = "label3";
-            label3.Size = new Size(100, 30);
+            label3.Size = new Size(146, 45);
             label3.TabIndex = 9;
             label3.Text = "FEMALE";
             label3.TextAlign = ContentAlignment.MiddleCenter;
@@ -185,7 +184,7 @@
             label1.ForeColor = Color.WhiteSmoke;
             label1.Location = new Point(28, 30);
             label1.Name = "label1";
-            label1.Size = new Size(76, 30);
+            label1.Size = new Size(111, 45);
             label1.TabIndex = 8;
             label1.Text = "MALE";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -209,52 +208,13 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.Controls.Add(grade_panel, 0, 0);
             tableLayoutPanel1.Controls.Add(report_card_panel, 1, 0);
-            tableLayoutPanel1.Location = new Point(8, 40);
-            tableLayoutPanel1.Margin = new Padding(2);
+            tableLayoutPanel1.Location = new Point(11, 67);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.Padding = new Padding(4, 3, 4, 3);
+            tableLayoutPanel1.Padding = new Padding(6, 5, 6, 5);
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(773, 245);
+            tableLayoutPanel1.Size = new Size(1104, 408);
             tableLayoutPanel1.TabIndex = 8;
-            // 
-            // report_card_panel
-            // 
-            report_card_panel.BackColor = Color.FromArgb(129, 142, 254);
-            report_card_panel.Controls.Add(label10);
-            report_card_panel.Controls.Add(label6);
-            report_card_panel.Dock = DockStyle.Fill;
-            report_card_panel.Location = new Point(393, 9);
-            report_card_panel.Margin = new Padding(7, 6, 7, 6);
-            report_card_panel.Name = "report_card_panel";
-            report_card_panel.Size = new Size(369, 227);
-            report_card_panel.TabIndex = 2;
-            // 
-            // label10
-            // 
-            label10.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            label10.Font = new Font("Segoe UI Black", 30F, FontStyle.Bold, GraphicsUnit.Point);
-            label10.ForeColor = Color.WhiteSmoke;
-            label10.Location = new Point(14, 49);
-            label10.Margin = new Padding(2, 0, 2, 0);
-            label10.Name = "label10";
-            label10.Size = new Size(339, 166);
-            label10.TabIndex = 12;
-            label10.Text = "0";
-            label10.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Poppins Black", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.ForeColor = Color.WhiteSmoke;
-            label6.Location = new Point(12, 10);
-            label6.Margin = new Padding(2, 0, 2, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(173, 39);
-            label6.TabIndex = 11;
-            label6.Text = "REPORT CARD";
-            label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // grade_panel
             // 
@@ -262,10 +222,10 @@
             grade_panel.Controls.Add(grade_lbl);
             grade_panel.Controls.Add(label4);
             grade_panel.Dock = DockStyle.Fill;
-            grade_panel.Location = new Point(11, 9);
-            grade_panel.Margin = new Padding(7, 6, 7, 6);
+            grade_panel.Location = new Point(16, 15);
+            grade_panel.Margin = new Padding(10, 10, 10, 10);
             grade_panel.Name = "grade_panel";
-            grade_panel.Size = new Size(368, 227);
+            grade_panel.Size = new Size(526, 378);
             grade_panel.TabIndex = 0;
             // 
             // grade_lbl
@@ -273,10 +233,9 @@
             grade_lbl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             grade_lbl.Font = new Font("Segoe UI Black", 30F, FontStyle.Bold, GraphicsUnit.Point);
             grade_lbl.ForeColor = Color.WhiteSmoke;
-            grade_lbl.Location = new Point(14, 49);
-            grade_lbl.Margin = new Padding(2, 0, 2, 0);
+            grade_lbl.Location = new Point(20, 82);
             grade_lbl.Name = "grade_lbl";
-            grade_lbl.Size = new Size(339, 166);
+            grade_lbl.Size = new Size(484, 277);
             grade_lbl.TabIndex = 10;
             grade_lbl.Text = "0";
             grade_lbl.TextAlign = ContentAlignment.MiddleLeft;
@@ -286,13 +245,48 @@
             label4.AutoSize = true;
             label4.Font = new Font("Poppins Black", 16F, FontStyle.Bold, GraphicsUnit.Point);
             label4.ForeColor = Color.WhiteSmoke;
-            label4.Location = new Point(12, 10);
-            label4.Margin = new Padding(2, 0, 2, 0);
+            label4.Location = new Point(17, 17);
             label4.Name = "label4";
-            label4.Size = new Size(94, 39);
+            label4.Size = new Size(136, 56);
             label4.TabIndex = 9;
             label4.Text = "GRADE";
             label4.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // report_card_panel
+            // 
+            report_card_panel.BackColor = Color.FromArgb(129, 142, 254);
+            report_card_panel.Controls.Add(label10);
+            report_card_panel.Controls.Add(label6);
+            report_card_panel.Dock = DockStyle.Fill;
+            report_card_panel.Location = new Point(562, 15);
+            report_card_panel.Margin = new Padding(10, 10, 10, 10);
+            report_card_panel.Name = "report_card_panel";
+            report_card_panel.Size = new Size(526, 378);
+            report_card_panel.TabIndex = 2;
+            // 
+            // label10
+            // 
+            label10.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            label10.Font = new Font("Segoe UI Black", 30F, FontStyle.Bold, GraphicsUnit.Point);
+            label10.ForeColor = Color.WhiteSmoke;
+            label10.Location = new Point(20, 82);
+            label10.Name = "label10";
+            label10.Size = new Size(484, 277);
+            label10.TabIndex = 12;
+            label10.Text = "0";
+            label10.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Poppins Black", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.ForeColor = Color.WhiteSmoke;
+            label6.Location = new Point(17, 17);
+            label6.Name = "label6";
+            label6.Size = new Size(249, 56);
+            label6.TabIndex = 11;
+            label6.Text = "REPORT CARD";
+            label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // dtg_rad
             // 
@@ -302,6 +296,7 @@
             // bunifuElipse1
             // 
             bunifuElipse1.ElipseRadius = 5;
+            bunifuElipse1.TargetControl = this;
             // 
             // bunifuElipse2
             // 
@@ -311,16 +306,16 @@
             // bunifuElipse3
             // 
             bunifuElipse3.ElipseRadius = 5;
+            bunifuElipse3.TargetControl = this;
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Poppins", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
             label12.ForeColor = SystemColors.ControlText;
-            label12.Location = new Point(19, 298);
-            label12.Margin = new Padding(2, 0, 2, 0);
+            label12.Location = new Point(27, 497);
             label12.Name = "label12";
-            label12.Size = new Size(145, 28);
+            label12.Size = new Size(217, 42);
             label12.TabIndex = 9;
             label12.Text = "Faculties Report";
             label12.TextAlign = ContentAlignment.MiddleCenter;
@@ -368,8 +363,7 @@
             report_dtg.GridColor = Color.FromArgb(60, 64, 98);
             report_dtg.HeaderBgColor = Color.FromArgb(43, 47, 84);
             report_dtg.HeaderForeColor = Color.WhiteSmoke;
-            report_dtg.Location = new Point(19, 328);
-            report_dtg.Margin = new Padding(2);
+            report_dtg.Location = new Point(27, 547);
             report_dtg.Name = "report_dtg";
             report_dtg.ReadOnly = true;
             report_dtg.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -381,8 +375,9 @@
             report_dtg.ShowCellErrors = false;
             report_dtg.ShowEditingIcon = false;
             report_dtg.ShowRowErrors = false;
-            report_dtg.Size = new Size(752, 319);
+            report_dtg.Size = new Size(1074, 532);
             report_dtg.TabIndex = 10;
+            report_dtg.CellContentClick += report_dtg_CellContentClick;
             // 
             // id
             // 
@@ -407,7 +402,7 @@
             report_type.MinimumWidth = 8;
             report_type.Name = "report_type";
             report_type.ReadOnly = true;
-            report_type.Width = 149;
+            report_type.Width = 201;
             // 
             // status
             // 
@@ -416,7 +411,7 @@
             status.MinimumWidth = 8;
             status.Name = "status";
             status.ReadOnly = true;
-            status.Width = 113;
+            status.Width = 151;
             // 
             // action
             // 
@@ -425,7 +420,7 @@
             action.MinimumWidth = 30;
             action.Name = "action";
             action.ReadOnly = true;
-            action.Width = 95;
+            action.Width = 123;
             // 
             // bunifuElipse4
             // 
@@ -434,16 +429,15 @@
             // 
             // Reports
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(790, 661);
+            ClientSize = new Size(1129, 1102);
             Controls.Add(report_dtg);
             Controls.Add(label12);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2);
             Name = "Reports";
             Text = "Reports";
             gender_tPanel.ResumeLayout(false);
@@ -454,10 +448,10 @@
             male_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
-            report_card_panel.ResumeLayout(false);
-            report_card_panel.PerformLayout();
             grade_panel.ResumeLayout(false);
             grade_panel.PerformLayout();
+            report_card_panel.ResumeLayout(false);
+            report_card_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)report_dtg).EndInit();
             ResumeLayout(false);
             PerformLayout();

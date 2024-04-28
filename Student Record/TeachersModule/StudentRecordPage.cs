@@ -133,7 +133,7 @@ namespace Student_Record.TeachersModule
                 DataGridViewRow selectedRow = student_dtg.Rows[e.RowIndex];
                 string? id = selectedRow.Cells["id"].Value.ToString();
 
-                Record records = new Record(id, faculty_id);
+                Record records = new Record(id, faculty_id, "faculty");
                 records.ShowDialog();
             }
         }

@@ -74,7 +74,7 @@
             student_name_lbl.Anchor = AnchorStyles.None;
             student_name_lbl.Font = new Font("Poppins Medium", 14F, FontStyle.Bold, GraphicsUnit.Point);
             student_name_lbl.ForeColor = Color.WhiteSmoke;
-            student_name_lbl.Location = new Point(13, 256);
+            student_name_lbl.Location = new Point(13, 270);
             student_name_lbl.Name = "student_name_lbl";
             student_name_lbl.Size = new Size(819, 38);
             student_name_lbl.TabIndex = 15;
@@ -181,7 +181,7 @@
             mid_grade.MinimumWidth = 8;
             mid_grade.Name = "mid_grade";
             mid_grade.ReadOnly = true;
-            mid_grade.Width = 173;
+            mid_grade.Width = 174;
             // 
             // final_grade
             // 
@@ -190,7 +190,7 @@
             final_grade.MinimumWidth = 8;
             final_grade.Name = "final_grade";
             final_grade.ReadOnly = true;
-            final_grade.Width = 187;
+            final_grade.Width = 188;
             // 
             // average
             // 
@@ -199,14 +199,14 @@
             average.MinimumWidth = 8;
             average.Name = "average";
             average.ReadOnly = true;
-            average.Width = 155;
+            average.Width = 156;
             // 
             // section_lbl
             // 
             section_lbl.Anchor = AnchorStyles.None;
             section_lbl.Font = new Font("Poppins", 10F, FontStyle.Regular, GraphicsUnit.Point);
             section_lbl.ForeColor = Color.WhiteSmoke;
-            section_lbl.Location = new Point(13, 306);
+            section_lbl.Location = new Point(13, 320);
             section_lbl.Name = "section_lbl";
             section_lbl.Size = new Size(819, 38);
             section_lbl.TabIndex = 18;

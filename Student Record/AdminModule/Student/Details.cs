@@ -21,6 +21,15 @@ namespace Student_Record.AdminModule.Student
             getStudentInfo(id);
         }
 
+        public static Image Base64StringIntoImage(string imageStr)
+        {
+            byte[] img = Convert.FromBase64String(imageStr);
+            using (MemoryStream ms = new MemoryStream(img))
+            {
+                return Image.FromStream(ms);
+            }
+        }
+
         private async void getStudentInfo(string id)
         {
             var db = FirestoreHelper.database;
@@ -31,7 +40,8 @@ namespace Student_Record.AdminModule.Student
 
                 if (students != null)
                 {
-
+                    string _imageStr = students.ImageStr;
+                    img.Image = Base64StringIntoImage(_imageStr);
                     // Capitalize the first letter of last_name
                     string capitalizedLastName = char.ToUpper(students.last_name[0]) + students.last_name.Substring(1);
                     // Capitalize the first letter of last_name
@@ -40,17 +50,17 @@ namespace Student_Record.AdminModule.Student
                     student_name_lbl.Text = capitalizedFirstName + " " + students.middle_name.Substring(0, 1).ToUpper() + ". " + capitalizedLastName;
                     section_lbl.Text = students.grade_level + "-" + students.section;
 
-                    if (students.gender != null)
-                    {
-                        if (students.gender.Equals("Female"))
-                        {
-                            img.Image = Properties.Resources.user_female;
-                        }
-                        else if (students.gender.Equals("Male"))
-                        {
-                            img.Image = Properties.Resources.user_male;
-                        }
-                    }
+                    //if (students.gender != null)
+                    //{
+                    //    if (students.gender.Equals("Female"))
+                    //    {
+                    //        img.Image = Properties.Resources.user_female;
+                    //    }
+                    //    else if (students.gender.Equals("Male"))
+                    //    {
+                    //        img.Image = Properties.Resources.user_male;
+                    //    }
+                    //}
 
                     CollectionReference colRef = docRef.Collection("Grades");
                     QuerySnapshot snap = await colRef.GetSnapshotAsync();

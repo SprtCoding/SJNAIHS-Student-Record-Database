@@ -56,10 +56,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Black", 16F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.ControlText;
-            label2.Location = new Point(8, 5);
-            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Location = new Point(11, 8);
             label2.Name = "label2";
-            label2.Size = new Size(143, 30);
+            label2.Size = new Size(210, 45);
             label2.TabIndex = 11;
             label2.Text = "Report Card";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -107,8 +106,7 @@
             student_dtg.GridColor = Color.FromArgb(60, 64, 98);
             student_dtg.HeaderBgColor = Color.FromArgb(43, 47, 84);
             student_dtg.HeaderForeColor = Color.WhiteSmoke;
-            student_dtg.Location = new Point(8, 93);
-            student_dtg.Margin = new Padding(2, 2, 2, 2);
+            student_dtg.Location = new Point(11, 155);
             student_dtg.Name = "student_dtg";
             student_dtg.ReadOnly = true;
             student_dtg.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -120,7 +118,7 @@
             student_dtg.ShowCellErrors = false;
             student_dtg.ShowEditingIcon = false;
             student_dtg.ShowRowErrors = false;
-            student_dtg.Size = new Size(773, 561);
+            student_dtg.Size = new Size(1104, 935);
             student_dtg.TabIndex = 12;
             student_dtg.CellContentClick += student_dtg_CellContentClick;
             // 
@@ -149,7 +147,7 @@
             grade_level.MinimumWidth = 8;
             grade_level.Name = "grade_level";
             grade_level.ReadOnly = true;
-            grade_level.Width = 147;
+            grade_level.Width = 200;
             // 
             // section
             // 
@@ -159,7 +157,7 @@
             section.MinimumWidth = 8;
             section.Name = "section";
             section.ReadOnly = true;
-            section.Width = 120;
+            section.Width = 161;
             // 
             // gender
             // 
@@ -169,7 +167,7 @@
             gender.MinimumWidth = 8;
             gender.Name = "gender";
             gender.ReadOnly = true;
-            gender.Width = 116;
+            gender.Width = 153;
             // 
             // action
             // 
@@ -179,17 +177,16 @@
             action.MinimumWidth = 30;
             action.Name = "action";
             action.ReadOnly = true;
-            action.Width = 95;
+            action.Width = 123;
             // 
             // no_data_panel
             // 
             no_data_panel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             no_data_panel.Controls.Add(label1);
             no_data_panel.Controls.Add(pictureBox1);
-            no_data_panel.Location = new Point(8, 93);
-            no_data_panel.Margin = new Padding(2, 2, 2, 2);
+            no_data_panel.Location = new Point(11, 155);
             no_data_panel.Name = "no_data_panel";
-            no_data_panel.Size = new Size(773, 561);
+            no_data_panel.Size = new Size(1104, 935);
             no_data_panel.TabIndex = 25;
             no_data_panel.Visible = false;
             // 
@@ -198,10 +195,9 @@
             label1.Anchor = AnchorStyles.None;
             label1.Font = new Font("Poppins", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.FromArgb(60, 64, 98);
-            label1.Location = new Point(100, 323);
-            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Location = new Point(143, 538);
             label1.Name = "label1";
-            label1.Size = new Size(573, 23);
+            label1.Size = new Size(819, 38);
             label1.TabIndex = 19;
             label1.Text = "No data found!";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -210,10 +206,9 @@
             // 
             pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(234, 201);
-            pictureBox1.Margin = new Padding(2, 2, 2, 2);
+            pictureBox1.Location = new Point(334, 335);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(304, 131);
+            pictureBox1.Size = new Size(434, 218);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -221,10 +216,9 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(24, 61);
-            pictureBox2.Margin = new Padding(2, 2, 2, 2);
+            pictureBox2.Location = new Point(34, 102);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(17, 14);
+            pictureBox2.Size = new Size(24, 23);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 27;
             pictureBox2.TabStop = false;
@@ -239,12 +233,12 @@
             search_tb.Font = new Font("Poppins", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             search_tb.ForeColor = Color.FromArgb(64, 64, 64);
             search_tb.isPassword = false;
-            search_tb.Location = new Point(8, 48);
-            search_tb.Margin = new Padding(4);
+            search_tb.Location = new Point(11, 80);
+            search_tb.Margin = new Padding(6, 7, 6, 7);
             search_tb.MaxLength = 32767;
             search_tb.Name = "search_tb";
-            search_tb.Padding = new Padding(35, 0, 0, 0);
-            search_tb.Size = new Size(309, 39);
+            search_tb.Padding = new Padding(50, 0, 0, 0);
+            search_tb.Size = new Size(441, 65);
             search_tb.TabIndex = 26;
             search_tb.Text = "Search...";
             search_tb.TextAlign = HorizontalAlignment.Left;
@@ -252,16 +246,15 @@
             // 
             // ReportCard
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(790, 660);
+            ClientSize = new Size(1129, 1100);
             Controls.Add(pictureBox2);
             Controls.Add(search_tb);
             Controls.Add(no_data_panel);
             Controls.Add(student_dtg);
             Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2, 2, 2, 2);
             Name = "ReportCard";
             Text = "ReportCard";
             ((System.ComponentModel.ISupportInitialize)student_dtg).EndInit();

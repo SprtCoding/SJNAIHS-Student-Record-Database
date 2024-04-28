@@ -34,7 +34,6 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             label2 = new Label();
             pictureBox2 = new PictureBox();
-            search_tb = new Bunifu.Framework.UI.BunifuMetroTextbox();
             student_dtg = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             id = new DataGridViewTextBoxColumn();
             name = new DataGridViewTextBoxColumn();
@@ -44,6 +43,7 @@
             no_data_panel = new Panel();
             label1 = new Label();
             pictureBox1 = new PictureBox();
+            search_tb = new Bunifu.Framework.UI.BunifuMetroTextbox();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)student_dtg).BeginInit();
             no_data_panel.SuspendLayout();
@@ -55,10 +55,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Black", 16F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.ControlText;
-            label2.Location = new Point(11, 9);
-            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Location = new Point(16, 15);
             label2.Name = "label2";
-            label2.Size = new Size(180, 30);
+            label2.Size = new Size(263, 45);
             label2.TabIndex = 10;
             label2.Text = "Student Record";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -66,34 +65,12 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(27, 56);
-            pictureBox2.Margin = new Padding(2);
+            pictureBox2.Location = new Point(39, 93);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(17, 14);
+            pictureBox2.Size = new Size(24, 23);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 29;
             pictureBox2.TabStop = false;
-            // 
-            // search_tb
-            // 
-            search_tb.BorderColorFocused = Color.FromArgb(129, 142, 254);
-            search_tb.BorderColorIdle = Color.FromArgb(43, 47, 84);
-            search_tb.BorderColorMouseHover = Color.FromArgb(129, 142, 254);
-            search_tb.BorderThickness = 1;
-            search_tb.characterCasing = CharacterCasing.Normal;
-            search_tb.Font = new Font("Poppins", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            search_tb.ForeColor = Color.FromArgb(64, 64, 64);
-            search_tb.isPassword = false;
-            search_tb.Location = new Point(11, 43);
-            search_tb.Margin = new Padding(4);
-            search_tb.MaxLength = 32767;
-            search_tb.Name = "search_tb";
-            search_tb.Padding = new Padding(35, 0, 0, 0);
-            search_tb.Size = new Size(309, 39);
-            search_tb.TabIndex = 28;
-            search_tb.Text = "Search...";
-            search_tb.TextAlign = HorizontalAlignment.Left;
-            search_tb.OnValueChanged += search_tb_OnValueChanged;
             // 
             // student_dtg
             // 
@@ -139,8 +116,7 @@
             student_dtg.GridColor = Color.FromArgb(60, 64, 98);
             student_dtg.HeaderBgColor = Color.FromArgb(43, 47, 84);
             student_dtg.HeaderForeColor = Color.WhiteSmoke;
-            student_dtg.Location = new Point(11, 88);
-            student_dtg.Margin = new Padding(2);
+            student_dtg.Location = new Point(16, 147);
             student_dtg.Name = "student_dtg";
             student_dtg.ReadOnly = true;
             student_dtg.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -152,7 +128,7 @@
             student_dtg.ShowCellErrors = false;
             student_dtg.ShowEditingIcon = false;
             student_dtg.ShowRowErrors = false;
-            student_dtg.Size = new Size(768, 562);
+            student_dtg.Size = new Size(1097, 937);
             student_dtg.TabIndex = 30;
             student_dtg.CellClick += student_dtg_CellClick;
             // 
@@ -181,7 +157,7 @@
             grade_level.MinimumWidth = 8;
             grade_level.Name = "grade_level";
             grade_level.ReadOnly = true;
-            grade_level.Width = 147;
+            grade_level.Width = 200;
             // 
             // section
             // 
@@ -191,7 +167,7 @@
             section.MinimumWidth = 8;
             section.Name = "section";
             section.ReadOnly = true;
-            section.Width = 120;
+            section.Width = 161;
             // 
             // gender
             // 
@@ -201,17 +177,16 @@
             gender.MinimumWidth = 8;
             gender.Name = "gender";
             gender.ReadOnly = true;
-            gender.Width = 116;
+            gender.Width = 153;
             // 
             // no_data_panel
             // 
             no_data_panel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             no_data_panel.Controls.Add(label1);
             no_data_panel.Controls.Add(pictureBox1);
-            no_data_panel.Location = new Point(11, 88);
-            no_data_panel.Margin = new Padding(2);
+            no_data_panel.Location = new Point(16, 147);
             no_data_panel.Name = "no_data_panel";
-            no_data_panel.Size = new Size(768, 562);
+            no_data_panel.Size = new Size(1097, 937);
             no_data_panel.TabIndex = 31;
             no_data_panel.Visible = false;
             // 
@@ -220,10 +195,9 @@
             label1.Anchor = AnchorStyles.None;
             label1.Font = new Font("Poppins", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.FromArgb(60, 64, 98);
-            label1.Location = new Point(98, 331);
-            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Location = new Point(140, 552);
             label1.Name = "label1";
-            label1.Size = new Size(573, 23);
+            label1.Size = new Size(819, 38);
             label1.TabIndex = 19;
             label1.Text = "No data found!";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -232,25 +206,46 @@
             // 
             pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(232, 209);
-            pictureBox1.Margin = new Padding(2);
+            pictureBox1.Location = new Point(331, 348);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(304, 131);
+            pictureBox1.Size = new Size(434, 218);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
+            // search_tb
+            // 
+            search_tb.BorderColorFocused = Color.FromArgb(129, 142, 254);
+            search_tb.BorderColorIdle = Color.FromArgb(43, 47, 84);
+            search_tb.BorderColorMouseHover = Color.FromArgb(129, 142, 254);
+            search_tb.BorderThickness = 1;
+            search_tb.characterCasing = CharacterCasing.Normal;
+            search_tb.Font = new Font("Poppins", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            search_tb.ForeColor = Color.FromArgb(64, 64, 64);
+            search_tb.isPassword = false;
+            search_tb.Location = new Point(16, 72);
+            search_tb.Margin = new Padding(6, 7, 6, 7);
+            search_tb.MaxLength = 32767;
+            search_tb.Name = "search_tb";
+            search_tb.Padding = new Padding(50, 0, 0, 0);
+            search_tb.Size = new Size(441, 65);
+            search_tb.TabIndex = 28;
+            search_tb.Text = "Search...";
+            search_tb.TextAlign = HorizontalAlignment.Left;
+            search_tb.OnValueChanged += search_tb_OnValueChanged;
+            // 
             // StudentRecordPage
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(790, 661);
+            ClientSize = new Size(1129, 1102);
             Controls.Add(no_data_panel);
             Controls.Add(student_dtg);
             Controls.Add(pictureBox2);
             Controls.Add(search_tb);
             Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(4, 5, 4, 5);
             Name = "StudentRecordPage";
             Text = "StudentRecordPage";
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -265,7 +260,6 @@
 
         private Label label2;
         private PictureBox pictureBox2;
-        private Bunifu.Framework.UI.BunifuMetroTextbox search_tb;
         private Bunifu.Framework.UI.BunifuCustomDataGrid student_dtg;
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn name;
@@ -275,5 +269,6 @@
         private Panel no_data_panel;
         private Label label1;
         private PictureBox pictureBox1;
+        private Bunifu.Framework.UI.BunifuMetroTextbox search_tb;
     }
 }

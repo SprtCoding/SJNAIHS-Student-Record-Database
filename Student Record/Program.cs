@@ -13,7 +13,7 @@ namespace Student_Record
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            FirestoreHelper.SetEnviroonmentVariable();
+            FirestoreHelper.SetEnvironmentVariable();
             ApplicationConfiguration.Initialize();
             Application.Run(new LoginForm());
         }

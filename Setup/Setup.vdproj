@@ -21,7 +21,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_AE6C9D0E40B14EBD805E23518BF485FE"
+        "MsmKey" = "8:_7534DBBE967848C49E3969D47195383C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -210,7 +210,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SJNAIHS"
         "ProductCode" = "8:{6A32F950-B0FC-40E4-A7B1-08D31B27AE16}"
-        "PackageCode" = "8:{6E924DB4-D5BA-4943-A5FA-2245C9AE7C71}"
+        "PackageCode" = "8:{80D63758-4529-44AA-B97A-C25098F5C97D}"
         "UpgradeCode" = "8:{0B7B176A-6EDA-4FB3-8A42-776C9C9EF13C}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -330,7 +330,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_99728DD7939F45BAA9CAE7031875170B"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_89BE3CA8338B45A29EC7F40B0D8002BE"
             {
             "Name" = "8:SJNAIHS"
             "Arguments" = "8:"
@@ -338,13 +338,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_AE6C9D0E40B14EBD805E23518BF485FE"
-            "Folder" = "8:_2E9EE0190FCB47BAA2294ACE35BA9E8E"
+            "Target" = "8:_7534DBBE967848C49E3969D47195383C"
+            "Folder" = "8:_2C49634D01274E5187C88EEE9B445E4E"
             "WorkingFolder" = "8:_AF5B588E84DC46E0A0C312A20B55DDBF"
             "Icon" = "8:_568B5E52B98648779ED8F0B17427AEAC"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_F88B4AB307034B4781182085C5593CAA"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A20B7E24EA1A4F27A668E36678472C46"
             {
             "Name" = "8:SJNAIHS"
             "Arguments" = "8:"
@@ -352,8 +352,8 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_AE6C9D0E40B14EBD805E23518BF485FE"
-            "Folder" = "8:_2C49634D01274E5187C88EEE9B445E4E"
+            "Target" = "8:_7534DBBE967848C49E3969D47195383C"
+            "Folder" = "8:_2E9EE0190FCB47BAA2294ACE35BA9E8E"
             "WorkingFolder" = "8:_AF5B588E84DC46E0A0C312A20B55DDBF"
             "Icon" = "8:_568B5E52B98648779ED8F0B17427AEAC"
             "Feature" = "8:"
@@ -757,7 +757,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_AE6C9D0E40B14EBD805E23518BF485FE"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_7534DBBE967848C49E3969D47195383C"
             {
             "SourcePath" = "8:..\\Student Record\\obj\\Debug\\net7.0-windows7.0\\apphost.exe"
             "TargetName" = "8:"

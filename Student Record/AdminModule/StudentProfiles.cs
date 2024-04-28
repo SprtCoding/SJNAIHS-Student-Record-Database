@@ -4,6 +4,7 @@ using Student_Record.AdminModule.Student;
 using Student_Record.Firebase;
 using Student_Record.Firebase.Model;
 using Student_Record.Loaders;
+using Student_Record.TeachersModule.Records;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -203,6 +204,11 @@ namespace Student_Record.AdminModule
                 {
                     Details details = new Details(id);
                     details.ShowDialog(this);
+                }
+                else if (student_dtg.Columns[e.ColumnIndex].Name == "details")
+                {
+                    Record records = new Record(id, "", "admin");
+                    records.ShowDialog();
                 }
             }
         }

@@ -24,17 +24,18 @@ namespace Student_Record.TeachersModule.Records
 {
     public partial class Record : Form
     {
-        string? id, faculty_id;
+        string? id, faculty_id, _rank;
         bool hasData = false;
         private ContextMenuStrip? contextMenuStrip;
         private string? documentContent;
         List<(string filePath, string fileName, string fileURL)> data = new List<(string filePath, string fileName, string fileURL)>();
 
-        public Record(string? id, string? faculty_id)
+        public Record(string? id, string? faculty_id, string? rank)
         {
             InitializeComponent();
             this.id = id;
             this.faculty_id = faculty_id;
+            this._rank = rank;
             PopulateFlowLayoutPanel();
             getStudentInfo(id);
         }
@@ -62,13 +63,15 @@ namespace Student_Record.TeachersModule.Records
                     Students student = docSnap.ConvertTo<Students>();
                     if(student.lrn_number != null && student.section != null && student.gender != null && student.dob != null && student.address != null
                         && student.last_school_attended != null && student.contact_number != null && student.major != null && student.father_name != null && student.father_contact != null 
-                        && student.mother_name != null && student.mother_contact != null && student.guardian_name != null && student.guardian_contact != null && student.ImageStr != null)
+                        && student.mother_name != null && student.mother_contact != null && student.guardian_name != null && student.guardian_contact != null && student.ImageStr != null
+                        && student.grade_level != null)
                     {
                         string _lrn = student.lrn_number;
                         string _section = student.section;
                         string _gender = student.gender;
                         string _dob = student.dob;
                         string _address = student.address;
+                        string _grade_lvl = student.grade_level.ToString();
                         string _last_attended = student.last_school_attended;
                         string _contact_number = student.contact_number;
                         string _major = student.major;
@@ -81,6 +84,7 @@ namespace Student_Record.TeachersModule.Records
                         string _imageStr = student.ImageStr;
 
                         lrn_lbl.Text = _lrn;
+                        grade_lvl_lbl.Text = _grade_lvl;
                         section_lbl.Text = _section;
                         gender_lbl.Text = _gender;
                         dob_lbl.Text = _dob;
@@ -149,35 +153,66 @@ namespace Student_Record.TeachersModule.Records
                         }
                     }
 
-                    if (snapshot.Count >= 4)
+                    if (snapshot.Count >= 5)
                     {
                         new_docs_panel.Visible = false;
                     }
                     else
                     {
-                        new_docs_panel.Visible = true;
-                        add_docs_title.Text = "Add more Docs";
+                        if(_rank != null)
+                        {
+                            if (_rank.Equals("faculty"))
+                            {
+                                new_docs_panel.Visible = true;
+                                add_docs_title.Text = "Add more Docs";
+                            }
+                            else if (_rank.Equals("admin"))
+                            {
+                                new_docs_panel.Visible = false;
+                            }
+                        }
                     }
                 }
 
                 if (!hasData)
                 {
-                    // Create a label for each data item
-                    Label label = new Label();
-                    label.Text = "     No Docs found!";
-                    // Set AutoSize property to true
-                    label.AutoSize = true;
-                    // Set font and font size
-                    label.Font = new System.Drawing.Font("Poppins", 10, FontStyle.Regular);
-                    label.TextAlign = ContentAlignment.MiddleLeft;
-                    label.ImageAlign = ContentAlignment.MiddleLeft;
-                    label.Image = Properties.Resources.square_small;
+                    if(_rank.Equals("faculty"))
+                    {
+                        // Create a label for each data item
+                        Label label = new Label();
+                        label.Text = "     No Docs found!";
+                        // Set AutoSize property to true
+                        label.AutoSize = true;
+                        // Set font and font size
+                        label.Font = new System.Drawing.Font("Poppins", 10, FontStyle.Regular);
+                        label.TextAlign = ContentAlignment.MiddleLeft;
+                        label.ImageAlign = ContentAlignment.MiddleLeft;
+                        label.Image = Properties.Resources.square_small;
 
-                    // Add the label to the FlowLayoutPanel
-                    list_panel.Controls.Add(label);
+                        // Add the label to the FlowLayoutPanel
+                        list_panel.Controls.Add(label);
 
-                    new_docs_panel.Visible = true;
-                    add_docs_title.Text = "Add Docs";
+                        new_docs_panel.Visible = true;
+                        add_docs_title.Text = "Add Docs";
+                    }
+                    else if (_rank.Equals("admin"))
+                    {
+                        // Create a label for each data item
+                        Label label = new Label();
+                        label.Text = "     No Docs found!";
+                        // Set AutoSize property to true
+                        label.AutoSize = true;
+                        // Set font and font size
+                        label.Font = new System.Drawing.Font("Poppins", 10, FontStyle.Regular);
+                        label.TextAlign = ContentAlignment.MiddleLeft;
+                        label.ImageAlign = ContentAlignment.MiddleLeft;
+                        label.Image = Properties.Resources.square_small;
+
+                        // Add the label to the FlowLayoutPanel
+                        list_panel.Controls.Add(label);
+
+                        new_docs_panel.Visible = false;
+                    }
                 }
             }
             return data;
@@ -367,15 +402,29 @@ namespace Student_Record.TeachersModule.Records
                         if (fileExtension.Equals(".docx", StringComparison.OrdinalIgnoreCase))
                         {
                             // Create a new Word application
-                            Word.Application wordApp = new Word.Application();
-                            wordApp.Visible = true;
-                            wordApp.WindowState = Word.WdWindowState.wdWindowStateNormal;
-
-                            wordApp.Documents.Open(saveFilePath);
+                            //Word.Application wordApp = new Word.Application();
+                            //wordApp.Visible = true;
+                            //wordApp.WindowState = Word.WdWindowState.wdWindowStateNormal;
+                            //
+                            //wordApp.Documents.Open(saveFilePath);
+                            Process.Start(new ProcessStartInfo
+                            {
+                                FileName = saveFilePath,
+                                UseShellExecute = true
+                            });
                         }
                         else if (fileExtension.Equals(".pdf", StringComparison.OrdinalIgnoreCase))
                         {
                             // Use the default application associated with PDF files to open it
+                            Process.Start(new ProcessStartInfo
+                            {
+                                FileName = saveFilePath,
+                                UseShellExecute = true
+                            });
+                        }
+                        else if (fileExtension.Equals(".xlsx", StringComparison.OrdinalIgnoreCase) || fileExtension.Equals(".xls", StringComparison.OrdinalIgnoreCase))
+                        {
+                            // Open the file directly in Excel
                             Process.Start(new ProcessStartInfo
                             {
                                 FileName = saveFilePath,
@@ -428,12 +477,21 @@ namespace Student_Record.TeachersModule.Records
         private async void openFileBtn_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Documents|*.docx;*.pdf|Images|*.png;*.jpg;*.jpeg|All Files|*.*";
+            openFileDialog.Filter = "Documents|*.docx;*.pdf;*.xlsx;*.xls|All Files|*.*";
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string filePath = openFileDialog.FileName;
                 string fileName = Path.GetFileName(filePath);
+
+                // Check file size
+                long fileSize = new FileInfo(filePath).Length; // Size in bytes
+                long maxSize = 5 * 1024 * 1024; // 5MB in bytes
+                if (fileSize > maxSize)
+                {
+                    MessageBox.Show("File size exceeds 5MB limit.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 string collectionName = "uploads";
 

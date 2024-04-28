@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GradingSheet));
             label2 = new Label();
             grading_sheet_dtg = new Bunifu.Framework.UI.BunifuCustomDataGrid();
@@ -41,7 +41,6 @@
             final_term = new DataGridViewTextBoxColumn();
             final_grade = new DataGridViewTextBoxColumn();
             generate_btn = new Bunifu.Framework.UI.BunifuFlatButton();
-            add_new_btn = new Bunifu.Framework.UI.BunifuFlatButton();
             oral_btn = new Bunifu.Framework.UI.BunifuFlatButton();
             komunikasyon_btn = new Bunifu.Framework.UI.BunifuFlatButton();
             century_btn = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -55,6 +54,7 @@
             pictureBox1 = new PictureBox();
             submit_report_btn = new Bunifu.Framework.UI.BunifuFlatButton();
             print_btn = new Bunifu.Framework.UI.BunifuFlatButton();
+            add_new_btn = new Bunifu.Framework.UI.BunifuFlatButton();
             ((System.ComponentModel.ISupportInitialize)grading_sheet_dtg).BeginInit();
             flowLayoutPanel1.SuspendLayout();
             no_data_panel.SuspendLayout();
@@ -66,10 +66,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Black", 16F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.ControlText;
-            label2.Location = new Point(8, 5);
-            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Location = new Point(11, 8);
             label2.Name = "label2";
-            label2.Size = new Size(166, 30);
+            label2.Size = new Size(243, 45);
             label2.TabIndex = 8;
             label2.Text = "Grading Sheet";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -80,11 +79,11 @@
             grading_sheet_dtg.AllowUserToDeleteRows = false;
             grading_sheet_dtg.AllowUserToResizeColumns = false;
             grading_sheet_dtg.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = Color.WhiteSmoke;
-            dataGridViewCellStyle4.ForeColor = Color.FromArgb(43, 47, 84);
-            dataGridViewCellStyle4.SelectionBackColor = Color.Gainsboro;
-            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(43, 47, 84);
-            grading_sheet_dtg.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(43, 47, 84);
+            dataGridViewCellStyle1.SelectionBackColor = Color.Gainsboro;
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(43, 47, 84);
+            grading_sheet_dtg.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             grading_sheet_dtg.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             grading_sheet_dtg.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grading_sheet_dtg.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
@@ -92,33 +91,32 @@
             grading_sheet_dtg.BorderStyle = BorderStyle.None;
             grading_sheet_dtg.CellBorderStyle = DataGridViewCellBorderStyle.None;
             grading_sheet_dtg.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(43, 47, 84);
-            dataGridViewCellStyle5.Font = new Font("Poppins Medium", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = Color.WhiteSmoke;
-            dataGridViewCellStyle5.Padding = new Padding(15);
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(43, 47, 84);
-            dataGridViewCellStyle5.SelectionForeColor = Color.WhiteSmoke;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            grading_sheet_dtg.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(43, 47, 84);
+            dataGridViewCellStyle2.Font = new Font("Poppins Medium", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle2.Padding = new Padding(15);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(43, 47, 84);
+            dataGridViewCellStyle2.SelectionForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            grading_sheet_dtg.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             grading_sheet_dtg.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             grading_sheet_dtg.Columns.AddRange(new DataGridViewColumn[] { id, name, subject, mid_term, final_term, final_grade });
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.WhiteSmoke;
-            dataGridViewCellStyle6.Font = new Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = Color.FromArgb(43, 47, 84);
-            dataGridViewCellStyle6.Padding = new Padding(15);
-            dataGridViewCellStyle6.SelectionBackColor = Color.Gainsboro;
-            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(43, 47, 84);
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            grading_sheet_dtg.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.WhiteSmoke;
+            dataGridViewCellStyle3.Font = new Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(43, 47, 84);
+            dataGridViewCellStyle3.Padding = new Padding(15);
+            dataGridViewCellStyle3.SelectionBackColor = Color.Gainsboro;
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(43, 47, 84);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            grading_sheet_dtg.DefaultCellStyle = dataGridViewCellStyle3;
             grading_sheet_dtg.DoubleBuffered = true;
             grading_sheet_dtg.EnableHeadersVisualStyles = false;
             grading_sheet_dtg.GridColor = Color.FromArgb(60, 64, 98);
             grading_sheet_dtg.HeaderBgColor = Color.FromArgb(43, 47, 84);
             grading_sheet_dtg.HeaderForeColor = Color.WhiteSmoke;
-            grading_sheet_dtg.Location = new Point(8, 125);
-            grading_sheet_dtg.Margin = new Padding(2, 2, 2, 2);
+            grading_sheet_dtg.Location = new Point(11, 208);
             grading_sheet_dtg.Name = "grading_sheet_dtg";
             grading_sheet_dtg.ReadOnly = true;
             grading_sheet_dtg.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -130,7 +128,7 @@
             grading_sheet_dtg.ShowCellErrors = false;
             grading_sheet_dtg.ShowEditingIcon = false;
             grading_sheet_dtg.ShowRowErrors = false;
-            grading_sheet_dtg.Size = new Size(773, 528);
+            grading_sheet_dtg.Size = new Size(1104, 880);
             grading_sheet_dtg.TabIndex = 10;
             grading_sheet_dtg.CellContentClick += student_dtg_CellContentClick;
             // 
@@ -157,7 +155,7 @@
             subject.MinimumWidth = 8;
             subject.Name = "subject";
             subject.ReadOnly = true;
-            subject.Width = 122;
+            subject.Width = 162;
             // 
             // mid_term
             // 
@@ -166,7 +164,7 @@
             mid_term.MinimumWidth = 8;
             mid_term.Name = "mid_term";
             mid_term.ReadOnly = true;
-            mid_term.Width = 129;
+            mid_term.Width = 171;
             // 
             // final_term
             // 
@@ -175,7 +173,7 @@
             final_term.MinimumWidth = 8;
             final_term.Name = "final_term";
             final_term.ReadOnly = true;
-            final_term.Width = 139;
+            final_term.Width = 187;
             // 
             // final_grade
             // 
@@ -184,7 +182,7 @@
             final_grade.MinimumWidth = 8;
             final_grade.Name = "final_grade";
             final_grade.ReadOnly = true;
-            final_grade.Width = 148;
+            final_grade.Width = 202;
             // 
             // generate_btn
             // 
@@ -208,62 +206,22 @@
             generate_btn.IconVisible = false;
             generate_btn.IconZoom = 40D;
             generate_btn.IsTab = false;
-            generate_btn.Location = new Point(527, 10);
-            generate_btn.Margin = new Padding(4, 4, 4, 4);
+            generate_btn.Location = new Point(753, 17);
+            generate_btn.Margin = new Padding(6, 7, 6, 7);
             generate_btn.Name = "generate_btn";
             generate_btn.Normalcolor = Color.FromArgb(43, 47, 84);
             generate_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
             generate_btn.OnHoverTextColor = Color.White;
-            generate_btn.Padding = new Padding(8, 5, 8, 5);
+            generate_btn.Padding = new Padding(11, 8, 11, 8);
             generate_btn.RightToLeft = RightToLeft.No;
             generate_btn.selected = false;
-            generate_btn.Size = new Size(122, 32);
+            generate_btn.Size = new Size(174, 53);
             generate_btn.TabIndex = 16;
             generate_btn.Text = "Generate";
             generate_btn.TextAlign = ContentAlignment.MiddleCenter;
             generate_btn.Textcolor = Color.White;
             generate_btn.TextFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             generate_btn.Click += generate_btn_Click;
-            // 
-            // add_new_btn
-            // 
-            add_new_btn.Active = false;
-            add_new_btn.Activecolor = Color.FromArgb(60, 64, 98);
-            add_new_btn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            add_new_btn.BackColor = Color.FromArgb(43, 47, 84);
-            add_new_btn.BackgroundImageLayout = ImageLayout.Stretch;
-            add_new_btn.BorderRadius = 5;
-            add_new_btn.ButtonText = "";
-            add_new_btn.DisabledColor = Color.Gray;
-            add_new_btn.Iconcolor = Color.Transparent;
-            add_new_btn.Iconimage = Properties.Resources.add_white;
-            add_new_btn.Iconimage_right = null;
-            add_new_btn.Iconimage_right_Selected = null;
-            add_new_btn.Iconimage_Selected = null;
-            add_new_btn.IconMarginLeft = 0;
-            add_new_btn.IconMarginRight = 0;
-            add_new_btn.IconRightVisible = false;
-            add_new_btn.IconRightZoom = 40D;
-            add_new_btn.IconVisible = true;
-            add_new_btn.IconZoom = 40D;
-            add_new_btn.IsTab = false;
-            add_new_btn.Location = new Point(745, 66);
-            add_new_btn.Margin = new Padding(4, 4, 4, 4);
-            add_new_btn.MaximumSize = new Size(35, 35);
-            add_new_btn.MinimumSize = new Size(35, 35);
-            add_new_btn.Name = "add_new_btn";
-            add_new_btn.Normalcolor = Color.FromArgb(43, 47, 84);
-            add_new_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
-            add_new_btn.OnHoverTextColor = Color.White;
-            add_new_btn.Padding = new Padding(7, 6, 7, 6);
-            add_new_btn.RightToLeft = RightToLeft.No;
-            add_new_btn.selected = false;
-            add_new_btn.Size = new Size(35, 35);
-            add_new_btn.TabIndex = 17;
-            add_new_btn.TextAlign = ContentAlignment.MiddleRight;
-            add_new_btn.Textcolor = Color.White;
-            add_new_btn.TextFont = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            add_new_btn.Click += add_new_btn_Click;
             // 
             // oral_btn
             // 
@@ -286,16 +244,16 @@
             oral_btn.IconVisible = false;
             oral_btn.IconZoom = 40D;
             oral_btn.IsTab = false;
-            oral_btn.Location = new Point(4, 4);
-            oral_btn.Margin = new Padding(4, 4, 4, 4);
+            oral_btn.Location = new Point(6, 7);
+            oral_btn.Margin = new Padding(6, 7, 6, 7);
             oral_btn.Name = "oral_btn";
             oral_btn.Normalcolor = Color.FromArgb(43, 47, 84);
             oral_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
             oral_btn.OnHoverTextColor = Color.White;
-            oral_btn.Padding = new Padding(8, 5, 8, 5);
+            oral_btn.Padding = new Padding(11, 8, 11, 8);
             oral_btn.RightToLeft = RightToLeft.No;
             oral_btn.selected = false;
-            oral_btn.Size = new Size(156, 32);
+            oral_btn.Size = new Size(223, 53);
             oral_btn.TabIndex = 18;
             oral_btn.Text = "Oral Communication";
             oral_btn.TextAlign = ContentAlignment.MiddleCenter;
@@ -324,16 +282,16 @@
             komunikasyon_btn.IconVisible = false;
             komunikasyon_btn.IconZoom = 40D;
             komunikasyon_btn.IsTab = false;
-            komunikasyon_btn.Location = new Point(515, 4);
-            komunikasyon_btn.Margin = new Padding(4, 4, 4, 4);
+            komunikasyon_btn.Location = new Point(738, 7);
+            komunikasyon_btn.Margin = new Padding(6, 7, 6, 7);
             komunikasyon_btn.Name = "komunikasyon_btn";
             komunikasyon_btn.Normalcolor = Color.FromArgb(43, 47, 84);
             komunikasyon_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
             komunikasyon_btn.OnHoverTextColor = Color.White;
-            komunikasyon_btn.Padding = new Padding(8, 5, 8, 5);
+            komunikasyon_btn.Padding = new Padding(11, 8, 11, 8);
             komunikasyon_btn.RightToLeft = RightToLeft.No;
             komunikasyon_btn.selected = false;
-            komunikasyon_btn.Size = new Size(225, 32);
+            komunikasyon_btn.Size = new Size(321, 53);
             komunikasyon_btn.TabIndex = 19;
             komunikasyon_btn.Text = "Komunikasyon at Pananaliksik";
             komunikasyon_btn.TextAlign = ContentAlignment.MiddleCenter;
@@ -362,16 +320,16 @@
             century_btn.IconVisible = false;
             century_btn.IconZoom = 40D;
             century_btn.IsTab = false;
-            century_btn.Location = new Point(168, 4);
-            century_btn.Margin = new Padding(4, 4, 4, 4);
+            century_btn.Location = new Point(241, 7);
+            century_btn.Margin = new Padding(6, 7, 6, 7);
             century_btn.Name = "century_btn";
             century_btn.Normalcolor = Color.FromArgb(43, 47, 84);
             century_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
             century_btn.OnHoverTextColor = Color.White;
-            century_btn.Padding = new Padding(8, 5, 8, 5);
+            century_btn.Padding = new Padding(11, 8, 11, 8);
             century_btn.RightToLeft = RightToLeft.No;
             century_btn.selected = false;
-            century_btn.Size = new Size(175, 32);
+            century_btn.Size = new Size(250, 53);
             century_btn.TabIndex = 20;
             century_btn.Text = "21st Century Literature";
             century_btn.TextAlign = ContentAlignment.MiddleCenter;
@@ -400,16 +358,16 @@
             math_btn.IconVisible = false;
             math_btn.IconZoom = 40D;
             math_btn.IsTab = false;
-            math_btn.Location = new Point(351, 4);
-            math_btn.Margin = new Padding(4, 4, 4, 4);
+            math_btn.Location = new Point(503, 7);
+            math_btn.Margin = new Padding(6, 7, 6, 7);
             math_btn.Name = "math_btn";
             math_btn.Normalcolor = Color.FromArgb(43, 47, 84);
             math_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
             math_btn.OnHoverTextColor = Color.White;
-            math_btn.Padding = new Padding(8, 5, 8, 5);
+            math_btn.Padding = new Padding(11, 8, 11, 8);
             math_btn.RightToLeft = RightToLeft.No;
             math_btn.selected = false;
-            math_btn.Size = new Size(156, 32);
+            math_btn.Size = new Size(223, 53);
             math_btn.TabIndex = 21;
             math_btn.Text = "General Mathematics";
             math_btn.TextAlign = ContentAlignment.MiddleCenter;
@@ -429,10 +387,9 @@
             flowLayoutPanel1.Controls.Add(philosophy_btn);
             flowLayoutPanel1.Controls.Add(p_e_btn);
             flowLayoutPanel1.Controls.Add(tve_btn);
-            flowLayoutPanel1.Location = new Point(8, 62);
-            flowLayoutPanel1.Margin = new Padding(2, 2, 2, 2);
+            flowLayoutPanel1.Location = new Point(11, 103);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(565, 58);
+            flowLayoutPanel1.Size = new Size(807, 97);
             flowLayoutPanel1.TabIndex = 23;
             flowLayoutPanel1.WrapContents = false;
             // 
@@ -457,16 +414,16 @@
             philosophy_btn.IconVisible = false;
             philosophy_btn.IconZoom = 40D;
             philosophy_btn.IsTab = false;
-            philosophy_btn.Location = new Point(748, 4);
-            philosophy_btn.Margin = new Padding(4, 4, 4, 4);
+            philosophy_btn.Location = new Point(1071, 7);
+            philosophy_btn.Margin = new Padding(6, 7, 6, 7);
             philosophy_btn.Name = "philosophy_btn";
             philosophy_btn.Normalcolor = Color.FromArgb(43, 47, 84);
             philosophy_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
             philosophy_btn.OnHoverTextColor = Color.White;
-            philosophy_btn.Padding = new Padding(8, 5, 8, 5);
+            philosophy_btn.Padding = new Padding(11, 8, 11, 8);
             philosophy_btn.RightToLeft = RightToLeft.No;
             philosophy_btn.selected = false;
-            philosophy_btn.Size = new Size(225, 32);
+            philosophy_btn.Size = new Size(321, 53);
             philosophy_btn.TabIndex = 22;
             philosophy_btn.Text = "Introduction to the Philosophy";
             philosophy_btn.TextAlign = ContentAlignment.MiddleCenter;
@@ -495,16 +452,16 @@
             p_e_btn.IconVisible = false;
             p_e_btn.IconZoom = 40D;
             p_e_btn.IsTab = false;
-            p_e_btn.Location = new Point(981, 4);
-            p_e_btn.Margin = new Padding(4, 4, 4, 4);
+            p_e_btn.Location = new Point(1404, 7);
+            p_e_btn.Margin = new Padding(6, 7, 6, 7);
             p_e_btn.Name = "p_e_btn";
             p_e_btn.Normalcolor = Color.FromArgb(43, 47, 84);
             p_e_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
             p_e_btn.OnHoverTextColor = Color.White;
-            p_e_btn.Padding = new Padding(8, 5, 8, 5);
+            p_e_btn.Padding = new Padding(11, 8, 11, 8);
             p_e_btn.RightToLeft = RightToLeft.No;
             p_e_btn.selected = false;
-            p_e_btn.Size = new Size(200, 32);
+            p_e_btn.Size = new Size(286, 53);
             p_e_btn.TabIndex = 23;
             p_e_btn.Text = "Physical Education & Health";
             p_e_btn.TextAlign = ContentAlignment.MiddleCenter;
@@ -533,16 +490,16 @@
             tve_btn.IconVisible = false;
             tve_btn.IconZoom = 40D;
             tve_btn.IsTab = false;
-            tve_btn.Location = new Point(1189, 4);
-            tve_btn.Margin = new Padding(4, 4, 4, 4);
+            tve_btn.Location = new Point(1702, 7);
+            tve_btn.Margin = new Padding(6, 7, 6, 7);
             tve_btn.Name = "tve_btn";
             tve_btn.Normalcolor = Color.FromArgb(43, 47, 84);
             tve_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
             tve_btn.OnHoverTextColor = Color.White;
-            tve_btn.Padding = new Padding(8, 5, 8, 5);
+            tve_btn.Padding = new Padding(11, 8, 11, 8);
             tve_btn.RightToLeft = RightToLeft.No;
             tve_btn.selected = false;
-            tve_btn.Size = new Size(166, 32);
+            tve_btn.Size = new Size(237, 53);
             tve_btn.TabIndex = 24;
             tve_btn.Text = "TVE";
             tve_btn.TextAlign = ContentAlignment.MiddleCenter;
@@ -555,10 +512,9 @@
             no_data_panel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             no_data_panel.Controls.Add(label1);
             no_data_panel.Controls.Add(pictureBox1);
-            no_data_panel.Location = new Point(8, 125);
-            no_data_panel.Margin = new Padding(2, 2, 2, 2);
+            no_data_panel.Location = new Point(11, 208);
             no_data_panel.Name = "no_data_panel";
-            no_data_panel.Size = new Size(773, 528);
+            no_data_panel.Size = new Size(1104, 880);
             no_data_panel.TabIndex = 24;
             no_data_panel.Visible = false;
             // 
@@ -567,10 +523,9 @@
             label1.Anchor = AnchorStyles.None;
             label1.Font = new Font("Poppins", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.FromArgb(60, 64, 98);
-            label1.Location = new Point(100, 308);
-            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Location = new Point(143, 513);
             label1.Name = "label1";
-            label1.Size = new Size(573, 23);
+            label1.Size = new Size(819, 38);
             label1.TabIndex = 19;
             label1.Text = "No data found!";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -579,10 +534,9 @@
             // 
             pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(234, 185);
-            pictureBox1.Margin = new Padding(2, 2, 2, 2);
+            pictureBox1.Location = new Point(334, 308);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(304, 131);
+            pictureBox1.Size = new Size(434, 218);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -609,14 +563,14 @@
             submit_report_btn.IconVisible = true;
             submit_report_btn.IconZoom = 25D;
             submit_report_btn.IsTab = false;
-            submit_report_btn.Location = new Point(383, 10);
-            submit_report_btn.Margin = new Padding(4, 4, 4, 4);
+            submit_report_btn.Location = new Point(547, 17);
+            submit_report_btn.Margin = new Padding(6, 7, 6, 7);
             submit_report_btn.Name = "submit_report_btn";
             submit_report_btn.Normalcolor = Color.FromArgb(43, 47, 84);
             submit_report_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
             submit_report_btn.OnHoverTextColor = Color.White;
             submit_report_btn.selected = false;
-            submit_report_btn.Size = new Size(135, 32);
+            submit_report_btn.Size = new Size(193, 53);
             submit_report_btn.TabIndex = 28;
             submit_report_btn.Text = "  Submit Report";
             submit_report_btn.TextAlign = ContentAlignment.MiddleLeft;
@@ -646,16 +600,16 @@
             print_btn.IconVisible = false;
             print_btn.IconZoom = 40D;
             print_btn.IsTab = false;
-            print_btn.Location = new Point(658, 10);
-            print_btn.Margin = new Padding(4, 4, 4, 4);
+            print_btn.Location = new Point(940, 17);
+            print_btn.Margin = new Padding(6, 7, 6, 7);
             print_btn.Name = "print_btn";
             print_btn.Normalcolor = Color.FromArgb(43, 47, 84);
             print_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
             print_btn.OnHoverTextColor = Color.White;
-            print_btn.Padding = new Padding(8, 5, 8, 5);
+            print_btn.Padding = new Padding(11, 8, 11, 8);
             print_btn.RightToLeft = RightToLeft.No;
             print_btn.selected = false;
-            print_btn.Size = new Size(122, 32);
+            print_btn.Size = new Size(174, 53);
             print_btn.TabIndex = 29;
             print_btn.Text = "Print";
             print_btn.TextAlign = ContentAlignment.MiddleCenter;
@@ -663,11 +617,51 @@
             print_btn.TextFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             print_btn.Click += print_btn_Click;
             // 
+            // add_new_btn
+            // 
+            add_new_btn.Active = false;
+            add_new_btn.Activecolor = Color.FromArgb(60, 64, 98);
+            add_new_btn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            add_new_btn.BackColor = Color.FromArgb(43, 47, 84);
+            add_new_btn.BackgroundImageLayout = ImageLayout.Stretch;
+            add_new_btn.BorderRadius = 5;
+            add_new_btn.ButtonText = "";
+            add_new_btn.DisabledColor = Color.Gray;
+            add_new_btn.Iconcolor = Color.Transparent;
+            add_new_btn.Iconimage = Properties.Resources.add_white;
+            add_new_btn.Iconimage_right = null;
+            add_new_btn.Iconimage_right_Selected = null;
+            add_new_btn.Iconimage_Selected = null;
+            add_new_btn.IconMarginLeft = 0;
+            add_new_btn.IconMarginRight = 0;
+            add_new_btn.IconRightVisible = false;
+            add_new_btn.IconRightZoom = 40D;
+            add_new_btn.IconVisible = true;
+            add_new_btn.IconZoom = 40D;
+            add_new_btn.IsTab = false;
+            add_new_btn.Location = new Point(1064, 110);
+            add_new_btn.Margin = new Padding(6, 7, 6, 7);
+            add_new_btn.MaximumSize = new Size(50, 50);
+            add_new_btn.MinimumSize = new Size(50, 50);
+            add_new_btn.Name = "add_new_btn";
+            add_new_btn.Normalcolor = Color.FromArgb(43, 47, 84);
+            add_new_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
+            add_new_btn.OnHoverTextColor = Color.White;
+            add_new_btn.Padding = new Padding(10);
+            add_new_btn.RightToLeft = RightToLeft.No;
+            add_new_btn.selected = false;
+            add_new_btn.Size = new Size(50, 50);
+            add_new_btn.TabIndex = 17;
+            add_new_btn.TextAlign = ContentAlignment.MiddleRight;
+            add_new_btn.Textcolor = Color.White;
+            add_new_btn.TextFont = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            add_new_btn.Click += add_new_btn_Click;
+            // 
             // GradingSheet
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(790, 660);
+            ClientSize = new Size(1129, 1100);
             Controls.Add(print_btn);
             Controls.Add(submit_report_btn);
             Controls.Add(no_data_panel);
@@ -677,7 +671,6 @@
             Controls.Add(grading_sheet_dtg);
             Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2, 2, 2, 2);
             Name = "GradingSheet";
             Text = "GradingSheet";
             ((System.ComponentModel.ISupportInitialize)grading_sheet_dtg).EndInit();
@@ -693,7 +686,6 @@
         private Label label2;
         private Bunifu.Framework.UI.BunifuCustomDataGrid grading_sheet_dtg;
         private Bunifu.Framework.UI.BunifuFlatButton generate_btn;
-        private Bunifu.Framework.UI.BunifuFlatButton add_new_btn;
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn name;
         private DataGridViewTextBoxColumn subject;
@@ -713,5 +705,6 @@
         private PictureBox pictureBox1;
         private Bunifu.Framework.UI.BunifuFlatButton submit_report_btn;
         private Bunifu.Framework.UI.BunifuFlatButton print_btn;
+        private Bunifu.Framework.UI.BunifuFlatButton add_new_btn;
     }
 }

@@ -55,10 +55,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Black", 16F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.ControlText;
-            label2.Location = new Point(8, 5);
-            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Location = new Point(11, 8);
             label2.Name = "label2";
-            label2.Size = new Size(181, 30);
+            label2.Size = new Size(263, 45);
             label2.TabIndex = 6;
             label2.Text = "Faculty Profiles";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -106,8 +105,7 @@
             faculty_profile_dtg.GridColor = Color.FromArgb(60, 64, 98);
             faculty_profile_dtg.HeaderBgColor = Color.FromArgb(43, 47, 84);
             faculty_profile_dtg.HeaderForeColor = Color.WhiteSmoke;
-            faculty_profile_dtg.Location = new Point(8, 101);
-            faculty_profile_dtg.Margin = new Padding(2, 2, 2, 2);
+            faculty_profile_dtg.Location = new Point(11, 168);
             faculty_profile_dtg.Name = "faculty_profile_dtg";
             faculty_profile_dtg.ReadOnly = true;
             faculty_profile_dtg.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -119,7 +117,7 @@
             faculty_profile_dtg.ShowCellErrors = false;
             faculty_profile_dtg.ShowEditingIcon = false;
             faculty_profile_dtg.ShowRowErrors = false;
-            faculty_profile_dtg.Size = new Size(773, 553);
+            faculty_profile_dtg.Size = new Size(1104, 922);
             faculty_profile_dtg.TabIndex = 7;
             faculty_profile_dtg.CellContentClick += faculty_profile_dtg_CellContentClick;
             // 
@@ -146,7 +144,7 @@
             email.MinimumWidth = 8;
             email.Name = "email";
             email.ReadOnly = true;
-            email.Width = 101;
+            email.Width = 134;
             // 
             // position
             // 
@@ -155,7 +153,7 @@
             position.MinimumWidth = 8;
             position.Name = "position";
             position.ReadOnly = true;
-            position.Width = 125;
+            position.Width = 169;
             // 
             // edit
             // 
@@ -165,7 +163,7 @@
             edit.Name = "edit";
             edit.ReadOnly = true;
             edit.ToolTipText = "Edit";
-            edit.Width = 73;
+            edit.Width = 89;
             // 
             // delete
             // 
@@ -175,7 +173,7 @@
             delete.Name = "delete";
             delete.ReadOnly = true;
             delete.ToolTipText = "Delete";
-            delete.Width = 89;
+            delete.Width = 112;
             // 
             // dtg_rad
             // 
@@ -185,10 +183,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(24, 57);
-            pictureBox1.Margin = new Padding(2, 2, 2, 2);
+            pictureBox1.Location = new Point(34, 95);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(17, 14);
+            pictureBox1.Size = new Size(24, 23);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;
@@ -208,12 +205,12 @@
             search_tb.Font = new Font("Poppins", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             search_tb.ForeColor = Color.FromArgb(64, 64, 64);
             search_tb.isPassword = false;
-            search_tb.Location = new Point(8, 44);
-            search_tb.Margin = new Padding(4);
+            search_tb.Location = new Point(11, 73);
+            search_tb.Margin = new Padding(6, 7, 6, 7);
             search_tb.MaxLength = 32767;
             search_tb.Name = "search_tb";
-            search_tb.Padding = new Padding(45, 0, 0, 0);
-            search_tb.Size = new Size(309, 39);
+            search_tb.Padding = new Padding(64, 0, 0, 0);
+            search_tb.Size = new Size(441, 65);
             search_tb.TabIndex = 9;
             search_tb.Text = "Search...";
             search_tb.TextAlign = HorizontalAlignment.Left;
@@ -241,18 +238,18 @@
             add_new_btn.IconVisible = true;
             add_new_btn.IconZoom = 40D;
             add_new_btn.IsTab = false;
-            add_new_btn.Location = new Point(746, 48);
-            add_new_btn.Margin = new Padding(4);
-            add_new_btn.MaximumSize = new Size(35, 35);
-            add_new_btn.MinimumSize = new Size(35, 35);
+            add_new_btn.Location = new Point(1066, 80);
+            add_new_btn.Margin = new Padding(6, 7, 6, 7);
+            add_new_btn.MaximumSize = new Size(50, 50);
+            add_new_btn.MinimumSize = new Size(50, 50);
             add_new_btn.Name = "add_new_btn";
             add_new_btn.Normalcolor = Color.FromArgb(43, 47, 84);
             add_new_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
             add_new_btn.OnHoverTextColor = Color.White;
-            add_new_btn.Padding = new Padding(7, 6, 7, 6);
+            add_new_btn.Padding = new Padding(10);
             add_new_btn.RightToLeft = RightToLeft.No;
             add_new_btn.selected = false;
-            add_new_btn.Size = new Size(35, 35);
+            add_new_btn.Size = new Size(50, 50);
             add_new_btn.TabIndex = 11;
             add_new_btn.TextAlign = ContentAlignment.MiddleRight;
             add_new_btn.Textcolor = Color.White;
@@ -261,17 +258,16 @@
             // 
             // FacultyProfiles
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(790, 660);
+            ClientSize = new Size(1129, 1100);
             Controls.Add(add_new_btn);
             Controls.Add(pictureBox1);
             Controls.Add(search_tb);
             Controls.Add(faculty_profile_dtg);
             Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2, 2, 2, 2);
             Name = "FacultyProfiles";
             RightToLeft = RightToLeft.No;
             Text = "FacultyProfiles";

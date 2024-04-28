@@ -147,26 +147,27 @@ namespace Student_Record.TeachersModule
                             Students grade = gradeSnapShoot.ConvertTo<Students>();
 
                             totalGrade += (double)grade.final_grade;
-
-
                         }
 
                         finalAverage = totalGrade / gradeSnap.Documents.Count();
 
                         // Create a series for the chart
                         Series series = new Series(fullname);
-                        series.ChartType = SeriesChartType.RangeColumn; // Use a column chart
+                        series.ChartType = SeriesChartType.Column; // Use a column chart
                         grade_chart.Series.Add(series);
 
+                        series.LegendText = fullname;
+                        series.BorderWidth = 2;
                         series.Points.AddXY("Final Average", finalAverage);
-                        series["PointWidth"] = ".8";
+                        // Add margin to the series
+                        series["PointWidth"] = "1";
+                        series["PixelPointWidth"] = "250";
                         series.Points[0].ToolTip = $"{fullname}: {Math.Round(finalAverage, 2)}";
+
+                        // Add animation to the series
+                        // Smoothly animate the column to its final value
+                        AnimateColumn(series.Points[0], finalAverage, 1000);
                     }
-
-                    // Add data points to the series (student names and their final averages)
-
-                    // Set the Legend property of the chart to display the fullname
-                    //series.LegendText = fullname;
                 }
             }
             catch (Exception ex)
@@ -174,6 +175,23 @@ namespace Student_Record.TeachersModule
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+        }
+
+        private async void AnimateColumn(DataPoint point, double finalValue, int duration)
+        {
+            double initialValue = point.YValues[0];
+            double increment = (finalValue - initialValue) / (duration / 20.0); // Adjust the interval (20 ms in this example)
+
+            while (point.YValues[0] < finalValue)
+            {
+                point.YValues[0] += increment;
+                grade_chart.Invalidate(); // Refresh the chart to display changes
+                await Task.Delay(20); // Adjust the interval (20 ms in this example)
+            }
+
+            // Ensure final value is set exactly
+            point.YValues[0] = finalValue;
+            grade_chart.Invalidate(); // Refresh the chart to display changes
         }
 
         private void FacultyHomeDashboard_Load(object sender, EventArgs e)
