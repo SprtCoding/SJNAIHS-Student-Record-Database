@@ -20,5 +20,13 @@ namespace Student_Record.Firebase.Model
         public string? report_type { get; set; }
         [FirestoreProperty]
         public string? status { get; set; }
+        [FirestoreProperty]
+        public string? docs_name { get; set; }
+        [FirestoreProperty]
+        public string? docs_path { get; set; }
+        [FirestoreProperty]
+        public string? docs_url { get; set; }
+        [FirestoreProperty]
+        public DateTime submitted_at { get; set; }
     }
 }

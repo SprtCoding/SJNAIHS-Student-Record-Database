@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Timer = System.Windows.Forms.Timer;
 
 namespace Student_Record.AdminModule
 {
@@ -43,7 +44,20 @@ namespace Student_Record.AdminModule
             // Example usage in your form's method
             if (!InternetConnectionChecker.IsInternetAvailable())
             {
-                MessageBox.Show("No internet connection!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                connectionPanel.Visible = true;
+                connectionStatusLbl.Text = "Please check your internet connection!";
+
+                // Start a timer to hide the connectionPanel after 5 seconds
+                Timer timer = new Timer();
+                timer.Interval = 5000; // 5 seconds in milliseconds
+                timer.Tick += (sender, e) =>
+                {
+                    connectionPanel.Visible = false;
+                    connectionStatusLbl.Text = "";
+                    timer.Stop(); // Stop the timer
+                    timer.Dispose(); // Dispose the timer to release resources
+                };
+                timer.Start();
             }
         }
 

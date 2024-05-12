@@ -45,10 +45,10 @@
             pictureBox1 = new PictureBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             grade_panel = new Panel();
-            grade_lbl = new Label();
+            sf9_lbl = new Label();
             label4 = new Label();
             report_card_panel = new Panel();
-            label10 = new Label();
+            sf10_lbl = new Label();
             label6 = new Label();
             dtg_rad = new Bunifu.Framework.UI.BunifuElipse(components);
             bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(components);
@@ -56,12 +56,12 @@
             bunifuElipse3 = new Bunifu.Framework.UI.BunifuElipse(components);
             label12 = new Label();
             report_dtg = new Bunifu.Framework.UI.BunifuCustomDataGrid();
-            id = new DataGridViewTextBoxColumn();
-            name = new DataGridViewTextBoxColumn();
-            report_type = new DataGridViewTextBoxColumn();
-            status = new DataGridViewTextBoxColumn();
-            action = new DataGridViewImageColumn();
             bunifuElipse4 = new Bunifu.Framework.UI.BunifuElipse(components);
+            loadingPanel = new Panel();
+            loadingTxt = new Label();
+            next_btn = new Bunifu.Framework.UI.BunifuFlatButton();
+            previous_btn = new Bunifu.Framework.UI.BunifuFlatButton();
+            data_count_lbl = new Label();
             gender_tPanel.SuspendLayout();
             female_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -71,6 +71,7 @@
             grade_panel.SuspendLayout();
             report_card_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)report_dtg).BeginInit();
+            loadingPanel.SuspendLayout();
             SuspendLayout();
             // 
             // label2
@@ -213,32 +214,32 @@
             tableLayoutPanel1.Padding = new Padding(6, 5, 6, 5);
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(1104, 408);
+            tableLayoutPanel1.Size = new Size(1101, 357);
             tableLayoutPanel1.TabIndex = 8;
             // 
             // grade_panel
             // 
             grade_panel.BackColor = Color.FromArgb(43, 47, 84);
-            grade_panel.Controls.Add(grade_lbl);
+            grade_panel.Controls.Add(sf9_lbl);
             grade_panel.Controls.Add(label4);
             grade_panel.Dock = DockStyle.Fill;
             grade_panel.Location = new Point(16, 15);
-            grade_panel.Margin = new Padding(10, 10, 10, 10);
+            grade_panel.Margin = new Padding(10);
             grade_panel.Name = "grade_panel";
-            grade_panel.Size = new Size(526, 378);
+            grade_panel.Size = new Size(524, 327);
             grade_panel.TabIndex = 0;
             // 
-            // grade_lbl
+            // sf9_lbl
             // 
-            grade_lbl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            grade_lbl.Font = new Font("Segoe UI Black", 30F, FontStyle.Bold, GraphicsUnit.Point);
-            grade_lbl.ForeColor = Color.WhiteSmoke;
-            grade_lbl.Location = new Point(20, 82);
-            grade_lbl.Name = "grade_lbl";
-            grade_lbl.Size = new Size(484, 277);
-            grade_lbl.TabIndex = 10;
-            grade_lbl.Text = "0";
-            grade_lbl.TextAlign = ContentAlignment.MiddleLeft;
+            sf9_lbl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            sf9_lbl.Font = new Font("Segoe UI Black", 30F, FontStyle.Bold, GraphicsUnit.Point);
+            sf9_lbl.ForeColor = Color.WhiteSmoke;
+            sf9_lbl.Location = new Point(17, 117);
+            sf9_lbl.Name = "sf9_lbl";
+            sf9_lbl.Size = new Size(484, 95);
+            sf9_lbl.TabIndex = 10;
+            sf9_lbl.Text = "0";
+            sf9_lbl.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label4
             // 
@@ -247,34 +248,34 @@
             label4.ForeColor = Color.WhiteSmoke;
             label4.Location = new Point(17, 17);
             label4.Name = "label4";
-            label4.Size = new Size(136, 56);
+            label4.Size = new Size(81, 56);
             label4.TabIndex = 9;
-            label4.Text = "GRADE";
+            label4.Text = "SF9";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // report_card_panel
             // 
             report_card_panel.BackColor = Color.FromArgb(129, 142, 254);
-            report_card_panel.Controls.Add(label10);
+            report_card_panel.Controls.Add(sf10_lbl);
             report_card_panel.Controls.Add(label6);
             report_card_panel.Dock = DockStyle.Fill;
-            report_card_panel.Location = new Point(562, 15);
-            report_card_panel.Margin = new Padding(10, 10, 10, 10);
+            report_card_panel.Location = new Point(560, 15);
+            report_card_panel.Margin = new Padding(10);
             report_card_panel.Name = "report_card_panel";
-            report_card_panel.Size = new Size(526, 378);
+            report_card_panel.Size = new Size(525, 327);
             report_card_panel.TabIndex = 2;
             // 
-            // label10
+            // sf10_lbl
             // 
-            label10.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            label10.Font = new Font("Segoe UI Black", 30F, FontStyle.Bold, GraphicsUnit.Point);
-            label10.ForeColor = Color.WhiteSmoke;
-            label10.Location = new Point(20, 82);
-            label10.Name = "label10";
-            label10.Size = new Size(484, 277);
-            label10.TabIndex = 12;
-            label10.Text = "0";
-            label10.TextAlign = ContentAlignment.MiddleLeft;
+            sf10_lbl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            sf10_lbl.Font = new Font("Segoe UI Black", 30F, FontStyle.Bold, GraphicsUnit.Point);
+            sf10_lbl.ForeColor = Color.WhiteSmoke;
+            sf10_lbl.Location = new Point(17, 117);
+            sf10_lbl.Name = "sf10_lbl";
+            sf10_lbl.Size = new Size(484, 95);
+            sf10_lbl.TabIndex = 12;
+            sf10_lbl.Text = "0";
+            sf10_lbl.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label6
             // 
@@ -283,9 +284,9 @@
             label6.ForeColor = Color.WhiteSmoke;
             label6.Location = new Point(17, 17);
             label6.Name = "label6";
-            label6.Size = new Size(249, 56);
+            label6.Size = new Size(96, 56);
             label6.TabIndex = 11;
-            label6.Text = "REPORT CARD";
+            label6.Text = "SF10";
             label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // dtg_rad
@@ -313,7 +314,7 @@
             label12.AutoSize = true;
             label12.Font = new Font("Poppins", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
             label12.ForeColor = SystemColors.ControlText;
-            label12.Location = new Point(27, 497);
+            label12.Location = new Point(27, 443);
             label12.Name = "label12";
             label12.Size = new Size(217, 42);
             label12.TabIndex = 9;
@@ -348,7 +349,6 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             report_dtg.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             report_dtg.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            report_dtg.Columns.AddRange(new DataGridViewColumn[] { id, name, report_type, status, action });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.WhiteSmoke;
             dataGridViewCellStyle3.Font = new Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -363,7 +363,7 @@
             report_dtg.GridColor = Color.FromArgb(60, 64, 98);
             report_dtg.HeaderBgColor = Color.FromArgb(43, 47, 84);
             report_dtg.HeaderForeColor = Color.WhiteSmoke;
-            report_dtg.Location = new Point(27, 547);
+            report_dtg.Location = new Point(28, 488);
             report_dtg.Name = "report_dtg";
             report_dtg.ReadOnly = true;
             report_dtg.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -375,71 +375,145 @@
             report_dtg.ShowCellErrors = false;
             report_dtg.ShowEditingIcon = false;
             report_dtg.ShowRowErrors = false;
-            report_dtg.Size = new Size(1074, 532);
+            report_dtg.Size = new Size(1069, 182);
             report_dtg.TabIndex = 10;
             report_dtg.CellContentClick += report_dtg_CellContentClick;
-            // 
-            // id
-            // 
-            id.HeaderText = "ID";
-            id.MinimumWidth = 8;
-            id.Name = "id";
-            id.ReadOnly = true;
-            id.Visible = false;
-            // 
-            // name
-            // 
-            name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            name.HeaderText = "FACULTY";
-            name.MinimumWidth = 8;
-            name.Name = "name";
-            name.ReadOnly = true;
-            // 
-            // report_type
-            // 
-            report_type.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            report_type.HeaderText = "REPORT TYPE";
-            report_type.MinimumWidth = 8;
-            report_type.Name = "report_type";
-            report_type.ReadOnly = true;
-            report_type.Width = 201;
-            // 
-            // status
-            // 
-            status.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            status.HeaderText = "STATUS";
-            status.MinimumWidth = 8;
-            status.Name = "status";
-            status.ReadOnly = true;
-            status.Width = 151;
-            // 
-            // action
-            // 
-            action.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            action.HeaderText = "ACTION";
-            action.MinimumWidth = 30;
-            action.Name = "action";
-            action.ReadOnly = true;
-            action.Width = 123;
             // 
             // bunifuElipse4
             // 
             bunifuElipse4.ElipseRadius = 5;
             bunifuElipse4.TargetControl = report_dtg;
             // 
+            // loadingPanel
+            // 
+            loadingPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            loadingPanel.Controls.Add(loadingTxt);
+            loadingPanel.Location = new Point(27, 488);
+            loadingPanel.Name = "loadingPanel";
+            loadingPanel.Size = new Size(1069, 182);
+            loadingPanel.TabIndex = 11;
+            // 
+            // loadingTxt
+            // 
+            loadingTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            loadingTxt.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            loadingTxt.ForeColor = Color.FromArgb(43, 47, 84);
+            loadingTxt.Location = new Point(181, 71);
+            loadingTxt.Name = "loadingTxt";
+            loadingTxt.Size = new Size(708, 38);
+            loadingTxt.TabIndex = 0;
+            loadingTxt.Text = "loading data...";
+            loadingTxt.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // next_btn
+            // 
+            next_btn.Active = false;
+            next_btn.Activecolor = Color.FromArgb(60, 64, 98);
+            next_btn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            next_btn.BackColor = Color.FromArgb(43, 47, 84);
+            next_btn.BackgroundImageLayout = ImageLayout.Stretch;
+            next_btn.BorderRadius = 5;
+            next_btn.ButtonText = "Next";
+            next_btn.DisabledColor = Color.Gray;
+            next_btn.Iconcolor = Color.Transparent;
+            next_btn.Iconimage = null;
+            next_btn.Iconimage_right = null;
+            next_btn.Iconimage_right_Selected = null;
+            next_btn.Iconimage_Selected = null;
+            next_btn.IconMarginLeft = 0;
+            next_btn.IconMarginRight = 0;
+            next_btn.IconRightVisible = true;
+            next_btn.IconRightZoom = 35D;
+            next_btn.IconVisible = true;
+            next_btn.IconZoom = 35D;
+            next_btn.IsTab = false;
+            next_btn.Location = new Point(863, 688);
+            next_btn.Margin = new Padding(6, 7, 6, 7);
+            next_btn.Name = "next_btn";
+            next_btn.Normalcolor = Color.FromArgb(43, 47, 84);
+            next_btn.OnHovercolor = Color.FromArgb(86, 94, 169);
+            next_btn.OnHoverTextColor = Color.WhiteSmoke;
+            next_btn.Padding = new Padding(11, 8, 11, 8);
+            next_btn.RightToLeft = RightToLeft.No;
+            next_btn.selected = false;
+            next_btn.Size = new Size(234, 58);
+            next_btn.TabIndex = 56;
+            next_btn.Text = "Next";
+            next_btn.TextAlign = ContentAlignment.MiddleCenter;
+            next_btn.Textcolor = Color.White;
+            next_btn.TextFont = new Font("Poppins Medium", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            next_btn.Click += next_btn_Click;
+            // 
+            // previous_btn
+            // 
+            previous_btn.Active = false;
+            previous_btn.Activecolor = Color.FromArgb(60, 64, 98);
+            previous_btn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            previous_btn.BackColor = Color.FromArgb(43, 47, 84);
+            previous_btn.BackgroundImageLayout = ImageLayout.Stretch;
+            previous_btn.BorderRadius = 5;
+            previous_btn.ButtonText = "Previous";
+            previous_btn.DisabledColor = Color.Gray;
+            previous_btn.Iconcolor = Color.Transparent;
+            previous_btn.Iconimage = null;
+            previous_btn.Iconimage_right = null;
+            previous_btn.Iconimage_right_Selected = null;
+            previous_btn.Iconimage_Selected = null;
+            previous_btn.IconMarginLeft = 0;
+            previous_btn.IconMarginRight = 0;
+            previous_btn.IconRightVisible = true;
+            previous_btn.IconRightZoom = 40D;
+            previous_btn.IconVisible = false;
+            previous_btn.IconZoom = 40D;
+            previous_btn.IsTab = false;
+            previous_btn.Location = new Point(601, 688);
+            previous_btn.Margin = new Padding(6, 7, 6, 7);
+            previous_btn.Name = "previous_btn";
+            previous_btn.Normalcolor = Color.FromArgb(43, 47, 84);
+            previous_btn.OnHovercolor = Color.FromArgb(86, 94, 169);
+            previous_btn.OnHoverTextColor = Color.WhiteSmoke;
+            previous_btn.Padding = new Padding(11, 8, 11, 8);
+            previous_btn.RightToLeft = RightToLeft.No;
+            previous_btn.selected = false;
+            previous_btn.Size = new Size(234, 58);
+            previous_btn.TabIndex = 55;
+            previous_btn.Text = "Previous";
+            previous_btn.TextAlign = ContentAlignment.MiddleCenter;
+            previous_btn.Textcolor = Color.White;
+            previous_btn.TextFont = new Font("Poppins Medium", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            previous_btn.Click += previous_btn_Click_1;
+            // 
+            // data_count_lbl
+            // 
+            data_count_lbl.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            data_count_lbl.AutoSize = true;
+            data_count_lbl.Font = new Font("Poppins", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            data_count_lbl.ForeColor = Color.FromArgb(43, 47, 84);
+            data_count_lbl.Location = new Point(27, 705);
+            data_count_lbl.Name = "data_count_lbl";
+            data_count_lbl.Size = new Size(28, 36);
+            data_count_lbl.TabIndex = 57;
+            data_count_lbl.Text = "0";
+            data_count_lbl.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // Reports
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(1129, 1102);
-            Controls.Add(report_dtg);
+            ClientSize = new Size(1129, 768);
+            Controls.Add(data_count_lbl);
+            Controls.Add(next_btn);
+            Controls.Add(previous_btn);
+            Controls.Add(loadingPanel);
             Controls.Add(label12);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(label2);
+            Controls.Add(report_dtg);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Reports";
             Text = "Reports";
+            Load += Reports_Load;
             gender_tPanel.ResumeLayout(false);
             female_panel.ResumeLayout(false);
             female_panel.PerformLayout();
@@ -453,6 +527,7 @@
             report_card_panel.ResumeLayout(false);
             report_card_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)report_dtg).EndInit();
+            loadingPanel.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -478,15 +553,15 @@
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse3;
         private Label label6;
         private Label label4;
-        private Label grade_lbl;
-        private Label label10;
+        private Label sf9_lbl;
+        private Label sf10_lbl;
         private Label label12;
         private Bunifu.Framework.UI.BunifuCustomDataGrid report_dtg;
-        private DataGridViewTextBoxColumn id;
-        private DataGridViewTextBoxColumn name;
-        private DataGridViewTextBoxColumn report_type;
-        private DataGridViewTextBoxColumn status;
-        private DataGridViewImageColumn action;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse4;
+        private Panel loadingPanel;
+        private Label loadingTxt;
+        private Bunifu.Framework.UI.BunifuFlatButton next_btn;
+        private Bunifu.Framework.UI.BunifuFlatButton previous_btn;
+        private Label data_count_lbl;
     }
 }

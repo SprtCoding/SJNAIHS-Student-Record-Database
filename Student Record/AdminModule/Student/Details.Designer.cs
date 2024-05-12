@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Details));
             dtg_rad = new Bunifu.Framework.UI.BunifuElipse(components);
             student_name_lbl = new Label();
@@ -74,7 +74,7 @@
             student_name_lbl.Anchor = AnchorStyles.None;
             student_name_lbl.Font = new Font("Poppins Medium", 14F, FontStyle.Bold, GraphicsUnit.Point);
             student_name_lbl.ForeColor = Color.WhiteSmoke;
-            student_name_lbl.Location = new Point(13, 270);
+            student_name_lbl.Location = new Point(97, 270);
             student_name_lbl.Name = "student_name_lbl";
             student_name_lbl.Size = new Size(819, 38);
             student_name_lbl.TabIndex = 15;
@@ -84,7 +84,7 @@
             // img
             // 
             img.Image = Properties.Resources.user_male;
-            img.Location = new Point(300, 61);
+            img.Location = new Point(385, 61);
             img.Name = "img";
             img.Size = new Size(243, 192);
             img.SizeMode = PictureBoxSizeMode.Zoom;
@@ -97,56 +97,56 @@
             grade_dtg.AllowUserToDeleteRows = false;
             grade_dtg.AllowUserToResizeColumns = false;
             grade_dtg.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(43, 47, 84);
-            dataGridViewCellStyle1.ForeColor = Color.WhiteSmoke;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(43, 47, 84);
-            dataGridViewCellStyle1.SelectionForeColor = Color.WhiteSmoke;
-            grade_dtg.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(43, 47, 84);
+            dataGridViewCellStyle5.ForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(43, 47, 84);
+            dataGridViewCellStyle5.SelectionForeColor = Color.WhiteSmoke;
+            grade_dtg.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             grade_dtg.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             grade_dtg.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             grade_dtg.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             grade_dtg.BackgroundColor = Color.FromArgb(43, 47, 84);
             grade_dtg.BorderStyle = BorderStyle.None;
             grade_dtg.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(43, 47, 84);
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.WhiteSmoke;
-            dataGridViewCellStyle2.Padding = new Padding(15);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(43, 47, 84);
-            dataGridViewCellStyle2.SelectionForeColor = Color.WhiteSmoke;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            grade_dtg.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(43, 47, 84);
+            dataGridViewCellStyle6.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle6.Padding = new Padding(15);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(43, 47, 84);
+            dataGridViewCellStyle6.SelectionForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            grade_dtg.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             grade_dtg.ColumnHeadersHeight = 65;
             grade_dtg.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             grade_dtg.Columns.AddRange(new DataGridViewColumn[] { id, subject, mid_grade, final_grade, average });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(43, 47, 84);
-            dataGridViewCellStyle3.Font = new Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.WhiteSmoke;
-            dataGridViewCellStyle3.Padding = new Padding(15);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(43, 47, 84);
-            dataGridViewCellStyle3.SelectionForeColor = Color.WhiteSmoke;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            grade_dtg.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.FromArgb(43, 47, 84);
+            dataGridViewCellStyle7.Font = new Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle7.Padding = new Padding(15);
+            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(43, 47, 84);
+            dataGridViewCellStyle7.SelectionForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
+            grade_dtg.DefaultCellStyle = dataGridViewCellStyle7;
             grade_dtg.DoubleBuffered = true;
             grade_dtg.EnableHeadersVisualStyles = false;
             grade_dtg.GridColor = Color.WhiteSmoke;
             grade_dtg.HeaderBgColor = Color.FromArgb(43, 47, 84);
             grade_dtg.HeaderForeColor = Color.WhiteSmoke;
-            grade_dtg.Location = new Point(12, 403);
+            grade_dtg.Location = new Point(47, 403);
             grade_dtg.Name = "grade_dtg";
             grade_dtg.ReadOnly = true;
             grade_dtg.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(129, 142, 254);
-            dataGridViewCellStyle4.Font = new Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = Color.WhiteSmoke;
-            dataGridViewCellStyle4.Padding = new Padding(15);
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            grade_dtg.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.FromArgb(129, 142, 254);
+            dataGridViewCellStyle8.Font = new Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = Color.WhiteSmoke;
+            dataGridViewCellStyle8.Padding = new Padding(15);
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            grade_dtg.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             grade_dtg.RowHeadersVisible = false;
             grade_dtg.RowHeadersWidth = 62;
             grade_dtg.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -155,7 +155,7 @@
             grade_dtg.ShowCellErrors = false;
             grade_dtg.ShowEditingIcon = false;
             grade_dtg.ShowRowErrors = false;
-            grade_dtg.Size = new Size(818, 533);
+            grade_dtg.Size = new Size(918, 585);
             grade_dtg.TabIndex = 17;
             // 
             // id
@@ -206,7 +206,7 @@
             section_lbl.Anchor = AnchorStyles.None;
             section_lbl.Font = new Font("Poppins", 10F, FontStyle.Regular, GraphicsUnit.Point);
             section_lbl.ForeColor = Color.WhiteSmoke;
-            section_lbl.Location = new Point(13, 320);
+            section_lbl.Location = new Point(97, 320);
             section_lbl.Name = "section_lbl";
             section_lbl.Size = new Size(819, 38);
             section_lbl.TabIndex = 18;
@@ -220,7 +220,7 @@
             no_data_panel.Controls.Add(pictureBox1);
             no_data_panel.Location = new Point(2, 403);
             no_data_panel.Name = "no_data_panel";
-            no_data_panel.Size = new Size(840, 616);
+            no_data_panel.Size = new Size(1010, 616);
             no_data_panel.TabIndex = 19;
             no_data_panel.Visible = false;
             // 
@@ -229,7 +229,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.Font = new Font("Poppins", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.WhiteSmoke;
-            label1.Location = new Point(11, 334);
+            label1.Location = new Point(96, 334);
             label1.Name = "label1";
             label1.Size = new Size(819, 38);
             label1.TabIndex = 19;
@@ -240,7 +240,7 @@
             // 
             pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(203, 130);
+            pictureBox1.Location = new Point(288, 130);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(435, 218);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -254,7 +254,7 @@
             close_btn.Cursor = Cursors.Hand;
             close_btn.Font = new Font("Poppins Medium", 14F, FontStyle.Bold, GraphicsUnit.Point);
             close_btn.ForeColor = Color.WhiteSmoke;
-            close_btn.Location = new Point(794, 12);
+            close_btn.Location = new Point(964, 12);
             close_btn.Name = "close_btn";
             close_btn.Size = new Size(37, 50);
             close_btn.TabIndex = 20;
@@ -265,7 +265,7 @@
             // rebon_img
             // 
             rebon_img.Image = Properties.Resources.medal_1;
-            rebon_img.Location = new Point(521, 193);
+            rebon_img.Location = new Point(587, 193);
             rebon_img.Name = "rebon_img";
             rebon_img.Size = new Size(60, 60);
             rebon_img.SizeMode = PictureBoxSizeMode.Zoom;
@@ -358,7 +358,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(43, 47, 84);
-            ClientSize = new Size(843, 1020);
+            ClientSize = new Size(1013, 1020);
             Controls.Add(no_data_panel);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(rebon_img);

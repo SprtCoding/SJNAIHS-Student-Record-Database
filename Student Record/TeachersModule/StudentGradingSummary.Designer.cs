@@ -28,32 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentGradingSummary));
             label2 = new Label();
             grading_summary_dtg = new Bunifu.Framework.UI.BunifuCustomDataGrid();
-            id = new DataGridViewTextBoxColumn();
-            name = new DataGridViewTextBoxColumn();
-            subject1 = new DataGridViewTextBoxColumn();
-            subject2 = new DataGridViewTextBoxColumn();
-            subject3 = new DataGridViewTextBoxColumn();
-            subject4 = new DataGridViewTextBoxColumn();
-            subject5 = new DataGridViewTextBoxColumn();
-            subject6 = new DataGridViewTextBoxColumn();
-            subject7 = new DataGridViewTextBoxColumn();
-            average = new DataGridViewTextBoxColumn();
             mid_grade_filter = new Bunifu.Framework.UI.BunifuFlatButton();
             final_term_grade_filter = new Bunifu.Framework.UI.BunifuFlatButton();
             no_data_panel = new Panel();
+            loadingLbl = new Label();
+            no_data_pb = new PictureBox();
+            sem_cbx = new ComboBox();
+            label5 = new Label();
+            submitReportBtn = new Bunifu.Framework.UI.BunifuFlatButton();
+            printGradeBtn = new Bunifu.Framework.UI.BunifuFlatButton();
+            toolTip1 = new ToolTip(components);
+            grade_level_cbx = new ComboBox();
             label1 = new Label();
-            pictureBox1 = new PictureBox();
-            submit_report_btn = new Bunifu.Framework.UI.BunifuFlatButton();
-            print_btn = new Bunifu.Framework.UI.BunifuFlatButton();
+            section_cbx = new ComboBox();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)grading_summary_dtg).BeginInit();
             no_data_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)no_data_pb).BeginInit();
             SuspendLayout();
             // 
             // label2
@@ -97,7 +95,6 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             grading_summary_dtg.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             grading_summary_dtg.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grading_summary_dtg.Columns.AddRange(new DataGridViewColumn[] { id, name, subject1, subject2, subject3, subject4, subject5, subject6, subject7, average });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.WhiteSmoke;
             dataGridViewCellStyle3.Font = new Font("Poppins", 7F, FontStyle.Regular, GraphicsUnit.Point);
@@ -112,102 +109,20 @@
             grading_summary_dtg.GridColor = Color.FromArgb(60, 64, 98);
             grading_summary_dtg.HeaderBgColor = Color.FromArgb(43, 47, 84);
             grading_summary_dtg.HeaderForeColor = Color.WhiteSmoke;
-            grading_summary_dtg.Location = new Point(8, 80);
-            grading_summary_dtg.Margin = new Padding(2);
+            grading_summary_dtg.Location = new Point(8, 157);
+            grading_summary_dtg.Margin = new Padding(2, 2, 2, 2);
             grading_summary_dtg.Name = "grading_summary_dtg";
             grading_summary_dtg.ReadOnly = true;
             grading_summary_dtg.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             grading_summary_dtg.RowHeadersVisible = false;
             grading_summary_dtg.RowHeadersWidth = 62;
             grading_summary_dtg.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            grading_summary_dtg.RowTemplate.Height = 33;
             grading_summary_dtg.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grading_summary_dtg.ShowCellErrors = false;
             grading_summary_dtg.ShowEditingIcon = false;
             grading_summary_dtg.ShowRowErrors = false;
-            grading_summary_dtg.Size = new Size(773, 573);
+            grading_summary_dtg.Size = new Size(773, 293);
             grading_summary_dtg.TabIndex = 11;
-            // 
-            // id
-            // 
-            id.HeaderText = "ID";
-            id.MinimumWidth = 8;
-            id.Name = "id";
-            id.ReadOnly = true;
-            id.Visible = false;
-            // 
-            // name
-            // 
-            name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            name.HeaderText = "NAME";
-            name.MinimumWidth = 8;
-            name.Name = "name";
-            name.ReadOnly = true;
-            // 
-            // subject1
-            // 
-            subject1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            subject1.HeaderText = "ORAL COMMUNICATION";
-            subject1.MinimumWidth = 8;
-            subject1.Name = "subject1";
-            subject1.ReadOnly = true;
-            // 
-            // subject2
-            // 
-            subject2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            subject2.HeaderText = "KOMUNIKASYON AT PANANALIKSIK";
-            subject2.MinimumWidth = 8;
-            subject2.Name = "subject2";
-            subject2.ReadOnly = true;
-            // 
-            // subject3
-            // 
-            subject3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            subject3.HeaderText = "21ST CENTURY LITERATURE";
-            subject3.MinimumWidth = 8;
-            subject3.Name = "subject3";
-            subject3.ReadOnly = true;
-            // 
-            // subject4
-            // 
-            subject4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            subject4.HeaderText = "GENERAL MATHEMATICS";
-            subject4.MinimumWidth = 8;
-            subject4.Name = "subject4";
-            subject4.ReadOnly = true;
-            // 
-            // subject5
-            // 
-            subject5.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            subject5.HeaderText = "INTRO TO PHILOSOPHY";
-            subject5.MinimumWidth = 8;
-            subject5.Name = "subject5";
-            subject5.ReadOnly = true;
-            // 
-            // subject6
-            // 
-            subject6.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            subject6.HeaderText = "PE & HEALTH";
-            subject6.MinimumWidth = 8;
-            subject6.Name = "subject6";
-            subject6.ReadOnly = true;
-            subject6.Width = 94;
-            // 
-            // subject7
-            // 
-            subject7.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            subject7.HeaderText = "TVE";
-            subject7.MinimumWidth = 8;
-            subject7.Name = "subject7";
-            subject7.ReadOnly = true;
-            // 
-            // average
-            // 
-            average.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            average.HeaderText = "AVERAGE";
-            average.MinimumWidth = 8;
-            average.Name = "average";
-            average.ReadOnly = true;
             // 
             // mid_grade_filter
             // 
@@ -230,8 +145,8 @@
             mid_grade_filter.IconVisible = false;
             mid_grade_filter.IconZoom = 40D;
             mid_grade_filter.IsTab = false;
-            mid_grade_filter.Location = new Point(10, 43);
-            mid_grade_filter.Margin = new Padding(4);
+            mid_grade_filter.Location = new Point(8, 111);
+            mid_grade_filter.Margin = new Padding(4, 4, 4, 4);
             mid_grade_filter.Name = "mid_grade_filter";
             mid_grade_filter.Normalcolor = Color.FromArgb(43, 47, 84);
             mid_grade_filter.OnHovercolor = Color.FromArgb(60, 64, 98);
@@ -268,8 +183,8 @@
             final_term_grade_filter.IconVisible = false;
             final_term_grade_filter.IconZoom = 40D;
             final_term_grade_filter.IsTab = false;
-            final_term_grade_filter.Location = new Point(175, 43);
-            final_term_grade_filter.Margin = new Padding(4);
+            final_term_grade_filter.Location = new Point(197, 111);
+            final_term_grade_filter.Margin = new Padding(4, 4, 4, 4);
             final_term_grade_filter.Name = "final_term_grade_filter";
             final_term_grade_filter.Normalcolor = Color.FromArgb(43, 47, 84);
             final_term_grade_filter.OnHovercolor = Color.FromArgb(60, 64, 98);
@@ -288,123 +203,228 @@
             // no_data_panel
             // 
             no_data_panel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            no_data_panel.Controls.Add(label1);
-            no_data_panel.Controls.Add(pictureBox1);
-            no_data_panel.Location = new Point(8, 80);
-            no_data_panel.Margin = new Padding(2);
+            no_data_panel.Controls.Add(loadingLbl);
+            no_data_panel.Controls.Add(no_data_pb);
+            no_data_panel.Location = new Point(8, 157);
+            no_data_panel.Margin = new Padding(2, 2, 2, 2);
             no_data_panel.Name = "no_data_panel";
-            no_data_panel.Size = new Size(774, 570);
+            no_data_panel.Size = new Size(773, 293);
             no_data_panel.TabIndex = 25;
-            no_data_panel.Visible = false;
+            // 
+            // loadingLbl
+            // 
+            loadingLbl.Anchor = AnchorStyles.None;
+            loadingLbl.Font = new Font("Poppins", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            loadingLbl.ForeColor = Color.FromArgb(60, 64, 98);
+            loadingLbl.Location = new Point(99, 190);
+            loadingLbl.Margin = new Padding(2, 0, 2, 0);
+            loadingLbl.Name = "loadingLbl";
+            loadingLbl.Size = new Size(573, 23);
+            loadingLbl.TabIndex = 19;
+            loadingLbl.Text = "No data found!";
+            loadingLbl.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // no_data_pb
+            // 
+            no_data_pb.Anchor = AnchorStyles.None;
+            no_data_pb.Image = (Image)resources.GetObject("no_data_pb.Image");
+            no_data_pb.Location = new Point(233, 67);
+            no_data_pb.Margin = new Padding(2, 2, 2, 2);
+            no_data_pb.Name = "no_data_pb";
+            no_data_pb.Size = new Size(304, 131);
+            no_data_pb.SizeMode = PictureBoxSizeMode.Zoom;
+            no_data_pb.TabIndex = 0;
+            no_data_pb.TabStop = false;
+            no_data_pb.Visible = false;
+            // 
+            // sem_cbx
+            // 
+            sem_cbx.BackColor = Color.FromArgb(43, 47, 84);
+            sem_cbx.DropDownStyle = ComboBoxStyle.DropDownList;
+            sem_cbx.FlatStyle = FlatStyle.Flat;
+            sem_cbx.Font = new Font("Poppins", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            sem_cbx.ForeColor = Color.WhiteSmoke;
+            sem_cbx.FormattingEnabled = true;
+            sem_cbx.Items.AddRange(new object[] { "1", "2" });
+            sem_cbx.Location = new Point(197, 70);
+            sem_cbx.Margin = new Padding(2, 2, 2, 2);
+            sem_cbx.Name = "sem_cbx";
+            sem_cbx.Size = new Size(176, 36);
+            sem_cbx.TabIndex = 35;
+            sem_cbx.SelectedIndexChanged += sem_cbx_SelectedIndexChanged;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = SystemColors.Control;
+            label5.Font = new Font("Poppins SemiBold", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.ForeColor = Color.FromArgb(43, 47, 84);
+            label5.Location = new Point(197, 47);
+            label5.Margin = new Padding(2, 0, 2, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(82, 25);
+            label5.TabIndex = 34;
+            label5.Text = "Semester";
+            label5.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // submitReportBtn
+            // 
+            submitReportBtn.Active = false;
+            submitReportBtn.Activecolor = Color.FromArgb(60, 64, 98);
+            submitReportBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            submitReportBtn.BackColor = Color.FromArgb(43, 47, 84);
+            submitReportBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            submitReportBtn.BorderRadius = 5;
+            submitReportBtn.ButtonText = "";
+            submitReportBtn.DisabledColor = Color.Gray;
+            submitReportBtn.Iconcolor = Color.Transparent;
+            submitReportBtn.Iconimage = (Image)resources.GetObject("submitReportBtn.Iconimage");
+            submitReportBtn.Iconimage_right = null;
+            submitReportBtn.Iconimage_right_Selected = null;
+            submitReportBtn.Iconimage_Selected = null;
+            submitReportBtn.IconMarginLeft = 0;
+            submitReportBtn.IconMarginRight = 0;
+            submitReportBtn.IconRightVisible = false;
+            submitReportBtn.IconRightZoom = 40D;
+            submitReportBtn.IconVisible = true;
+            submitReportBtn.IconZoom = 30D;
+            submitReportBtn.IsTab = false;
+            submitReportBtn.Location = new Point(701, 10);
+            submitReportBtn.Margin = new Padding(4, 4, 4, 4);
+            submitReportBtn.MaximumSize = new Size(35, 30);
+            submitReportBtn.MinimumSize = new Size(35, 30);
+            submitReportBtn.Name = "submitReportBtn";
+            submitReportBtn.Normalcolor = Color.FromArgb(43, 47, 84);
+            submitReportBtn.OnHovercolor = Color.FromArgb(60, 64, 98);
+            submitReportBtn.OnHoverTextColor = Color.White;
+            submitReportBtn.Padding = new Padding(7, 6, 7, 6);
+            submitReportBtn.RightToLeft = RightToLeft.No;
+            submitReportBtn.selected = false;
+            submitReportBtn.Size = new Size(35, 30);
+            submitReportBtn.TabIndex = 45;
+            submitReportBtn.TextAlign = ContentAlignment.MiddleRight;
+            submitReportBtn.Textcolor = Color.White;
+            submitReportBtn.TextFont = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            submitReportBtn.Click += submitReportBtn_Click;
+            submitReportBtn.MouseEnter += submitReportBtn_MouseEnter_1;
+            // 
+            // printGradeBtn
+            // 
+            printGradeBtn.Active = false;
+            printGradeBtn.Activecolor = Color.FromArgb(60, 64, 98);
+            printGradeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            printGradeBtn.BackColor = Color.FromArgb(43, 47, 84);
+            printGradeBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            printGradeBtn.BorderRadius = 5;
+            printGradeBtn.ButtonText = "";
+            printGradeBtn.DisabledColor = Color.Gray;
+            printGradeBtn.Iconcolor = Color.Transparent;
+            printGradeBtn.Iconimage = (Image)resources.GetObject("printGradeBtn.Iconimage");
+            printGradeBtn.Iconimage_right = null;
+            printGradeBtn.Iconimage_right_Selected = null;
+            printGradeBtn.Iconimage_Selected = null;
+            printGradeBtn.IconMarginLeft = 0;
+            printGradeBtn.IconMarginRight = 0;
+            printGradeBtn.IconRightVisible = false;
+            printGradeBtn.IconRightZoom = 40D;
+            printGradeBtn.IconVisible = true;
+            printGradeBtn.IconZoom = 30D;
+            printGradeBtn.IsTab = false;
+            printGradeBtn.Location = new Point(745, 10);
+            printGradeBtn.Margin = new Padding(4, 4, 4, 4);
+            printGradeBtn.MaximumSize = new Size(35, 30);
+            printGradeBtn.MinimumSize = new Size(35, 30);
+            printGradeBtn.Name = "printGradeBtn";
+            printGradeBtn.Normalcolor = Color.FromArgb(43, 47, 84);
+            printGradeBtn.OnHovercolor = Color.FromArgb(60, 64, 98);
+            printGradeBtn.OnHoverTextColor = Color.White;
+            printGradeBtn.Padding = new Padding(7, 6, 7, 6);
+            printGradeBtn.RightToLeft = RightToLeft.No;
+            printGradeBtn.selected = false;
+            printGradeBtn.Size = new Size(35, 30);
+            printGradeBtn.TabIndex = 44;
+            printGradeBtn.TextAlign = ContentAlignment.MiddleRight;
+            printGradeBtn.Textcolor = Color.White;
+            printGradeBtn.TextFont = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            printGradeBtn.Click += printGradeBtn_Click;
+            printGradeBtn.MouseEnter += printGradeBtn_MouseEnter;
+            // 
+            // toolTip1
+            // 
+            toolTip1.IsBalloon = true;
+            // 
+            // grade_level_cbx
+            // 
+            grade_level_cbx.BackColor = Color.FromArgb(43, 47, 84);
+            grade_level_cbx.DropDownStyle = ComboBoxStyle.DropDownList;
+            grade_level_cbx.FlatStyle = FlatStyle.Flat;
+            grade_level_cbx.Font = new Font("Poppins", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            grade_level_cbx.ForeColor = Color.WhiteSmoke;
+            grade_level_cbx.FormattingEnabled = true;
+            grade_level_cbx.Items.AddRange(new object[] { "11", "12" });
+            grade_level_cbx.Location = new Point(8, 70);
+            grade_level_cbx.Margin = new Padding(2, 2, 2, 2);
+            grade_level_cbx.Name = "grade_level_cbx";
+            grade_level_cbx.Size = new Size(176, 36);
+            grade_level_cbx.TabIndex = 47;
+            grade_level_cbx.SelectedIndexChanged += grade_level_cbx_SelectedIndexChanged;
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.None;
-            label1.Font = new Font("Poppins", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = Color.FromArgb(60, 64, 98);
-            label1.Location = new Point(100, 329);
+            label1.AutoSize = true;
+            label1.BackColor = SystemColors.Control;
+            label1.Font = new Font("Poppins SemiBold", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.FromArgb(43, 47, 84);
+            label1.Location = new Point(8, 47);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(573, 23);
-            label1.TabIndex = 19;
-            label1.Text = "No data found!";
+            label1.Size = new Size(95, 25);
+            label1.TabIndex = 46;
+            label1.Text = "Grade Level";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
+            // section_cbx
             // 
-            pictureBox1.Anchor = AnchorStyles.None;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(234, 206);
-            pictureBox1.Margin = new Padding(2);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(304, 131);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            section_cbx.BackColor = Color.FromArgb(43, 47, 84);
+            section_cbx.DropDownStyle = ComboBoxStyle.DropDownList;
+            section_cbx.FlatStyle = FlatStyle.Flat;
+            section_cbx.Font = new Font("Poppins", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            section_cbx.ForeColor = Color.WhiteSmoke;
+            section_cbx.FormattingEnabled = true;
+            section_cbx.Location = new Point(392, 70);
+            section_cbx.Margin = new Padding(2, 2, 2, 2);
+            section_cbx.Name = "section_cbx";
+            section_cbx.Size = new Size(176, 36);
+            section_cbx.TabIndex = 49;
+            section_cbx.SelectedIndexChanged += section_cbx_SelectedIndexChanged;
             // 
-            // submit_report_btn
+            // label3
             // 
-            submit_report_btn.Active = false;
-            submit_report_btn.Activecolor = Color.FromArgb(43, 47, 84);
-            submit_report_btn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            submit_report_btn.BackColor = Color.FromArgb(43, 47, 84);
-            submit_report_btn.BackgroundImageLayout = ImageLayout.Stretch;
-            submit_report_btn.BorderRadius = 5;
-            submit_report_btn.ButtonText = "  Submit Report";
-            submit_report_btn.DisabledColor = Color.Gray;
-            submit_report_btn.Iconcolor = Color.Transparent;
-            submit_report_btn.Iconimage = Properties.Resources.send_message;
-            submit_report_btn.Iconimage_right = null;
-            submit_report_btn.Iconimage_right_Selected = null;
-            submit_report_btn.Iconimage_Selected = null;
-            submit_report_btn.IconMarginLeft = 0;
-            submit_report_btn.IconMarginRight = 0;
-            submit_report_btn.IconRightVisible = true;
-            submit_report_btn.IconRightZoom = 0D;
-            submit_report_btn.IconVisible = true;
-            submit_report_btn.IconZoom = 25D;
-            submit_report_btn.IsTab = false;
-            submit_report_btn.Location = new Point(522, 43);
-            submit_report_btn.Margin = new Padding(4);
-            submit_report_btn.Name = "submit_report_btn";
-            submit_report_btn.Normalcolor = Color.FromArgb(43, 47, 84);
-            submit_report_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
-            submit_report_btn.OnHoverTextColor = Color.White;
-            submit_report_btn.selected = false;
-            submit_report_btn.Size = new Size(129, 32);
-            submit_report_btn.TabIndex = 29;
-            submit_report_btn.Text = "  Submit Report";
-            submit_report_btn.TextAlign = ContentAlignment.MiddleLeft;
-            submit_report_btn.Textcolor = Color.White;
-            submit_report_btn.TextFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            submit_report_btn.Click += submit_report_btn_Click;
-            // 
-            // print_btn
-            // 
-            print_btn.Active = false;
-            print_btn.Activecolor = Color.FromArgb(60, 64, 98);
-            print_btn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            print_btn.BackColor = Color.FromArgb(43, 47, 84);
-            print_btn.BackgroundImageLayout = ImageLayout.Stretch;
-            print_btn.BorderRadius = 5;
-            print_btn.ButtonText = "Print";
-            print_btn.DisabledColor = Color.Gray;
-            print_btn.Iconcolor = Color.Transparent;
-            print_btn.Iconimage = null;
-            print_btn.Iconimage_right = null;
-            print_btn.Iconimage_right_Selected = null;
-            print_btn.Iconimage_Selected = null;
-            print_btn.IconMarginLeft = 0;
-            print_btn.IconMarginRight = 0;
-            print_btn.IconRightVisible = true;
-            print_btn.IconRightZoom = 40D;
-            print_btn.IconVisible = false;
-            print_btn.IconZoom = 40D;
-            print_btn.IsTab = false;
-            print_btn.Location = new Point(659, 43);
-            print_btn.Margin = new Padding(4);
-            print_btn.Name = "print_btn";
-            print_btn.Normalcolor = Color.FromArgb(43, 47, 84);
-            print_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
-            print_btn.OnHoverTextColor = Color.White;
-            print_btn.Padding = new Padding(8, 5, 8, 5);
-            print_btn.RightToLeft = RightToLeft.No;
-            print_btn.selected = false;
-            print_btn.Size = new Size(122, 32);
-            print_btn.TabIndex = 30;
-            print_btn.Text = "Print";
-            print_btn.TextAlign = ContentAlignment.MiddleCenter;
-            print_btn.Textcolor = Color.White;
-            print_btn.TextFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            print_btn.Click += print_btn_Click;
+            label3.AutoSize = true;
+            label3.BackColor = SystemColors.Control;
+            label3.Font = new Font("Poppins SemiBold", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = Color.FromArgb(43, 47, 84);
+            label3.Location = new Point(392, 47);
+            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(65, 25);
+            label3.TabIndex = 48;
+            label3.Text = "Section";
+            label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // StudentGradingSummary
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(790, 661);
-            Controls.Add(print_btn);
-            Controls.Add(submit_report_btn);
+            ClientSize = new Size(790, 461);
+            Controls.Add(section_cbx);
+            Controls.Add(label3);
+            Controls.Add(grade_level_cbx);
+            Controls.Add(label1);
+            Controls.Add(submitReportBtn);
+            Controls.Add(printGradeBtn);
+            Controls.Add(sem_cbx);
+            Controls.Add(label5);
             Controls.Add(no_data_panel);
             Controls.Add(final_term_grade_filter);
             Controls.Add(mid_grade_filter);
@@ -413,9 +433,10 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "StudentGradingSummary";
             Text = "StudentGradingSummary";
+            Load += StudentGradingSummary_Load;
             ((System.ComponentModel.ISupportInitialize)grading_summary_dtg).EndInit();
             no_data_panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)no_data_pb).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -427,19 +448,16 @@
         private Bunifu.Framework.UI.BunifuFlatButton mid_grade_filter;
         private Bunifu.Framework.UI.BunifuFlatButton final_term_grade_filter;
         private Panel no_data_panel;
+        private Label loadingLbl;
+        private PictureBox no_data_pb;
+        private ComboBox sem_cbx;
+        private Label label5;
+        private Bunifu.Framework.UI.BunifuFlatButton submitReportBtn;
+        private Bunifu.Framework.UI.BunifuFlatButton printGradeBtn;
+        private ToolTip toolTip1;
+        private ComboBox grade_level_cbx;
         private Label label1;
-        private PictureBox pictureBox1;
-        private Bunifu.Framework.UI.BunifuFlatButton submit_report_btn;
-        private Bunifu.Framework.UI.BunifuFlatButton print_btn;
-        private DataGridViewTextBoxColumn id;
-        private DataGridViewTextBoxColumn name;
-        private DataGridViewTextBoxColumn subject1;
-        private DataGridViewTextBoxColumn subject2;
-        private DataGridViewTextBoxColumn subject3;
-        private DataGridViewTextBoxColumn subject4;
-        private DataGridViewTextBoxColumn subject5;
-        private DataGridViewTextBoxColumn subject6;
-        private DataGridViewTextBoxColumn subject7;
-        private DataGridViewTextBoxColumn average;
+        private ComboBox section_cbx;
+        private Label label3;
     }
 }

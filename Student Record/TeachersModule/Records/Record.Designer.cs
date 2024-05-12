@@ -134,7 +134,6 @@
             new_docs_panel.Controls.Add(openFileBtn);
             new_docs_panel.Controls.Add(otherDocsFileName);
             new_docs_panel.Controls.Add(add_docs_title);
-            new_docs_panel.Dock = DockStyle.Fill;
             new_docs_panel.Location = new Point(4, 705);
             new_docs_panel.Margin = new Padding(4, 5, 4, 5);
             new_docs_panel.Name = "new_docs_panel";
@@ -493,9 +492,9 @@
             label21.ForeColor = SystemColors.ControlText;
             label21.Location = new Point(1, 67);
             label21.Name = "label21";
-            label21.Size = new Size(79, 36);
+            label21.Size = new Size(89, 36);
             label21.TabIndex = 84;
-            label21.Text = "Major:";
+            label21.Text = "Strand:";
             label21.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // major_lbl

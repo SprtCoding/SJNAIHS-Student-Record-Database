@@ -39,9 +39,13 @@
             faculty_btn = new Bunifu.Framework.UI.BunifuFlatButton();
             student_btn = new Bunifu.Framework.UI.BunifuFlatButton();
             main_panel = new Panel();
+            connectionPanel = new Panel();
+            connectionStatusLbl = new Label();
             nav_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             menu_panel.SuspendLayout();
+            main_panel.SuspendLayout();
+            connectionPanel.SuspendLayout();
             SuspendLayout();
             // 
             // nav_panel
@@ -52,19 +56,17 @@
             nav_panel.Controls.Add(menu_panel);
             nav_panel.Dock = DockStyle.Left;
             nav_panel.Location = new Point(0, 0);
-            nav_panel.Margin = new Padding(2);
             nav_panel.Name = "nav_panel";
-            nav_panel.Size = new Size(242, 661);
+            nav_panel.Size = new Size(346, 1022);
             nav_panel.TabIndex = 0;
             // 
             // label2
             // 
             label2.Font = new Font("Poppins Black", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = Color.WhiteSmoke;
-            label2.Location = new Point(25, 178);
-            label2.Margin = new Padding(2, 0, 2, 0);
+            label2.Location = new Point(36, 297);
             label2.Name = "label2";
-            label2.Size = new Size(192, 46);
+            label2.Size = new Size(274, 77);
             label2.TabIndex = 8;
             label2.Text = "SJNAIHS";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -72,10 +74,9 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.sjnaihs_logo;
-            pictureBox1.Location = new Point(61, 46);
-            pictureBox1.Margin = new Padding(2);
+            pictureBox1.Location = new Point(87, 77);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(120, 120);
+            pictureBox1.Size = new Size(171, 200);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 6;
             pictureBox1.TabStop = false;
@@ -90,18 +91,17 @@
             menu_panel.Controls.Add(home_btn, 0, 0);
             menu_panel.Controls.Add(faculty_btn, 0, 1);
             menu_panel.Controls.Add(student_btn, 0, 2);
-            menu_panel.Location = new Point(2, 261);
-            menu_panel.Margin = new Padding(2);
+            menu_panel.Location = new Point(3, 435);
             menu_panel.Name = "menu_panel";
             menu_panel.RowCount = 7;
-            menu_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            menu_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            menu_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            menu_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            menu_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 83F));
+            menu_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 83F));
+            menu_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 83F));
+            menu_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 83F));
             menu_panel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             menu_panel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            menu_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            menu_panel.Size = new Size(238, 398);
+            menu_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 83F));
+            menu_panel.Size = new Size(340, 583);
             menu_panel.TabIndex = 5;
             // 
             // report_btn
@@ -126,14 +126,14 @@
             report_btn.IconVisible = true;
             report_btn.IconZoom = 25D;
             report_btn.IsTab = false;
-            report_btn.Location = new Point(4, 154);
-            report_btn.Margin = new Padding(4);
+            report_btn.Location = new Point(6, 256);
+            report_btn.Margin = new Padding(6, 7, 6, 7);
             report_btn.Name = "report_btn";
             report_btn.Normalcolor = Color.FromArgb(129, 142, 254);
             report_btn.OnHovercolor = Color.FromArgb(43, 47, 84);
             report_btn.OnHoverTextColor = Color.White;
             report_btn.selected = false;
-            report_btn.Size = new Size(230, 42);
+            report_btn.Size = new Size(328, 69);
             report_btn.TabIndex = 11;
             report_btn.Text = "  FACULTIES REPORT";
             report_btn.TextAlign = ContentAlignment.MiddleLeft;
@@ -163,14 +163,14 @@
             logout_btn.IconVisible = true;
             logout_btn.IconZoom = 25D;
             logout_btn.IsTab = false;
-            logout_btn.Location = new Point(4, 352);
-            logout_btn.Margin = new Padding(4);
+            logout_btn.Location = new Point(6, 507);
+            logout_btn.Margin = new Padding(6, 7, 6, 7);
             logout_btn.Name = "logout_btn";
             logout_btn.Normalcolor = Color.FromArgb(129, 142, 254);
             logout_btn.OnHovercolor = Color.FromArgb(43, 47, 84);
             logout_btn.OnHoverTextColor = Color.White;
             logout_btn.selected = false;
-            logout_btn.Size = new Size(230, 42);
+            logout_btn.Size = new Size(328, 69);
             logout_btn.TabIndex = 10;
             logout_btn.Text = "  LOGOUT";
             logout_btn.TextAlign = ContentAlignment.MiddleLeft;
@@ -200,14 +200,14 @@
             home_btn.IconVisible = true;
             home_btn.IconZoom = 25D;
             home_btn.IsTab = false;
-            home_btn.Location = new Point(4, 4);
-            home_btn.Margin = new Padding(4);
+            home_btn.Location = new Point(6, 7);
+            home_btn.Margin = new Padding(6, 7, 6, 7);
             home_btn.Name = "home_btn";
             home_btn.Normalcolor = Color.FromArgb(129, 142, 254);
             home_btn.OnHovercolor = Color.FromArgb(43, 47, 84);
             home_btn.OnHoverTextColor = Color.White;
             home_btn.selected = false;
-            home_btn.Size = new Size(230, 42);
+            home_btn.Size = new Size(328, 69);
             home_btn.TabIndex = 7;
             home_btn.Text = "  HOME";
             home_btn.TextAlign = ContentAlignment.MiddleLeft;
@@ -237,14 +237,14 @@
             faculty_btn.IconVisible = true;
             faculty_btn.IconZoom = 25D;
             faculty_btn.IsTab = false;
-            faculty_btn.Location = new Point(4, 54);
-            faculty_btn.Margin = new Padding(4);
+            faculty_btn.Location = new Point(6, 90);
+            faculty_btn.Margin = new Padding(6, 7, 6, 7);
             faculty_btn.Name = "faculty_btn";
             faculty_btn.Normalcolor = Color.FromArgb(129, 142, 254);
             faculty_btn.OnHovercolor = Color.FromArgb(43, 47, 84);
             faculty_btn.OnHoverTextColor = Color.White;
             faculty_btn.selected = false;
-            faculty_btn.Size = new Size(230, 42);
+            faculty_btn.Size = new Size(328, 69);
             faculty_btn.TabIndex = 8;
             faculty_btn.Text = "  FACULTIES";
             faculty_btn.TextAlign = ContentAlignment.MiddleLeft;
@@ -274,14 +274,14 @@
             student_btn.IconVisible = true;
             student_btn.IconZoom = 25D;
             student_btn.IsTab = false;
-            student_btn.Location = new Point(4, 104);
-            student_btn.Margin = new Padding(4);
+            student_btn.Location = new Point(6, 173);
+            student_btn.Margin = new Padding(6, 7, 6, 7);
             student_btn.Name = "student_btn";
             student_btn.Normalcolor = Color.FromArgb(129, 142, 254);
             student_btn.OnHovercolor = Color.FromArgb(43, 47, 84);
             student_btn.OnHoverTextColor = Color.White;
             student_btn.selected = false;
-            student_btn.Size = new Size(230, 42);
+            student_btn.Size = new Size(328, 69);
             student_btn.TabIndex = 9;
             student_btn.Text = "  STUDENTS";
             student_btn.TextAlign = ContentAlignment.MiddleLeft;
@@ -291,22 +291,44 @@
             // 
             // main_panel
             // 
+            main_panel.Controls.Add(connectionPanel);
             main_panel.Dock = DockStyle.Fill;
-            main_panel.Location = new Point(242, 0);
-            main_panel.Margin = new Padding(2);
+            main_panel.Location = new Point(346, 0);
             main_panel.Name = "main_panel";
-            main_panel.Size = new Size(790, 661);
+            main_panel.Size = new Size(1550, 1022);
             main_panel.TabIndex = 1;
+            // 
+            // connectionPanel
+            // 
+            connectionPanel.BackColor = Color.IndianRed;
+            connectionPanel.Controls.Add(connectionStatusLbl);
+            connectionPanel.Dock = DockStyle.Top;
+            connectionPanel.Location = new Point(0, 0);
+            connectionPanel.Name = "connectionPanel";
+            connectionPanel.Size = new Size(1550, 55);
+            connectionPanel.TabIndex = 0;
+            connectionPanel.Visible = false;
+            // 
+            // connectionStatusLbl
+            // 
+            connectionStatusLbl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            connectionStatusLbl.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            connectionStatusLbl.ForeColor = Color.WhiteSmoke;
+            connectionStatusLbl.Location = new Point(17, 9);
+            connectionStatusLbl.Name = "connectionStatusLbl";
+            connectionStatusLbl.Size = new Size(1517, 35);
+            connectionStatusLbl.TabIndex = 0;
+            connectionStatusLbl.Text = "label1";
+            connectionStatusLbl.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // AdminDashboard
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1032, 661);
+            ClientSize = new Size(1896, 1022);
             Controls.Add(main_panel);
             Controls.Add(nav_panel);
-            Margin = new Padding(2);
-            MinimumSize = new Size(1048, 700);
+            MinimumSize = new Size(1918, 1078);
             Name = "AdminDashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AdminDashboard";
@@ -316,6 +338,8 @@
             nav_panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             menu_panel.ResumeLayout(false);
+            main_panel.ResumeLayout(false);
+            connectionPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -331,5 +355,7 @@
         private Bunifu.Framework.UI.BunifuFlatButton report_btn;
         private PictureBox pictureBox1;
         private Label label2;
+        private Panel connectionPanel;
+        private Label connectionStatusLbl;
     }
 }

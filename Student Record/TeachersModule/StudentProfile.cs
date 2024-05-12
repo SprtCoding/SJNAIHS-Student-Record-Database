@@ -23,6 +23,9 @@ using Google.Cloud.Firestore.V1;
 using Student_Record.TeachersModule.GradingSheetPrint;
 using System.IO;
 using Student_Record.TeachersModule.Docs;
+using System.Resources;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ToolTip = System.Windows.Forms.ToolTip;
 
 namespace Student_Record.TeachersModule
 {
@@ -32,11 +35,143 @@ namespace Student_Record.TeachersModule
         private string? faculty_id, faculty_name, student_id;
         private Guid uid = Guid.NewGuid();
 
+        private ToolTip toolTip1;
+
+        int pageSize = 12; // Number of records per page
+        int currentPage = 1, studentCount = 0; // Current page number
+
         public StudentProfile(string? id, string? name)
         {
             InitializeComponent();
             faculty_id = id;
             faculty_name = name;
+
+            toolTip1 = new ToolTip();
+
+            generateBtn.Iconimage = Properties.Resources.file_excel_small;
+
+            // Set tooltip text based on the icon image of generateBtn
+            if (ImageEquals(generateBtn.Iconimage, Properties.Resources.cross_white))
+            {
+                toolTip1.SetToolTip(generateBtn, "Clear fields");
+            }
+            else if (!ImageEquals(generateBtn.Iconimage, Properties.Resources.file_excel_small))
+            {
+                toolTip1.SetToolTip(generateBtn, "Generate Excel");
+            }
+        }
+
+        // Method to handle loading data for the next page
+        async void LoadNextPage()
+        {
+            no_data_panel.Visible = true;
+            no_data_anim.Visible = false;
+            no_data_text.Visible = true;
+            no_data_text.Text = "Loading data...";
+
+            currentPage++; // Increment the current page number
+            await getStudents(currentPage, pageSize); // Load data for the next page
+            UpdatePageNumberLabel();
+            UpdatePaginationButtons();
+        }
+
+        // Method to handle loading data for the previous page
+        async void LoadPreviousPage()
+        {
+            no_data_panel.Visible = true;
+            no_data_anim.Visible = false;
+            no_data_text.Visible = true;
+            no_data_text.Text = "Loading data...";
+
+            if (currentPage > 1)
+            {
+                currentPage--; // Decrement the current page number
+                await getStudents(currentPage, pageSize); // Load data for the previous page
+                UpdatePageNumberLabel();
+                UpdatePaginationButtons();
+            }
+        }
+
+        // Method to initialize or reload data for the first page
+        async Task LoadFirstPage()
+        {
+            currentPage = 1; // Reset the current page number to the first page
+            await getStudents(currentPage, pageSize); // Load data for the first page
+            UpdatePageNumberLabel();
+            UpdatePaginationButtons();
+        }
+
+        // Method to update the pagination buttons (previous and next)
+        async void UpdatePaginationButtons()
+        {
+            // Hide previous button if it's the first page
+            previous_btn.Visible = currentPage > 1;
+
+            int totalStudent = await getStudentCount();
+
+            // Disable next button if there are no more pages
+            next_btn.Enabled = (currentPage * pageSize) < totalStudent;
+        }
+
+        // Method to update the page number label
+        async void UpdatePageNumberLabel()
+        {
+            int totalStudent = await getStudentCount();
+            data_count_lbl.Text = "Page " + currentPage + ", Total Student/s: " + totalStudent; // Assuming pageNumberLabel is the label displaying the page number
+        }
+
+        private async Task<int> getStudentCount()
+        {
+            var db = FirestoreHelper.database;
+
+            if (db != null)
+            {
+                CollectionReference studentColRef = db.Collection("students");
+
+                Query q = studentColRef.WhereEqualTo("faculty_id", faculty_id);
+
+                QuerySnapshot studentQSnap = await q.GetSnapshotAsync();
+
+                studentCount = studentQSnap.Count;
+            }
+
+            return studentCount;
+        }
+
+        private string CapitalizeEachWord(string input)
+        {
+            // Split the input into words
+            string[] words = input.Split(' ');
+
+            // Capitalize the first letter of each word
+            for (int i = 0; i < words.Length; i++)
+            {
+                // Ensure the word is not empty before capitalizing
+                if (!string.IsNullOrEmpty(words[i]))
+                {
+                    words[i] = char.ToUpper(words[i][0]) + words[i].Substring(1).ToLower(); // Capitalize first letter and convert the rest to lowercase
+                }
+            }
+
+            // Join the words back into a single string
+            return string.Join(" ", words);
+        }
+
+        // Method to compare two images
+        private bool ImageEquals(Image img1, Image img2)
+        {
+            if (img1 == null && img2 == null)
+                return true;
+            if (img1 == null || img2 == null)
+                return false;
+
+            using (MemoryStream ms1 = new MemoryStream(), ms2 = new MemoryStream())
+            {
+                img1.Save(ms1, System.Drawing.Imaging.ImageFormat.Png);
+                img2.Save(ms2, System.Drawing.Imaging.ImageFormat.Png);
+
+                return ms1.ToArray().SequenceEqual(ms2.ToArray());
+            }
         }
 
         void Wait()
@@ -63,7 +198,7 @@ namespace Student_Record.TeachersModule
             }
         }
 
-        public async void loadData()
+        public async Task getStudents(int pageNumber, int pageSize)
         {
             student_dtg.DataSource = null;
             student_dtg.Rows.Clear();
@@ -73,11 +208,30 @@ namespace Student_Record.TeachersModule
             {
                 CollectionReference studentRef = db.Collection("students");
 
-                Query q = studentRef.WhereEqualTo("faculty_id", faculty_id);
+                // Calculate the offset based on the page number and page size
+                int offset = (pageNumber - 1) * pageSize;
+
+                Query q = studentRef.WhereEqualTo("faculty_id", faculty_id)
+                    .OrderByDescending("addedOn") // Assuming you want to order by id
+                    .Offset(offset)
+                    .Limit(pageSize);
 
                 QuerySnapshot snap = await q.GetSnapshotAsync();
 
                 bool dataFound = false;
+
+                // Add columns to the DataGridView if they are not already added
+                if (student_dtg.Columns.Count == 0)
+                {
+                    student_dtg.Columns.Add("ID", "ID");
+                    student_dtg.Columns.Add("Name", "Name");
+                    student_dtg.Columns.Add("lrn", "LRN");
+                    student_dtg.Columns.Add("gender", "Gender");
+                    student_dtg.Columns.Add("grade_level", "Grade Level");
+                    student_dtg.Columns.Add("section", "Section");
+                    student_dtg.Columns.Add("action", "Action");
+                    student_dtg.Columns.Add("edit", "Edit");
+                }
 
                 foreach (DocumentSnapshot snapshot in snap.Documents)
                 {
@@ -90,8 +244,7 @@ namespace Student_Record.TeachersModule
                         // Capitalize the first letter of last_name
                         string capitalizedFirstName = char.ToUpper(students.first_name[0]) + students.first_name.Substring(1);
 
-                        student_dtg.Rows.Insert(
-                                0,
+                        student_dtg.Rows.Add(
                                 students.id,
                                 capitalizedLastName + ", " + capitalizedFirstName + " " + students.middle_name.Substring(0, 1).ToUpper() + ".",
                                 students.lrn_number,
@@ -102,42 +255,42 @@ namespace Student_Record.TeachersModule
                                 Properties.Resources.edit_green
                             );
 
-                        // Add the CellFormatting event to set the tooltip for the Warning column
-                        student_dtg.CellFormatting += (sender, e) =>
-                        {
-                            if (e.ColumnIndex == 6 && e.RowIndex >= 0 && e.RowIndex < student_dtg.Rows.Count)
-                            {
-                                DataGridViewCell cell = student_dtg.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                                cell.ToolTipText = "View Grades";
-                            }
-                            if (e.ColumnIndex == 7 && e.RowIndex >= 0 && e.RowIndex < student_dtg.Rows.Count)
-                            {
-                                DataGridViewCell cell = student_dtg.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                                cell.ToolTipText = "Edit";
-                            }
-                        };
-                        // Add the CellMouseEnter event to change the cursor to a hand cursor
-                        student_dtg.CellMouseEnter += (sender, e) =>
-                        {
-                            if (e.ColumnIndex == 6 && e.RowIndex >= 0 && e.RowIndex < student_dtg.Rows.Count)
-                            {
-                                student_dtg.Cursor = Cursors.Hand;
-                            }
-                            if (e.ColumnIndex == 7 && e.RowIndex >= 0 && e.RowIndex < student_dtg.Rows.Count)
-                            {
-                                student_dtg.Cursor = Cursors.Hand;
-                            }
-                        };
-
-                        // Add the CellMouseLeave event to revert the cursor to the default cursor
-                        student_dtg.CellMouseLeave += (sender, e) =>
-                        {
-                            student_dtg.Cursor = Cursors.Default;
-                        };
-
                         dataFound = true;
                     }
                 }
+
+                // Add the CellFormatting event to set the tooltip for the Warning column
+                student_dtg.CellFormatting += (sender, e) =>
+                {
+                    if (e.ColumnIndex == 6 && e.RowIndex >= 0 && e.RowIndex < student_dtg.Rows.Count)
+                    {
+                        DataGridViewCell cell = student_dtg.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                        cell.ToolTipText = "View Grades";
+                    }
+                    if (e.ColumnIndex == 7 && e.RowIndex >= 0 && e.RowIndex < student_dtg.Rows.Count)
+                    {
+                        DataGridViewCell cell = student_dtg.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                        cell.ToolTipText = "Edit";
+                    }
+                };
+                // Add the CellMouseEnter event to change the cursor to a hand cursor
+                student_dtg.CellMouseEnter += (sender, e) =>
+                {
+                    if (e.ColumnIndex == 6 && e.RowIndex >= 0 && e.RowIndex < student_dtg.Rows.Count)
+                    {
+                        student_dtg.Cursor = Cursors.Hand;
+                    }
+                    if (e.ColumnIndex == 7 && e.RowIndex >= 0 && e.RowIndex < student_dtg.Rows.Count)
+                    {
+                        student_dtg.Cursor = Cursors.Hand;
+                    }
+                };
+
+                // Add the CellMouseLeave event to revert the cursor to the default cursor
+                student_dtg.CellMouseLeave += (sender, e) =>
+                {
+                    student_dtg.Cursor = Cursors.Default;
+                };
 
                 // Check the flag to determine whether any data is found
                 if (!dataFound)
@@ -145,8 +298,17 @@ namespace Student_Record.TeachersModule
                     no_data_panel.Visible = true;
                     no_data_anim.Visible = true;
                     no_data_text.Visible = true;
+                    no_data_text.Text = "No data found!";
                     student_dtg.Visible = false;
-                    generate_btn.Enabled = false;
+                    generateBtn.Enabled = false;
+                }
+                else
+                {
+                    no_data_panel.Visible = false;
+                    no_data_anim.Visible = false;
+                    no_data_text.Visible = false;
+                    student_dtg.Visible = true;
+                    generateBtn.Enabled = true;
                 }
             }
 
@@ -159,7 +321,7 @@ namespace Student_Record.TeachersModule
             lastname_tb.Text = "";
             suffix_tb.Text = "";
             lrn_tb.Text = "";
-            date_of_birth_dt.Value = DateTime.Now;
+            date_of_birth_dt.Value = DateTime.UtcNow;
             address_tb.Text = "";
             student_contactNo_tb.Text = "";
             father_name_tb.Text = "";
@@ -169,7 +331,7 @@ namespace Student_Record.TeachersModule
             guardian_name_tb.Text = "";
             guardian_contactNo_tb.Text = "";
             last_school_attended_tb.Text = "";
-            major_tb.Text = "";
+            strand_tb.Text = "";
             section_cbx.Text = "";
             grade_level_cbx.Text = "";
             gender_cbx.Text = "";
@@ -177,9 +339,13 @@ namespace Student_Record.TeachersModule
             fileName_tb.Text = "";
         }
 
-        private void StudentProfile_Load(object sender, EventArgs e)
+        private async void StudentProfile_Load(object sender, EventArgs e)
         {
-            loadData();
+            no_data_panel.Visible = true;
+            no_data_text.Visible = true;
+            no_data_text.Text = "Loading data...";
+
+            await LoadFirstPage();
             lastname_tb.Focus();
             section_cbx.Enabled = false;
 
@@ -220,7 +386,7 @@ namespace Student_Record.TeachersModule
             string last_name = lastname_tb.Text;
             string suffix = suffix_tb.Text;
             string lrn_no = lrn_tb.Text;
-            string dob = date_of_birth_dt.Value.ToString();
+            DateTime dob = date_of_birth_dt.Value;
             string address = address_tb.Text;
             string student_contact = student_contactNo_tb.Text;
             string father_name = father_name_tb.Text;
@@ -230,7 +396,7 @@ namespace Student_Record.TeachersModule
             string guardian_name = guardian_name_tb.Text;
             string guardian_contact = guardian_contactNo_tb.Text;
             string last_school_attended = last_school_attended_tb.Text;
-            string major = major_tb.Text;
+            string strand = strand_tb.Text;
             string section = section_cbx.Text;
             string grade_level = grade_level_cbx.Text;
             string gender = gender_cbx.Text;
@@ -313,10 +479,10 @@ namespace Student_Record.TeachersModule
                 last_school_attended_tb.Focus();
                 return;
             }
-            else if (String.IsNullOrEmpty(major))
+            else if (String.IsNullOrEmpty(strand))
             {
-                MessageBox.Show("Major is required.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                major_tb.Focus();
+                MessageBox.Show("Strand is required.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                strand_tb.Focus();
                 return;
             }
             else if (String.IsNullOrEmpty(grade_level))
@@ -358,7 +524,7 @@ namespace Student_Record.TeachersModule
                     guardian_name,
                     guardian_contact,
                     last_school_attended,
-                    major,
+                    strand,
                     grade_level,
                     section,
                     gender,
@@ -367,7 +533,7 @@ namespace Student_Record.TeachersModule
             }
         }
 
-        private async void setStudent(string first_name, string middle_name, string last_name, string suffix, string lrn_no, string dob, string address, string student_contact, string father_name, string father_contact, string mother_name, string mother_contact, string guardian_name, string guardian_contact, string last_school_attended, string major, string grade_level, string section, string gender, string imageStr)
+        private async void setStudent(string first_name, string middle_name, string last_name, string suffix, string lrn_no, DateTime dob, string address, string student_contact, string father_name, string father_contact, string mother_name, string mother_contact, string guardian_name, string guardian_contact, string last_school_attended, string strand, string grade_level, string section, string gender, string imageStr)
         {
             int grade_lvl = int.Parse(grade_level);
             string? name;
@@ -398,6 +564,11 @@ namespace Student_Record.TeachersModule
                         // Execute the query asynchronously
                         QuerySnapshot querySnapshot = await q.GetSnapshotAsync();
 
+                        DateTime now = DateTime.UtcNow;
+
+                        // Ensure that the DateTime object dob is in UTC format
+                        DateTime dobUtc = dob.ToUniversalTime();
+
                         // Check if any documents match the query
                         if (querySnapshot.Count > 0)
                         {
@@ -408,13 +579,13 @@ namespace Student_Record.TeachersModule
                             Dictionary<string, object> data = new Dictionary<string, object>()
                             {
                                 {"id", new_uid },
-                                {"name", name },
-                                {"first_name", first_name },
-                                {"middle_name", middle_name },
-                                {"last_name", last_name },
-                                {"suffix", suffix },
+                                {"name", CapitalizeEachWord(name) },
+                                {"first_name", CapitalizeEachWord(first_name) },
+                                {"middle_name", CapitalizeEachWord(middle_name) },
+                                {"last_name", CapitalizeEachWord(last_name) },
+                                {"suffix", CapitalizeEachWord(suffix) },
                                 {"lrn_number", lrn_no },
-                                {"dob", dob },
+                                {"dob", dobUtc },
                                 {"address", address },
                                 {"contact_number", student_contact },
                                 {"father_contact", father_contact },
@@ -424,7 +595,7 @@ namespace Student_Record.TeachersModule
                                 {"mother_name", mother_name },
                                 {"guardian_name", guardian_name },
                                 {"last_school_attended", last_school_attended },
-                                {"major", major },
+                                {"strand", strand },
                                 {"grade_level", grade_lvl },
                                 {"section", section },
                                 {"gender", gender },
@@ -432,7 +603,8 @@ namespace Student_Record.TeachersModule
                                 {"faculty_id", faculty_id },
                                 {"adviser", faculty_name },
                                 {"hasGrade", false },
-                                {"hasHonor", false }
+                                {"hasHonor", false },
+                                {"addedOn", now }
                             };
 
                             var info = await colRef.Document(new_uid).CreateAsync(data);
@@ -441,7 +613,7 @@ namespace Student_Record.TeachersModule
 
                             CollectionReference other_docs_ref = collectionRef.Collection("other_docs");
 
-                            if(AddNewDocs.data != null)
+                            if (AddNewDocs.data != null)
                             {
                                 foreach (var item in AddNewDocs.data)
                                 {
@@ -462,7 +634,7 @@ namespace Student_Record.TeachersModule
                             }
 
                             MessageBox.Show(first_name + " " + middle_name + " " + last_name + " " + suffix + " registered successfully!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            loadData();
+                            await LoadFirstPage();
                             clearField();
                         }
                     }
@@ -479,29 +651,6 @@ namespace Student_Record.TeachersModule
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void generate_btn_Click(object sender, EventArgs e)
-        {
-            if (generate_btn.Text == "Cancel Edit")
-            {
-                clearField();
-                update_btn.Enabled = false;
-                delete_btn.Enabled = false;
-                lrn_tb.Enabled = true;
-                save_btn.Enabled = true;
-                generate_btn.Text = "Generate";
-                generate_btn.Normalcolor = Color.FromArgb(129, 142, 254);
-                generate_btn.OnHovercolor = Color.FromArgb(171, 180, 254);
-            }
-            else
-            {
-                using (FRM_Wait frm_wait = new FRM_Wait(Wait))
-                {
-                    frm_wait.ShowDialog(this);
-                }
-                generateExcel();
             }
         }
 
@@ -528,18 +677,29 @@ namespace Student_Record.TeachersModule
 
             if (db != null)
             {
-                DocumentReference docRef = db.Collection("students").Document(student_id);
+                DocumentReference docRef = db.Collection("students").Document(this.student_id);
                 await docRef.DeleteAsync();
+
+                // Step 2: Query and delete all documents in the subcollection
+                CollectionReference gradesCollectionRef = db.Collection("students").Document(this.student_id).Collection("grades");
+                QuerySnapshot gradesQuerySnapshot = await gradesCollectionRef.GetSnapshotAsync();
+
+                foreach (DocumentSnapshot docSnapshot in gradesQuerySnapshot.Documents)
+                {
+                    // Delete each document in the subcollection
+                    await docSnapshot.Reference.DeleteAsync();
+                }
+
                 MessageBox.Show("Removed successfully!", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                loadData();
+                await LoadFirstPage();
                 clearField();
                 update_btn.Enabled = false;
                 delete_btn.Enabled = false;
                 lrn_tb.Enabled = true;
                 save_btn.Enabled = true;
-                generate_btn.Text = "Generate";
-                generate_btn.Normalcolor = Color.FromArgb(129, 142, 254);
-                generate_btn.OnHovercolor = Color.FromArgb(171, 180, 254);
+                generateBtn.Iconimage = Properties.Resources.file_excel_small;
+                generateBtn.Normalcolor = Color.FromArgb(43, 47, 84);
+                generateBtn.OnHovercolor = Color.FromArgb(60, 64, 98);
             }
         }
 
@@ -550,7 +710,7 @@ namespace Student_Record.TeachersModule
             string last_name = lastname_tb.Text;
             string suffix = suffix_tb.Text;
             string lrn_no = lrn_tb.Text;
-            string dob = date_of_birth_dt.Value.ToString();
+            DateTime dob = date_of_birth_dt.Value;
             string address = address_tb.Text;
             string student_contact = student_contactNo_tb.Text;
             string father_name = father_name_tb.Text;
@@ -560,7 +720,7 @@ namespace Student_Record.TeachersModule
             string guardian_name = guardian_name_tb.Text;
             string guardian_contact = guardian_contactNo_tb.Text;
             string last_school_attended = last_school_attended_tb.Text;
-            string major = major_tb.Text;
+            string strand = strand_tb.Text;
             string section = section_cbx.Text;
             string grade_level = grade_level_cbx.Text;
 
@@ -642,10 +802,10 @@ namespace Student_Record.TeachersModule
                 last_school_attended_tb.Focus();
                 return;
             }
-            else if (String.IsNullOrEmpty(major))
+            else if (String.IsNullOrEmpty(strand))
             {
                 MessageBox.Show("Major is required.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                major_tb.Focus();
+                strand_tb.Focus();
                 return;
             }
             else if (String.IsNullOrEmpty(grade_level))
@@ -684,7 +844,7 @@ namespace Student_Record.TeachersModule
                     guardian_name,
                     guardian_contact,
                     last_school_attended,
-                    major,
+                    strand,
                     grade_level,
                     section,
                     gender,
@@ -693,7 +853,7 @@ namespace Student_Record.TeachersModule
             }
         }
 
-        private async void updateStudent(string first_name, string middle_name, string last_name, string suffix, string lrn_no, string dob, string address, string student_contact, string father_name, string father_contact, string mother_name, string mother_contact, string guardian_name, string guardian_contact, string last_school_attended, string major, string grade_level, string section, string gender, string imageStr)
+        private async void updateStudent(string first_name, string middle_name, string last_name, string suffix, string lrn_no, DateTime dob, string address, string student_contact, string father_name, string father_contact, string mother_name, string mother_contact, string guardian_name, string guardian_contact, string last_school_attended, string strand, string grade_level, string section, string gender, string imageStr)
         {
             int grade_lvl = int.Parse(grade_level);
 
@@ -708,6 +868,9 @@ namespace Student_Record.TeachersModule
                 name = first_name + " " + middle_name + " " + last_name;
             }
 
+            // Ensure that the DateTime object dob is in UTC format
+            DateTime dobUtc = dob.ToUniversalTime();
+
             try
             {
                 var db = FirestoreHelper.database;
@@ -716,15 +879,17 @@ namespace Student_Record.TeachersModule
                 {
                     CollectionReference colRef = db.Collection("students");
 
+                    DateTime now = DateTime.UtcNow;
+
                     Dictionary<string, object> data = new Dictionary<string, object>()
                             {
-                                {"name", name },
-                                {"first_name", first_name },
-                                {"middle_name", middle_name },
-                                {"last_name", last_name },
-                                {"suffix", suffix },
+                                {"name", CapitalizeEachWord(name) },
+                                {"first_name", CapitalizeEachWord(first_name) },
+                                {"middle_name", CapitalizeEachWord(middle_name) },
+                                {"last_name", CapitalizeEachWord(last_name) },
+                                {"suffix", CapitalizeEachWord(suffix) },
                                 {"lrn_number", lrn_no },
-                                {"dob", dob },
+                                {"dob", dobUtc },
                                 {"address", address },
                                 {"contact_number", student_contact },
                                 {"father_contact", father_contact },
@@ -734,25 +899,26 @@ namespace Student_Record.TeachersModule
                                 {"mother_name", mother_name },
                                 {"guardian_name", guardian_name },
                                 {"last_school_attended", last_school_attended },
-                                {"major", major },
+                                {"strand", strand },
                                 {"grade_level", grade_lvl },
                                 {"section", section },
                                 {"gender", gender },
-                                {"ImageStr", imageStr }
+                                {"ImageStr", imageStr },
+                                {"updatedOn", now }
                             };
 
                     var info = await colRef.Document(student_id).UpdateAsync(data);
                     MessageBox.Show("Student updated successfully!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     lastname_tb.Focus();
-                    loadData();
+                    await LoadFirstPage();
                     clearField();
                     update_btn.Enabled = false;
                     delete_btn.Enabled = false;
                     lrn_tb.Enabled = true;
                     save_btn.Enabled = true;
-                    generate_btn.Text = "Generate";
-                    generate_btn.Normalcolor = Color.FromArgb(129, 142, 254);
-                    generate_btn.OnHovercolor = Color.FromArgb(171, 180, 254);
+                    generateBtn.Iconimage = Properties.Resources.file_excel_small;
+                    generateBtn.Normalcolor = Color.FromArgb(43, 47, 84);
+                    generateBtn.OnHovercolor = Color.FromArgb(60, 64, 98);
                 }
 
             }
@@ -841,7 +1007,7 @@ namespace Student_Record.TeachersModule
                                     worksheet.Cells[currentExcelRow, 8].Value = students.mother_name;
                                     worksheet.Cells[currentExcelRow, 9].Value = students.guardian_name;
                                     worksheet.Cells[currentExcelRow, 10].Value = students.last_school_attended;
-                                    worksheet.Cells[currentExcelRow, 11].Value = students.major;
+                                    worksheet.Cells[currentExcelRow, 11].Value = students.strand;
                                     worksheet.Cells[currentExcelRow, 12].Value = students.contact_number;
 
 
@@ -911,10 +1077,20 @@ namespace Student_Record.TeachersModule
 
                     if (db != null)
                     {
+                        // Set tooltip text based on the icon image of generateBtn
+                        if (ImageEquals(generateBtn.Iconimage, Properties.Resources.cross_white))
+                        {
+                            toolTip1.SetToolTip(generateBtn, "Clear fields");
+                        }
+                        else if (!ImageEquals(generateBtn.Iconimage, Properties.Resources.file_excel_small))
+                        {
+                            toolTip1.SetToolTip(generateBtn, "Generate Excel");
+                        }
+
                         DocumentReference docRef = db.Collection("students").Document(id);
                         Students data = docRef.GetSnapshotAsync().Result.ConvertTo<Students>();
 
-                        student_id = id;
+                        student_id = data.id;
 
                         //string? full_name = data.name;
 
@@ -932,9 +1108,7 @@ namespace Student_Record.TeachersModule
 
                         lrn_tb.Text = data.lrn_number;
 
-                        string dateOfBirthString = data.dob;
-
-                        // Convert the date string to a DateTime object
+                        /*// Convert the date string to a DateTime object
                         DateTime dateOfBirth;
 
                         if (DateTime.TryParse(dateOfBirthString, out dateOfBirth))
@@ -946,7 +1120,12 @@ namespace Student_Record.TeachersModule
                         {
                             // Handle the case where the string cannot be parsed as a valid date
                             MessageBox.Show("Invalid date format");
-                        }
+                        }*/
+
+                        DateTime dateOfBirth = data.dob;
+
+                        // Set the value of your DateTimePicker control
+                        date_of_birth_dt.Value = dateOfBirth;
 
                         address_tb.Text = data.address;
                         student_contactNo_tb.Text = data.contact_number;
@@ -957,7 +1136,7 @@ namespace Student_Record.TeachersModule
                         guardian_name_tb.Text = data.guardian_name;
                         guardian_contactNo_tb.Text = data.guardian_contact;
                         last_school_attended_tb.Text = data.last_school_attended;
-                        major_tb.Text = data.major;
+                        strand_tb.Text = data.strand;
                         section_cbx.Text = data.section;
                         gender_cbx.Text = data.gender;
                         string? gradeCellValue = data.grade_level.ToString();
@@ -977,9 +1156,9 @@ namespace Student_Record.TeachersModule
                         delete_btn.Enabled = true;
                         save_btn.Enabled = false;
                         lrn_tb.Enabled = false;
-                        generate_btn.Text = "Cancel Edit";
-                        generate_btn.Normalcolor = Color.FromArgb(191, 64, 64);
-                        generate_btn.OnHovercolor = Color.FromArgb(203, 102, 102);
+                        generateBtn.Iconimage = Properties.Resources.cross_white;
+                        generateBtn.Normalcolor = Color.FromArgb(191, 64, 64);
+                        generateBtn.OnHovercolor = Color.FromArgb(203, 102, 102);
                         if (data.ImageStr != null)
                         {
                             student_pic.Image = Base64StringIntoImage(data.ImageStr);
@@ -1007,27 +1186,6 @@ namespace Student_Record.TeachersModule
             }
         }
 
-        private void printBtn_Click(object sender, EventArgs e)
-        {
-            if (faculty_id != null)
-            {
-                StudentPrintPreview studentPrint = new StudentPrintPreview(faculty_id);
-                studentPrint.ShowDialog();
-            }
-        }
-
-        private void search_tb_OnValueChanged(object sender, EventArgs e)
-        {
-            string searchText = search_tb.Text.ToLower();
-
-            foreach (DataGridViewRow row in student_dtg.Rows)
-            {
-                // If the row contains the search text, make it visible; otherwise, hide it
-                row.Visible = row.Cells.Cast<DataGridViewCell>()
-                                       .Any(cell => cell.Value != null && cell.Value.ToString().ToLower().Contains(searchText));
-            }
-        }
-
         private void openFileBtn_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -1045,8 +1203,62 @@ namespace Student_Record.TeachersModule
 
         private void addDocsBtn_Click(object sender, EventArgs e)
         {
-            AddNewDocs addDocs = new AddNewDocs();
+            AddDocs addDocs = new AddDocs();
             addDocs.ShowDialog();
+        }
+
+        private void search_tb_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = search_tb.Text.ToLower();
+
+            foreach (DataGridViewRow row in student_dtg.Rows)
+            {
+                // If the row contains the search text, make it visible; otherwise, hide it
+                row.Visible = row.Cells.Cast<DataGridViewCell>()
+                                       .Any(cell => cell.Value != null && cell.Value.ToString().ToLower().Contains(searchText));
+            }
+        }
+
+        private void printGradeBtn_Click(object sender, EventArgs e)
+        {
+            if (faculty_id != null)
+            {
+                StudentPrintPreview studentPrint = new StudentPrintPreview(faculty_id);
+                studentPrint.ShowDialog();
+            }
+        }
+
+        private void generateBtn_Click(object sender, EventArgs e)
+        {
+            if (ImageEquals(generateBtn.Iconimage, Properties.Resources.cross_white))
+            {
+                clearField();
+                update_btn.Enabled = false;
+                delete_btn.Enabled = false;
+                lrn_tb.Enabled = true;
+                save_btn.Enabled = true;
+                generateBtn.Iconimage = Properties.Resources.file_excel_small;
+                generateBtn.Normalcolor = Color.FromArgb(43, 47, 84);
+                generateBtn.OnHovercolor = Color.FromArgb(60, 64, 98);
+            }
+            else
+            {
+                using (FRM_Wait frm_wait = new FRM_Wait(Wait))
+                {
+                    frm_wait.ShowDialog(this);
+                }
+                generateExcel();
+            }
+        }
+
+        private void next_btn_Click(object sender, EventArgs e)
+        {
+            LoadNextPage();
+        }
+
+        private void previous_btn_Click(object sender, EventArgs e)
+        {
+            LoadPreviousPage();
         }
     }
 }

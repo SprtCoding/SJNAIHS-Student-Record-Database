@@ -39,15 +39,24 @@
             name = new DataGridViewTextBoxColumn();
             email = new DataGridViewTextBoxColumn();
             position = new DataGridViewTextBoxColumn();
+            students = new DataGridViewImageColumn();
             edit = new DataGridViewImageColumn();
             delete = new DataGridViewImageColumn();
             dtg_rad = new Bunifu.Framework.UI.BunifuElipse(components);
-            pictureBox1 = new PictureBox();
             btn_rad = new Bunifu.Framework.UI.BunifuElipse(components);
-            search_tb = new Bunifu.Framework.UI.BunifuMetroTextbox();
             add_new_btn = new Bunifu.Framework.UI.BunifuFlatButton();
+            loadingPanel = new Panel();
+            loadingTxt = new Label();
+            panel1 = new Panel();
+            search_tb = new TextBox();
+            pictureBox2 = new PictureBox();
+            next_btn = new Bunifu.Framework.UI.BunifuFlatButton();
+            previous_btn = new Bunifu.Framework.UI.BunifuFlatButton();
+            data_count_lbl = new Label();
             ((System.ComponentModel.ISupportInitialize)faculty_profile_dtg).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            loadingPanel.SuspendLayout();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // label2
@@ -90,7 +99,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             faculty_profile_dtg.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             faculty_profile_dtg.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            faculty_profile_dtg.Columns.AddRange(new DataGridViewColumn[] { id, name, email, position, edit, delete });
+            faculty_profile_dtg.Columns.AddRange(new DataGridViewColumn[] { id, name, email, position, students, edit, delete });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.WhiteSmoke;
             dataGridViewCellStyle3.Font = new Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -117,7 +126,7 @@
             faculty_profile_dtg.ShowCellErrors = false;
             faculty_profile_dtg.ShowEditingIcon = false;
             faculty_profile_dtg.ShowRowErrors = false;
-            faculty_profile_dtg.Size = new Size(1104, 922);
+            faculty_profile_dtg.Size = new Size(1101, 495);
             faculty_profile_dtg.TabIndex = 7;
             faculty_profile_dtg.CellContentClick += faculty_profile_dtg_CellContentClick;
             // 
@@ -132,47 +141,52 @@
             // name
             // 
             name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            name.HeaderText = "NAME";
+            name.HeaderText = "Name";
             name.MinimumWidth = 8;
             name.Name = "name";
             name.ReadOnly = true;
             // 
             // email
             // 
-            email.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            email.HeaderText = "EMAIL";
+            email.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            email.HeaderText = "Email";
             email.MinimumWidth = 8;
             email.Name = "email";
             email.ReadOnly = true;
-            email.Width = 134;
             // 
             // position
             // 
-            position.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            position.HeaderText = "POSITION";
+            position.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            position.HeaderText = "Position";
             position.MinimumWidth = 8;
             position.Name = "position";
             position.ReadOnly = true;
-            position.Width = 169;
+            // 
+            // students
+            // 
+            students.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            students.HeaderText = "Students";
+            students.MinimumWidth = 8;
+            students.Name = "students";
+            students.ReadOnly = true;
+            students.Width = 138;
             // 
             // edit
             // 
-            edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            edit.HeaderText = "EDIT";
-            edit.MinimumWidth = 30;
+            edit.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            edit.HeaderText = "Edit";
+            edit.MinimumWidth = 8;
             edit.Name = "edit";
             edit.ReadOnly = true;
-            edit.ToolTipText = "Edit";
-            edit.Width = 89;
+            edit.Width = 85;
             // 
             // delete
             // 
-            delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            delete.HeaderText = "DELETE";
-            delete.MinimumWidth = 30;
+            delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            delete.HeaderText = "Delete";
+            delete.MinimumWidth = 8;
             delete.Name = "delete";
             delete.ReadOnly = true;
-            delete.ToolTipText = "Delete";
             delete.Width = 112;
             // 
             // dtg_rad
@@ -180,41 +194,10 @@
             dtg_rad.ElipseRadius = 5;
             dtg_rad.TargetControl = faculty_profile_dtg;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(34, 95);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(24, 23);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 10;
-            pictureBox1.TabStop = false;
-            // 
             // btn_rad
             // 
             btn_rad.ElipseRadius = 15;
             btn_rad.TargetControl = add_new_btn;
-            // 
-            // search_tb
-            // 
-            search_tb.BorderColorFocused = Color.FromArgb(129, 142, 254);
-            search_tb.BorderColorIdle = Color.FromArgb(43, 47, 84);
-            search_tb.BorderColorMouseHover = Color.FromArgb(129, 142, 254);
-            search_tb.BorderThickness = 1;
-            search_tb.characterCasing = CharacterCasing.Normal;
-            search_tb.Font = new Font("Poppins", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            search_tb.ForeColor = Color.FromArgb(64, 64, 64);
-            search_tb.isPassword = false;
-            search_tb.Location = new Point(11, 73);
-            search_tb.Margin = new Padding(6, 7, 6, 7);
-            search_tb.MaxLength = 32767;
-            search_tb.Name = "search_tb";
-            search_tb.Padding = new Padding(64, 0, 0, 0);
-            search_tb.Size = new Size(441, 65);
-            search_tb.TabIndex = 9;
-            search_tb.Text = "Search...";
-            search_tb.TextAlign = HorizontalAlignment.Left;
-            search_tb.OnValueChanged += search_tb_OnValueChanged;
             // 
             // add_new_btn
             // 
@@ -223,7 +206,7 @@
             add_new_btn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             add_new_btn.BackColor = Color.FromArgb(43, 47, 84);
             add_new_btn.BackgroundImageLayout = ImageLayout.Stretch;
-            add_new_btn.BorderRadius = 5;
+            add_new_btn.BorderRadius = 2;
             add_new_btn.ButtonText = "";
             add_new_btn.DisabledColor = Color.Gray;
             add_new_btn.Iconcolor = Color.Transparent;
@@ -238,7 +221,7 @@
             add_new_btn.IconVisible = true;
             add_new_btn.IconZoom = 40D;
             add_new_btn.IsTab = false;
-            add_new_btn.Location = new Point(1066, 80);
+            add_new_btn.Location = new Point(1063, 80);
             add_new_btn.Margin = new Padding(6, 7, 6, 7);
             add_new_btn.MaximumSize = new Size(50, 50);
             add_new_btn.MinimumSize = new Size(50, 50);
@@ -246,7 +229,7 @@
             add_new_btn.Normalcolor = Color.FromArgb(43, 47, 84);
             add_new_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
             add_new_btn.OnHoverTextColor = Color.White;
-            add_new_btn.Padding = new Padding(10);
+            add_new_btn.Padding = new Padding(10, 10, 10, 10);
             add_new_btn.RightToLeft = RightToLeft.No;
             add_new_btn.selected = false;
             add_new_btn.Size = new Size(50, 50);
@@ -256,15 +239,162 @@
             add_new_btn.TextFont = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             add_new_btn.Click += add_new_btn_Click;
             // 
+            // loadingPanel
+            // 
+            loadingPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            loadingPanel.Controls.Add(loadingTxt);
+            loadingPanel.Location = new Point(11, 168);
+            loadingPanel.Name = "loadingPanel";
+            loadingPanel.Size = new Size(1101, 495);
+            loadingPanel.TabIndex = 12;
+            // 
+            // loadingTxt
+            // 
+            loadingTxt.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            loadingTxt.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            loadingTxt.ForeColor = Color.FromArgb(43, 47, 84);
+            loadingTxt.Location = new Point(30, 228);
+            loadingTxt.Name = "loadingTxt";
+            loadingTxt.Size = new Size(1041, 38);
+            loadingTxt.TabIndex = 0;
+            loadingTxt.Text = "loading data...";
+            loadingTxt.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panel1
+            // 
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(search_tb);
+            panel1.Controls.Add(pictureBox2);
+            panel1.Location = new Point(11, 80);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(451, 65);
+            panel1.TabIndex = 33;
+            // 
+            // search_tb
+            // 
+            search_tb.BackColor = SystemColors.Control;
+            search_tb.BorderStyle = BorderStyle.None;
+            search_tb.Font = new Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            search_tb.Location = new Point(51, 18);
+            search_tb.Name = "search_tb";
+            search_tb.PlaceholderText = "Search...";
+            search_tb.Size = new Size(383, 27);
+            search_tb.TabIndex = 29;
+            search_tb.TextChanged += search_tb_TextChanged;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(17, 22);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(24, 23);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 28;
+            pictureBox2.TabStop = false;
+            // 
+            // next_btn
+            // 
+            next_btn.Active = false;
+            next_btn.Activecolor = Color.FromArgb(60, 64, 98);
+            next_btn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            next_btn.BackColor = Color.FromArgb(43, 47, 84);
+            next_btn.BackgroundImageLayout = ImageLayout.Stretch;
+            next_btn.BorderRadius = 2;
+            next_btn.ButtonText = "Next";
+            next_btn.DisabledColor = Color.Gray;
+            next_btn.Iconcolor = Color.Transparent;
+            next_btn.Iconimage = null;
+            next_btn.Iconimage_right = null;
+            next_btn.Iconimage_right_Selected = null;
+            next_btn.Iconimage_Selected = null;
+            next_btn.IconMarginLeft = 0;
+            next_btn.IconMarginRight = 0;
+            next_btn.IconRightVisible = true;
+            next_btn.IconRightZoom = 35D;
+            next_btn.IconVisible = true;
+            next_btn.IconZoom = 35D;
+            next_btn.IsTab = false;
+            next_btn.Location = new Point(879, 688);
+            next_btn.Margin = new Padding(6, 7, 6, 7);
+            next_btn.Name = "next_btn";
+            next_btn.Normalcolor = Color.FromArgb(43, 47, 84);
+            next_btn.OnHovercolor = Color.FromArgb(86, 94, 169);
+            next_btn.OnHoverTextColor = Color.WhiteSmoke;
+            next_btn.Padding = new Padding(11, 8, 11, 8);
+            next_btn.RightToLeft = RightToLeft.No;
+            next_btn.selected = false;
+            next_btn.Size = new Size(234, 58);
+            next_btn.TabIndex = 58;
+            next_btn.Text = "Next";
+            next_btn.TextAlign = ContentAlignment.MiddleCenter;
+            next_btn.Textcolor = Color.White;
+            next_btn.TextFont = new Font("Poppins Medium", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            next_btn.Click += next_btn_Click;
+            // 
+            // previous_btn
+            // 
+            previous_btn.Active = false;
+            previous_btn.Activecolor = Color.FromArgb(60, 64, 98);
+            previous_btn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            previous_btn.BackColor = Color.FromArgb(43, 47, 84);
+            previous_btn.BackgroundImageLayout = ImageLayout.Stretch;
+            previous_btn.BorderRadius = 2;
+            previous_btn.ButtonText = "Previous";
+            previous_btn.DisabledColor = Color.Gray;
+            previous_btn.Iconcolor = Color.Transparent;
+            previous_btn.Iconimage = null;
+            previous_btn.Iconimage_right = null;
+            previous_btn.Iconimage_right_Selected = null;
+            previous_btn.Iconimage_Selected = null;
+            previous_btn.IconMarginLeft = 0;
+            previous_btn.IconMarginRight = 0;
+            previous_btn.IconRightVisible = true;
+            previous_btn.IconRightZoom = 40D;
+            previous_btn.IconVisible = false;
+            previous_btn.IconZoom = 40D;
+            previous_btn.IsTab = false;
+            previous_btn.Location = new Point(611, 688);
+            previous_btn.Margin = new Padding(6, 7, 6, 7);
+            previous_btn.Name = "previous_btn";
+            previous_btn.Normalcolor = Color.FromArgb(43, 47, 84);
+            previous_btn.OnHovercolor = Color.FromArgb(86, 94, 169);
+            previous_btn.OnHoverTextColor = Color.WhiteSmoke;
+            previous_btn.Padding = new Padding(11, 8, 11, 8);
+            previous_btn.RightToLeft = RightToLeft.No;
+            previous_btn.selected = false;
+            previous_btn.Size = new Size(234, 58);
+            previous_btn.TabIndex = 57;
+            previous_btn.Text = "Previous";
+            previous_btn.TextAlign = ContentAlignment.MiddleCenter;
+            previous_btn.Textcolor = Color.White;
+            previous_btn.TextFont = new Font("Poppins Medium", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            previous_btn.Click += previous_btn_Click;
+            // 
+            // data_count_lbl
+            // 
+            data_count_lbl.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            data_count_lbl.AutoSize = true;
+            data_count_lbl.Font = new Font("Poppins", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            data_count_lbl.ForeColor = Color.FromArgb(43, 47, 84);
+            data_count_lbl.Location = new Point(11, 705);
+            data_count_lbl.Name = "data_count_lbl";
+            data_count_lbl.Size = new Size(28, 36);
+            data_count_lbl.TabIndex = 59;
+            data_count_lbl.Text = "0";
+            data_count_lbl.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // FacultyProfiles
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(1129, 1100);
+            ClientSize = new Size(1129, 768);
+            Controls.Add(data_count_lbl);
+            Controls.Add(next_btn);
+            Controls.Add(previous_btn);
+            Controls.Add(panel1);
+            Controls.Add(loadingPanel);
             Controls.Add(add_new_btn);
-            Controls.Add(pictureBox1);
-            Controls.Add(search_tb);
             Controls.Add(faculty_profile_dtg);
             Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
@@ -273,7 +403,10 @@
             Text = "FacultyProfiles";
             Load += FacultyProfiles_Load;
             ((System.ComponentModel.ISupportInitialize)faculty_profile_dtg).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            loadingPanel.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -283,15 +416,22 @@
         private Label label2;
         private Bunifu.Framework.UI.BunifuCustomDataGrid faculty_profile_dtg;
         private Bunifu.Framework.UI.BunifuElipse dtg_rad;
-        private PictureBox pictureBox1;
         private Bunifu.Framework.UI.BunifuElipse btn_rad;
+        private Bunifu.Framework.UI.BunifuFlatButton add_new_btn;
+        private Panel loadingPanel;
+        private Label loadingTxt;
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn name;
         private DataGridViewTextBoxColumn email;
         private DataGridViewTextBoxColumn position;
+        private DataGridViewImageColumn students;
         private DataGridViewImageColumn edit;
         private DataGridViewImageColumn delete;
-        private Bunifu.Framework.UI.BunifuFlatButton add_new_btn;
-        private Bunifu.Framework.UI.BunifuMetroTextbox search_tb;
+        private Panel panel1;
+        private TextBox search_tb;
+        private PictureBox pictureBox2;
+        private Bunifu.Framework.UI.BunifuFlatButton next_btn;
+        private Bunifu.Framework.UI.BunifuFlatButton previous_btn;
+        private Label data_count_lbl;
     }
 }

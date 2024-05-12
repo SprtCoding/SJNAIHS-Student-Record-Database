@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
@@ -37,28 +38,29 @@
             id = new DataGridViewTextBoxColumn();
             name = new DataGridViewTextBoxColumn();
             subject = new DataGridViewTextBoxColumn();
+            sem = new DataGridViewTextBoxColumn();
             mid_term = new DataGridViewTextBoxColumn();
             final_term = new DataGridViewTextBoxColumn();
             final_grade = new DataGridViewTextBoxColumn();
-            generate_btn = new Bunifu.Framework.UI.BunifuFlatButton();
-            oral_btn = new Bunifu.Framework.UI.BunifuFlatButton();
-            komunikasyon_btn = new Bunifu.Framework.UI.BunifuFlatButton();
-            century_btn = new Bunifu.Framework.UI.BunifuFlatButton();
-            math_btn = new Bunifu.Framework.UI.BunifuFlatButton();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            philosophy_btn = new Bunifu.Framework.UI.BunifuFlatButton();
-            p_e_btn = new Bunifu.Framework.UI.BunifuFlatButton();
-            tve_btn = new Bunifu.Framework.UI.BunifuFlatButton();
             no_data_panel = new Panel();
-            label1 = new Label();
-            pictureBox1 = new PictureBox();
-            submit_report_btn = new Bunifu.Framework.UI.BunifuFlatButton();
-            print_btn = new Bunifu.Framework.UI.BunifuFlatButton();
+            loadingLbl = new Label();
+            no_data_pb = new PictureBox();
             add_new_btn = new Bunifu.Framework.UI.BunifuFlatButton();
+            grade_level_cbx = new ComboBox();
+            label5 = new Label();
+            subject_cbx = new ComboBox();
+            label1 = new Label();
+            printGradeBtn = new Bunifu.Framework.UI.BunifuFlatButton();
+            submitReportBtn = new Bunifu.Framework.UI.BunifuFlatButton();
+            toolTip1 = new ToolTip(components);
+            sem_cbx = new ComboBox();
+            label3 = new Label();
+            majorSubTb = new ComboBox();
+            majorSubLbl = new Label();
+            genBtn = new Bunifu.Framework.UI.BunifuFlatButton();
             ((System.ComponentModel.ISupportInitialize)grading_sheet_dtg).BeginInit();
-            flowLayoutPanel1.SuspendLayout();
             no_data_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)no_data_pb).BeginInit();
             SuspendLayout();
             // 
             // label2
@@ -66,9 +68,10 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Black", 16F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.ControlText;
-            label2.Location = new Point(11, 8);
+            label2.Location = new Point(8, 5);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(243, 45);
+            label2.Size = new Size(166, 30);
             label2.TabIndex = 8;
             label2.Text = "Grading Sheet";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -101,7 +104,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             grading_sheet_dtg.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             grading_sheet_dtg.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grading_sheet_dtg.Columns.AddRange(new DataGridViewColumn[] { id, name, subject, mid_term, final_term, final_grade });
+            grading_sheet_dtg.Columns.AddRange(new DataGridViewColumn[] { id, name, subject, sem, mid_term, final_term, final_grade });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.WhiteSmoke;
             dataGridViewCellStyle3.Font = new Font("Poppins", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -116,19 +119,19 @@
             grading_sheet_dtg.GridColor = Color.FromArgb(60, 64, 98);
             grading_sheet_dtg.HeaderBgColor = Color.FromArgb(43, 47, 84);
             grading_sheet_dtg.HeaderForeColor = Color.WhiteSmoke;
-            grading_sheet_dtg.Location = new Point(11, 208);
+            grading_sheet_dtg.Location = new Point(8, 190);
+            grading_sheet_dtg.Margin = new Padding(2);
             grading_sheet_dtg.Name = "grading_sheet_dtg";
             grading_sheet_dtg.ReadOnly = true;
             grading_sheet_dtg.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             grading_sheet_dtg.RowHeadersVisible = false;
             grading_sheet_dtg.RowHeadersWidth = 62;
             grading_sheet_dtg.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            grading_sheet_dtg.RowTemplate.Height = 33;
             grading_sheet_dtg.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             grading_sheet_dtg.ShowCellErrors = false;
             grading_sheet_dtg.ShowEditingIcon = false;
             grading_sheet_dtg.ShowRowErrors = false;
-            grading_sheet_dtg.Size = new Size(1104, 880);
+            grading_sheet_dtg.Size = new Size(773, 260);
             grading_sheet_dtg.TabIndex = 10;
             grading_sheet_dtg.CellContentClick += student_dtg_CellContentClick;
             // 
@@ -150,472 +153,80 @@
             // 
             // subject
             // 
-            subject.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            subject.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             subject.HeaderText = "SUBJECT";
             subject.MinimumWidth = 8;
             subject.Name = "subject";
             subject.ReadOnly = true;
-            subject.Width = 162;
+            // 
+            // sem
+            // 
+            sem.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            sem.HeaderText = "SEMESTER";
+            sem.MinimumWidth = 8;
+            sem.Name = "sem";
+            sem.ReadOnly = true;
             // 
             // mid_term
             // 
-            mid_term.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            mid_term.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             mid_term.HeaderText = "MID TERM";
             mid_term.MinimumWidth = 8;
             mid_term.Name = "mid_term";
             mid_term.ReadOnly = true;
-            mid_term.Width = 171;
             // 
             // final_term
             // 
-            final_term.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            final_term.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             final_term.HeaderText = "FINAL TERM";
             final_term.MinimumWidth = 8;
             final_term.Name = "final_term";
             final_term.ReadOnly = true;
-            final_term.Width = 187;
             // 
             // final_grade
             // 
-            final_grade.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            final_grade.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             final_grade.HeaderText = "FINAL GRADE";
             final_grade.MinimumWidth = 8;
             final_grade.Name = "final_grade";
             final_grade.ReadOnly = true;
-            final_grade.Width = 202;
-            // 
-            // generate_btn
-            // 
-            generate_btn.Active = false;
-            generate_btn.Activecolor = Color.FromArgb(60, 64, 98);
-            generate_btn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            generate_btn.BackColor = Color.FromArgb(43, 47, 84);
-            generate_btn.BackgroundImageLayout = ImageLayout.Stretch;
-            generate_btn.BorderRadius = 5;
-            generate_btn.ButtonText = "Generate";
-            generate_btn.DisabledColor = Color.Gray;
-            generate_btn.Iconcolor = Color.Transparent;
-            generate_btn.Iconimage = null;
-            generate_btn.Iconimage_right = null;
-            generate_btn.Iconimage_right_Selected = null;
-            generate_btn.Iconimage_Selected = null;
-            generate_btn.IconMarginLeft = 0;
-            generate_btn.IconMarginRight = 0;
-            generate_btn.IconRightVisible = true;
-            generate_btn.IconRightZoom = 40D;
-            generate_btn.IconVisible = false;
-            generate_btn.IconZoom = 40D;
-            generate_btn.IsTab = false;
-            generate_btn.Location = new Point(753, 17);
-            generate_btn.Margin = new Padding(6, 7, 6, 7);
-            generate_btn.Name = "generate_btn";
-            generate_btn.Normalcolor = Color.FromArgb(43, 47, 84);
-            generate_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
-            generate_btn.OnHoverTextColor = Color.White;
-            generate_btn.Padding = new Padding(11, 8, 11, 8);
-            generate_btn.RightToLeft = RightToLeft.No;
-            generate_btn.selected = false;
-            generate_btn.Size = new Size(174, 53);
-            generate_btn.TabIndex = 16;
-            generate_btn.Text = "Generate";
-            generate_btn.TextAlign = ContentAlignment.MiddleCenter;
-            generate_btn.Textcolor = Color.White;
-            generate_btn.TextFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            generate_btn.Click += generate_btn_Click;
-            // 
-            // oral_btn
-            // 
-            oral_btn.Active = false;
-            oral_btn.Activecolor = Color.FromArgb(60, 64, 98);
-            oral_btn.BackColor = Color.FromArgb(43, 47, 84);
-            oral_btn.BackgroundImageLayout = ImageLayout.Stretch;
-            oral_btn.BorderRadius = 5;
-            oral_btn.ButtonText = "Oral Communication";
-            oral_btn.DisabledColor = Color.Gray;
-            oral_btn.Iconcolor = Color.Transparent;
-            oral_btn.Iconimage = null;
-            oral_btn.Iconimage_right = null;
-            oral_btn.Iconimage_right_Selected = null;
-            oral_btn.Iconimage_Selected = null;
-            oral_btn.IconMarginLeft = 0;
-            oral_btn.IconMarginRight = 0;
-            oral_btn.IconRightVisible = true;
-            oral_btn.IconRightZoom = 40D;
-            oral_btn.IconVisible = false;
-            oral_btn.IconZoom = 40D;
-            oral_btn.IsTab = false;
-            oral_btn.Location = new Point(6, 7);
-            oral_btn.Margin = new Padding(6, 7, 6, 7);
-            oral_btn.Name = "oral_btn";
-            oral_btn.Normalcolor = Color.FromArgb(43, 47, 84);
-            oral_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
-            oral_btn.OnHoverTextColor = Color.White;
-            oral_btn.Padding = new Padding(11, 8, 11, 8);
-            oral_btn.RightToLeft = RightToLeft.No;
-            oral_btn.selected = false;
-            oral_btn.Size = new Size(223, 53);
-            oral_btn.TabIndex = 18;
-            oral_btn.Text = "Oral Communication";
-            oral_btn.TextAlign = ContentAlignment.MiddleCenter;
-            oral_btn.Textcolor = Color.White;
-            oral_btn.TextFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            oral_btn.Click += oral_btn_Click;
-            // 
-            // komunikasyon_btn
-            // 
-            komunikasyon_btn.Active = false;
-            komunikasyon_btn.Activecolor = Color.FromArgb(60, 64, 98);
-            komunikasyon_btn.BackColor = Color.FromArgb(43, 47, 84);
-            komunikasyon_btn.BackgroundImageLayout = ImageLayout.Stretch;
-            komunikasyon_btn.BorderRadius = 5;
-            komunikasyon_btn.ButtonText = "Komunikasyon at Pananaliksik";
-            komunikasyon_btn.DisabledColor = Color.Gray;
-            komunikasyon_btn.Iconcolor = Color.Transparent;
-            komunikasyon_btn.Iconimage = null;
-            komunikasyon_btn.Iconimage_right = null;
-            komunikasyon_btn.Iconimage_right_Selected = null;
-            komunikasyon_btn.Iconimage_Selected = null;
-            komunikasyon_btn.IconMarginLeft = 0;
-            komunikasyon_btn.IconMarginRight = 0;
-            komunikasyon_btn.IconRightVisible = true;
-            komunikasyon_btn.IconRightZoom = 40D;
-            komunikasyon_btn.IconVisible = false;
-            komunikasyon_btn.IconZoom = 40D;
-            komunikasyon_btn.IsTab = false;
-            komunikasyon_btn.Location = new Point(738, 7);
-            komunikasyon_btn.Margin = new Padding(6, 7, 6, 7);
-            komunikasyon_btn.Name = "komunikasyon_btn";
-            komunikasyon_btn.Normalcolor = Color.FromArgb(43, 47, 84);
-            komunikasyon_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
-            komunikasyon_btn.OnHoverTextColor = Color.White;
-            komunikasyon_btn.Padding = new Padding(11, 8, 11, 8);
-            komunikasyon_btn.RightToLeft = RightToLeft.No;
-            komunikasyon_btn.selected = false;
-            komunikasyon_btn.Size = new Size(321, 53);
-            komunikasyon_btn.TabIndex = 19;
-            komunikasyon_btn.Text = "Komunikasyon at Pananaliksik";
-            komunikasyon_btn.TextAlign = ContentAlignment.MiddleCenter;
-            komunikasyon_btn.Textcolor = Color.White;
-            komunikasyon_btn.TextFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            komunikasyon_btn.Click += komunikasyon_btn_Click;
-            // 
-            // century_btn
-            // 
-            century_btn.Active = false;
-            century_btn.Activecolor = Color.FromArgb(60, 64, 98);
-            century_btn.BackColor = Color.FromArgb(43, 47, 84);
-            century_btn.BackgroundImageLayout = ImageLayout.Stretch;
-            century_btn.BorderRadius = 5;
-            century_btn.ButtonText = "21st Century Literature";
-            century_btn.DisabledColor = Color.Gray;
-            century_btn.Iconcolor = Color.Transparent;
-            century_btn.Iconimage = null;
-            century_btn.Iconimage_right = null;
-            century_btn.Iconimage_right_Selected = null;
-            century_btn.Iconimage_Selected = null;
-            century_btn.IconMarginLeft = 0;
-            century_btn.IconMarginRight = 0;
-            century_btn.IconRightVisible = true;
-            century_btn.IconRightZoom = 40D;
-            century_btn.IconVisible = false;
-            century_btn.IconZoom = 40D;
-            century_btn.IsTab = false;
-            century_btn.Location = new Point(241, 7);
-            century_btn.Margin = new Padding(6, 7, 6, 7);
-            century_btn.Name = "century_btn";
-            century_btn.Normalcolor = Color.FromArgb(43, 47, 84);
-            century_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
-            century_btn.OnHoverTextColor = Color.White;
-            century_btn.Padding = new Padding(11, 8, 11, 8);
-            century_btn.RightToLeft = RightToLeft.No;
-            century_btn.selected = false;
-            century_btn.Size = new Size(250, 53);
-            century_btn.TabIndex = 20;
-            century_btn.Text = "21st Century Literature";
-            century_btn.TextAlign = ContentAlignment.MiddleCenter;
-            century_btn.Textcolor = Color.White;
-            century_btn.TextFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            century_btn.Click += century_btn_Click;
-            // 
-            // math_btn
-            // 
-            math_btn.Active = false;
-            math_btn.Activecolor = Color.FromArgb(60, 64, 98);
-            math_btn.BackColor = Color.FromArgb(43, 47, 84);
-            math_btn.BackgroundImageLayout = ImageLayout.Stretch;
-            math_btn.BorderRadius = 5;
-            math_btn.ButtonText = "General Mathematics";
-            math_btn.DisabledColor = Color.Gray;
-            math_btn.Iconcolor = Color.Transparent;
-            math_btn.Iconimage = null;
-            math_btn.Iconimage_right = null;
-            math_btn.Iconimage_right_Selected = null;
-            math_btn.Iconimage_Selected = null;
-            math_btn.IconMarginLeft = 0;
-            math_btn.IconMarginRight = 0;
-            math_btn.IconRightVisible = true;
-            math_btn.IconRightZoom = 40D;
-            math_btn.IconVisible = false;
-            math_btn.IconZoom = 40D;
-            math_btn.IsTab = false;
-            math_btn.Location = new Point(503, 7);
-            math_btn.Margin = new Padding(6, 7, 6, 7);
-            math_btn.Name = "math_btn";
-            math_btn.Normalcolor = Color.FromArgb(43, 47, 84);
-            math_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
-            math_btn.OnHoverTextColor = Color.White;
-            math_btn.Padding = new Padding(11, 8, 11, 8);
-            math_btn.RightToLeft = RightToLeft.No;
-            math_btn.selected = false;
-            math_btn.Size = new Size(223, 53);
-            math_btn.TabIndex = 21;
-            math_btn.Text = "General Mathematics";
-            math_btn.TextAlign = ContentAlignment.MiddleCenter;
-            math_btn.Textcolor = Color.White;
-            math_btn.TextFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            math_btn.Click += math_btn_Click;
-            // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.AutoScrollMinSize = new Size(15, 5);
-            flowLayoutPanel1.Controls.Add(oral_btn);
-            flowLayoutPanel1.Controls.Add(century_btn);
-            flowLayoutPanel1.Controls.Add(math_btn);
-            flowLayoutPanel1.Controls.Add(komunikasyon_btn);
-            flowLayoutPanel1.Controls.Add(philosophy_btn);
-            flowLayoutPanel1.Controls.Add(p_e_btn);
-            flowLayoutPanel1.Controls.Add(tve_btn);
-            flowLayoutPanel1.Location = new Point(11, 103);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(807, 97);
-            flowLayoutPanel1.TabIndex = 23;
-            flowLayoutPanel1.WrapContents = false;
-            // 
-            // philosophy_btn
-            // 
-            philosophy_btn.Active = false;
-            philosophy_btn.Activecolor = Color.FromArgb(60, 64, 98);
-            philosophy_btn.BackColor = Color.FromArgb(43, 47, 84);
-            philosophy_btn.BackgroundImageLayout = ImageLayout.Stretch;
-            philosophy_btn.BorderRadius = 5;
-            philosophy_btn.ButtonText = "Introduction to the Philosophy";
-            philosophy_btn.DisabledColor = Color.Gray;
-            philosophy_btn.Iconcolor = Color.Transparent;
-            philosophy_btn.Iconimage = null;
-            philosophy_btn.Iconimage_right = null;
-            philosophy_btn.Iconimage_right_Selected = null;
-            philosophy_btn.Iconimage_Selected = null;
-            philosophy_btn.IconMarginLeft = 0;
-            philosophy_btn.IconMarginRight = 0;
-            philosophy_btn.IconRightVisible = true;
-            philosophy_btn.IconRightZoom = 40D;
-            philosophy_btn.IconVisible = false;
-            philosophy_btn.IconZoom = 40D;
-            philosophy_btn.IsTab = false;
-            philosophy_btn.Location = new Point(1071, 7);
-            philosophy_btn.Margin = new Padding(6, 7, 6, 7);
-            philosophy_btn.Name = "philosophy_btn";
-            philosophy_btn.Normalcolor = Color.FromArgb(43, 47, 84);
-            philosophy_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
-            philosophy_btn.OnHoverTextColor = Color.White;
-            philosophy_btn.Padding = new Padding(11, 8, 11, 8);
-            philosophy_btn.RightToLeft = RightToLeft.No;
-            philosophy_btn.selected = false;
-            philosophy_btn.Size = new Size(321, 53);
-            philosophy_btn.TabIndex = 22;
-            philosophy_btn.Text = "Introduction to the Philosophy";
-            philosophy_btn.TextAlign = ContentAlignment.MiddleCenter;
-            philosophy_btn.Textcolor = Color.White;
-            philosophy_btn.TextFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            philosophy_btn.Click += philosophy_btn_Click;
-            // 
-            // p_e_btn
-            // 
-            p_e_btn.Active = false;
-            p_e_btn.Activecolor = Color.FromArgb(60, 64, 98);
-            p_e_btn.BackColor = Color.FromArgb(43, 47, 84);
-            p_e_btn.BackgroundImageLayout = ImageLayout.Stretch;
-            p_e_btn.BorderRadius = 5;
-            p_e_btn.ButtonText = "Physical Education & Health";
-            p_e_btn.DisabledColor = Color.Gray;
-            p_e_btn.Iconcolor = Color.Transparent;
-            p_e_btn.Iconimage = null;
-            p_e_btn.Iconimage_right = null;
-            p_e_btn.Iconimage_right_Selected = null;
-            p_e_btn.Iconimage_Selected = null;
-            p_e_btn.IconMarginLeft = 0;
-            p_e_btn.IconMarginRight = 0;
-            p_e_btn.IconRightVisible = true;
-            p_e_btn.IconRightZoom = 40D;
-            p_e_btn.IconVisible = false;
-            p_e_btn.IconZoom = 40D;
-            p_e_btn.IsTab = false;
-            p_e_btn.Location = new Point(1404, 7);
-            p_e_btn.Margin = new Padding(6, 7, 6, 7);
-            p_e_btn.Name = "p_e_btn";
-            p_e_btn.Normalcolor = Color.FromArgb(43, 47, 84);
-            p_e_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
-            p_e_btn.OnHoverTextColor = Color.White;
-            p_e_btn.Padding = new Padding(11, 8, 11, 8);
-            p_e_btn.RightToLeft = RightToLeft.No;
-            p_e_btn.selected = false;
-            p_e_btn.Size = new Size(286, 53);
-            p_e_btn.TabIndex = 23;
-            p_e_btn.Text = "Physical Education & Health";
-            p_e_btn.TextAlign = ContentAlignment.MiddleCenter;
-            p_e_btn.Textcolor = Color.White;
-            p_e_btn.TextFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            p_e_btn.Click += p_e_btn_Click;
-            // 
-            // tve_btn
-            // 
-            tve_btn.Active = false;
-            tve_btn.Activecolor = Color.FromArgb(60, 64, 98);
-            tve_btn.BackColor = Color.FromArgb(43, 47, 84);
-            tve_btn.BackgroundImageLayout = ImageLayout.Stretch;
-            tve_btn.BorderRadius = 5;
-            tve_btn.ButtonText = "TVE";
-            tve_btn.DisabledColor = Color.Gray;
-            tve_btn.Iconcolor = Color.Transparent;
-            tve_btn.Iconimage = null;
-            tve_btn.Iconimage_right = null;
-            tve_btn.Iconimage_right_Selected = null;
-            tve_btn.Iconimage_Selected = null;
-            tve_btn.IconMarginLeft = 0;
-            tve_btn.IconMarginRight = 0;
-            tve_btn.IconRightVisible = true;
-            tve_btn.IconRightZoom = 40D;
-            tve_btn.IconVisible = false;
-            tve_btn.IconZoom = 40D;
-            tve_btn.IsTab = false;
-            tve_btn.Location = new Point(1702, 7);
-            tve_btn.Margin = new Padding(6, 7, 6, 7);
-            tve_btn.Name = "tve_btn";
-            tve_btn.Normalcolor = Color.FromArgb(43, 47, 84);
-            tve_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
-            tve_btn.OnHoverTextColor = Color.White;
-            tve_btn.Padding = new Padding(11, 8, 11, 8);
-            tve_btn.RightToLeft = RightToLeft.No;
-            tve_btn.selected = false;
-            tve_btn.Size = new Size(237, 53);
-            tve_btn.TabIndex = 24;
-            tve_btn.Text = "TVE";
-            tve_btn.TextAlign = ContentAlignment.MiddleCenter;
-            tve_btn.Textcolor = Color.White;
-            tve_btn.TextFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            tve_btn.Click += tve_btn_Click;
             // 
             // no_data_panel
             // 
             no_data_panel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            no_data_panel.Controls.Add(label1);
-            no_data_panel.Controls.Add(pictureBox1);
-            no_data_panel.Location = new Point(11, 208);
+            no_data_panel.Controls.Add(loadingLbl);
+            no_data_panel.Controls.Add(no_data_pb);
+            no_data_panel.Location = new Point(8, 190);
+            no_data_panel.Margin = new Padding(2);
             no_data_panel.Name = "no_data_panel";
-            no_data_panel.Size = new Size(1104, 880);
+            no_data_panel.Size = new Size(773, 260);
             no_data_panel.TabIndex = 24;
-            no_data_panel.Visible = false;
             // 
-            // label1
+            // loadingLbl
             // 
-            label1.Anchor = AnchorStyles.None;
-            label1.Font = new Font("Poppins", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = Color.FromArgb(60, 64, 98);
-            label1.Location = new Point(143, 513);
-            label1.Name = "label1";
-            label1.Size = new Size(819, 38);
-            label1.TabIndex = 19;
-            label1.Text = "No data found!";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
+            loadingLbl.Anchor = AnchorStyles.None;
+            loadingLbl.Font = new Font("Poppins", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            loadingLbl.ForeColor = Color.FromArgb(60, 64, 98);
+            loadingLbl.Location = new Point(100, 174);
+            loadingLbl.Margin = new Padding(2, 0, 2, 0);
+            loadingLbl.Name = "loadingLbl";
+            loadingLbl.Size = new Size(573, 23);
+            loadingLbl.TabIndex = 19;
+            loadingLbl.Text = "No data found!";
+            loadingLbl.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
+            // no_data_pb
             // 
-            pictureBox1.Anchor = AnchorStyles.None;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(334, 308);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(434, 218);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            // 
-            // submit_report_btn
-            // 
-            submit_report_btn.Active = false;
-            submit_report_btn.Activecolor = Color.FromArgb(43, 47, 84);
-            submit_report_btn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            submit_report_btn.BackColor = Color.FromArgb(43, 47, 84);
-            submit_report_btn.BackgroundImageLayout = ImageLayout.Stretch;
-            submit_report_btn.BorderRadius = 5;
-            submit_report_btn.ButtonText = "  Submit Report";
-            submit_report_btn.DisabledColor = Color.Gray;
-            submit_report_btn.Iconcolor = Color.Transparent;
-            submit_report_btn.Iconimage = Properties.Resources.send_message;
-            submit_report_btn.Iconimage_right = null;
-            submit_report_btn.Iconimage_right_Selected = null;
-            submit_report_btn.Iconimage_Selected = null;
-            submit_report_btn.IconMarginLeft = 0;
-            submit_report_btn.IconMarginRight = 0;
-            submit_report_btn.IconRightVisible = true;
-            submit_report_btn.IconRightZoom = 0D;
-            submit_report_btn.IconVisible = true;
-            submit_report_btn.IconZoom = 25D;
-            submit_report_btn.IsTab = false;
-            submit_report_btn.Location = new Point(547, 17);
-            submit_report_btn.Margin = new Padding(6, 7, 6, 7);
-            submit_report_btn.Name = "submit_report_btn";
-            submit_report_btn.Normalcolor = Color.FromArgb(43, 47, 84);
-            submit_report_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
-            submit_report_btn.OnHoverTextColor = Color.White;
-            submit_report_btn.selected = false;
-            submit_report_btn.Size = new Size(193, 53);
-            submit_report_btn.TabIndex = 28;
-            submit_report_btn.Text = "  Submit Report";
-            submit_report_btn.TextAlign = ContentAlignment.MiddleLeft;
-            submit_report_btn.Textcolor = Color.White;
-            submit_report_btn.TextFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            submit_report_btn.Click += submit_report_btn_Click;
-            // 
-            // print_btn
-            // 
-            print_btn.Active = false;
-            print_btn.Activecolor = Color.FromArgb(60, 64, 98);
-            print_btn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            print_btn.BackColor = Color.FromArgb(43, 47, 84);
-            print_btn.BackgroundImageLayout = ImageLayout.Stretch;
-            print_btn.BorderRadius = 5;
-            print_btn.ButtonText = "Print";
-            print_btn.DisabledColor = Color.Gray;
-            print_btn.Iconcolor = Color.Transparent;
-            print_btn.Iconimage = null;
-            print_btn.Iconimage_right = null;
-            print_btn.Iconimage_right_Selected = null;
-            print_btn.Iconimage_Selected = null;
-            print_btn.IconMarginLeft = 0;
-            print_btn.IconMarginRight = 0;
-            print_btn.IconRightVisible = true;
-            print_btn.IconRightZoom = 40D;
-            print_btn.IconVisible = false;
-            print_btn.IconZoom = 40D;
-            print_btn.IsTab = false;
-            print_btn.Location = new Point(940, 17);
-            print_btn.Margin = new Padding(6, 7, 6, 7);
-            print_btn.Name = "print_btn";
-            print_btn.Normalcolor = Color.FromArgb(43, 47, 84);
-            print_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
-            print_btn.OnHoverTextColor = Color.White;
-            print_btn.Padding = new Padding(11, 8, 11, 8);
-            print_btn.RightToLeft = RightToLeft.No;
-            print_btn.selected = false;
-            print_btn.Size = new Size(174, 53);
-            print_btn.TabIndex = 29;
-            print_btn.Text = "Print";
-            print_btn.TextAlign = ContentAlignment.MiddleCenter;
-            print_btn.Textcolor = Color.White;
-            print_btn.TextFont = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            print_btn.Click += print_btn_Click;
+            no_data_pb.Anchor = AnchorStyles.None;
+            no_data_pb.Image = (Image)resources.GetObject("no_data_pb.Image");
+            no_data_pb.Location = new Point(234, 51);
+            no_data_pb.Margin = new Padding(2);
+            no_data_pb.Name = "no_data_pb";
+            no_data_pb.Size = new Size(304, 131);
+            no_data_pb.SizeMode = PictureBoxSizeMode.Zoom;
+            no_data_pb.TabIndex = 0;
+            no_data_pb.TabStop = false;
+            no_data_pb.Visible = false;
             // 
             // add_new_btn
             // 
@@ -639,44 +250,299 @@
             add_new_btn.IconVisible = true;
             add_new_btn.IconZoom = 40D;
             add_new_btn.IsTab = false;
-            add_new_btn.Location = new Point(1064, 110);
-            add_new_btn.Margin = new Padding(6, 7, 6, 7);
-            add_new_btn.MaximumSize = new Size(50, 50);
-            add_new_btn.MinimumSize = new Size(50, 50);
+            add_new_btn.Location = new Point(746, 10);
+            add_new_btn.Margin = new Padding(4);
+            add_new_btn.MaximumSize = new Size(35, 30);
+            add_new_btn.MinimumSize = new Size(35, 30);
             add_new_btn.Name = "add_new_btn";
             add_new_btn.Normalcolor = Color.FromArgb(43, 47, 84);
             add_new_btn.OnHovercolor = Color.FromArgb(60, 64, 98);
             add_new_btn.OnHoverTextColor = Color.White;
-            add_new_btn.Padding = new Padding(10);
+            add_new_btn.Padding = new Padding(7, 6, 7, 6);
             add_new_btn.RightToLeft = RightToLeft.No;
             add_new_btn.selected = false;
-            add_new_btn.Size = new Size(50, 50);
+            add_new_btn.Size = new Size(35, 30);
             add_new_btn.TabIndex = 17;
             add_new_btn.TextAlign = ContentAlignment.MiddleRight;
             add_new_btn.Textcolor = Color.White;
             add_new_btn.TextFont = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             add_new_btn.Click += add_new_btn_Click;
+            add_new_btn.MouseEnter += add_new_btn_MouseEnter;
+            // 
+            // grade_level_cbx
+            // 
+            grade_level_cbx.BackColor = Color.FromArgb(43, 47, 84);
+            grade_level_cbx.DropDownStyle = ComboBoxStyle.DropDownList;
+            grade_level_cbx.FlatStyle = FlatStyle.Flat;
+            grade_level_cbx.Font = new Font("Poppins", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            grade_level_cbx.ForeColor = Color.WhiteSmoke;
+            grade_level_cbx.FormattingEnabled = true;
+            grade_level_cbx.Items.AddRange(new object[] { "Any", "11", "12" });
+            grade_level_cbx.Location = new Point(8, 80);
+            grade_level_cbx.Margin = new Padding(2);
+            grade_level_cbx.Name = "grade_level_cbx";
+            grade_level_cbx.Size = new Size(171, 36);
+            grade_level_cbx.TabIndex = 37;
+            grade_level_cbx.SelectedIndexChanged += grade_level_cbx_SelectedIndexChanged;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = SystemColors.Control;
+            label5.Font = new Font("Poppins SemiBold", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.ForeColor = Color.FromArgb(43, 47, 84);
+            label5.Location = new Point(8, 56);
+            label5.Margin = new Padding(2, 0, 2, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(142, 25);
+            label5.TabIndex = 36;
+            label5.Text = "Select Grade Level";
+            label5.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // subject_cbx
+            // 
+            subject_cbx.BackColor = Color.FromArgb(43, 47, 84);
+            subject_cbx.DropDownStyle = ComboBoxStyle.DropDownList;
+            subject_cbx.FlatStyle = FlatStyle.Flat;
+            subject_cbx.Font = new Font("Poppins", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            subject_cbx.ForeColor = Color.WhiteSmoke;
+            subject_cbx.FormattingEnabled = true;
+            subject_cbx.Location = new Point(8, 146);
+            subject_cbx.Margin = new Padding(2);
+            subject_cbx.Name = "subject_cbx";
+            subject_cbx.Size = new Size(353, 36);
+            subject_cbx.TabIndex = 39;
+            subject_cbx.SelectedIndexChanged += subject_cbx_SelectedIndexChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = SystemColors.Control;
+            label1.Font = new Font("Poppins SemiBold", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.FromArgb(43, 47, 84);
+            label1.Location = new Point(8, 122);
+            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(112, 25);
+            label1.TabIndex = 38;
+            label1.Text = "Select Subject";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // printGradeBtn
+            // 
+            printGradeBtn.Active = false;
+            printGradeBtn.Activecolor = Color.FromArgb(60, 64, 98);
+            printGradeBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            printGradeBtn.BackColor = Color.FromArgb(43, 47, 84);
+            printGradeBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            printGradeBtn.BorderRadius = 5;
+            printGradeBtn.ButtonText = "";
+            printGradeBtn.DisabledColor = Color.Gray;
+            printGradeBtn.Iconcolor = Color.Transparent;
+            printGradeBtn.Iconimage = (Image)resources.GetObject("printGradeBtn.Iconimage");
+            printGradeBtn.Iconimage_right = null;
+            printGradeBtn.Iconimage_right_Selected = null;
+            printGradeBtn.Iconimage_Selected = null;
+            printGradeBtn.IconMarginLeft = 0;
+            printGradeBtn.IconMarginRight = 0;
+            printGradeBtn.IconRightVisible = false;
+            printGradeBtn.IconRightZoom = 40D;
+            printGradeBtn.IconVisible = true;
+            printGradeBtn.IconZoom = 30D;
+            printGradeBtn.IsTab = false;
+            printGradeBtn.Location = new Point(703, 10);
+            printGradeBtn.Margin = new Padding(4);
+            printGradeBtn.MaximumSize = new Size(35, 30);
+            printGradeBtn.MinimumSize = new Size(35, 30);
+            printGradeBtn.Name = "printGradeBtn";
+            printGradeBtn.Normalcolor = Color.FromArgb(43, 47, 84);
+            printGradeBtn.OnHovercolor = Color.FromArgb(60, 64, 98);
+            printGradeBtn.OnHoverTextColor = Color.White;
+            printGradeBtn.Padding = new Padding(7, 6, 7, 6);
+            printGradeBtn.RightToLeft = RightToLeft.No;
+            printGradeBtn.selected = false;
+            printGradeBtn.Size = new Size(35, 30);
+            printGradeBtn.TabIndex = 41;
+            printGradeBtn.TextAlign = ContentAlignment.MiddleRight;
+            printGradeBtn.Textcolor = Color.White;
+            printGradeBtn.TextFont = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            printGradeBtn.Click += printGradeBtn_Click;
+            printGradeBtn.MouseEnter += printGradeBtn_MouseEnter;
+            // 
+            // submitReportBtn
+            // 
+            submitReportBtn.Active = false;
+            submitReportBtn.Activecolor = Color.FromArgb(60, 64, 98);
+            submitReportBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            submitReportBtn.BackColor = Color.FromArgb(43, 47, 84);
+            submitReportBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            submitReportBtn.BorderRadius = 5;
+            submitReportBtn.ButtonText = "";
+            submitReportBtn.DisabledColor = Color.Gray;
+            submitReportBtn.Iconcolor = Color.Transparent;
+            submitReportBtn.Iconimage = (Image)resources.GetObject("submitReportBtn.Iconimage");
+            submitReportBtn.Iconimage_right = null;
+            submitReportBtn.Iconimage_right_Selected = null;
+            submitReportBtn.Iconimage_Selected = null;
+            submitReportBtn.IconMarginLeft = 0;
+            submitReportBtn.IconMarginRight = 0;
+            submitReportBtn.IconRightVisible = false;
+            submitReportBtn.IconRightZoom = 40D;
+            submitReportBtn.IconVisible = true;
+            submitReportBtn.IconZoom = 30D;
+            submitReportBtn.IsTab = false;
+            submitReportBtn.Location = new Point(659, 10);
+            submitReportBtn.Margin = new Padding(4);
+            submitReportBtn.MaximumSize = new Size(35, 30);
+            submitReportBtn.MinimumSize = new Size(35, 30);
+            submitReportBtn.Name = "submitReportBtn";
+            submitReportBtn.Normalcolor = Color.FromArgb(43, 47, 84);
+            submitReportBtn.OnHovercolor = Color.FromArgb(60, 64, 98);
+            submitReportBtn.OnHoverTextColor = Color.White;
+            submitReportBtn.Padding = new Padding(7, 6, 7, 6);
+            submitReportBtn.RightToLeft = RightToLeft.No;
+            submitReportBtn.selected = false;
+            submitReportBtn.Size = new Size(35, 30);
+            submitReportBtn.TabIndex = 43;
+            submitReportBtn.TextAlign = ContentAlignment.MiddleRight;
+            submitReportBtn.Textcolor = Color.White;
+            submitReportBtn.TextFont = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            submitReportBtn.Click += submitReportBtn_Click;
+            submitReportBtn.MouseEnter += submitReportBtn_MouseEnter;
+            // 
+            // toolTip1
+            // 
+            toolTip1.IsBalloon = true;
+            // 
+            // sem_cbx
+            // 
+            sem_cbx.BackColor = Color.FromArgb(43, 47, 84);
+            sem_cbx.DropDownStyle = ComboBoxStyle.DropDownList;
+            sem_cbx.FlatStyle = FlatStyle.Flat;
+            sem_cbx.Font = new Font("Poppins", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            sem_cbx.ForeColor = Color.WhiteSmoke;
+            sem_cbx.FormattingEnabled = true;
+            sem_cbx.Items.AddRange(new object[] { "1st", "2nd" });
+            sem_cbx.Location = new Point(190, 80);
+            sem_cbx.Margin = new Padding(2);
+            sem_cbx.Name = "sem_cbx";
+            sem_cbx.Size = new Size(171, 36);
+            sem_cbx.TabIndex = 45;
+            sem_cbx.SelectedIndexChanged += sem_cbx_SelectedIndexChanged;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = SystemColors.Control;
+            label3.Font = new Font("Poppins SemiBold", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = Color.FromArgb(43, 47, 84);
+            label3.Location = new Point(190, 56);
+            label3.Margin = new Padding(2, 0, 2, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(82, 25);
+            label3.TabIndex = 44;
+            label3.Text = "Semester";
+            label3.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // majorSubTb
+            // 
+            majorSubTb.BackColor = Color.FromArgb(43, 47, 84);
+            majorSubTb.DropDownStyle = ComboBoxStyle.DropDownList;
+            majorSubTb.FlatStyle = FlatStyle.Flat;
+            majorSubTb.Font = new Font("Poppins", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            majorSubTb.ForeColor = Color.WhiteSmoke;
+            majorSubTb.FormattingEnabled = true;
+            majorSubTb.Location = new Point(377, 146);
+            majorSubTb.Margin = new Padding(2);
+            majorSubTb.Name = "majorSubTb";
+            majorSubTb.Size = new Size(353, 36);
+            majorSubTb.TabIndex = 47;
+            majorSubTb.Visible = false;
+            majorSubTb.SelectedIndexChanged += majorSubTb_SelectedIndexChanged;
+            // 
+            // majorSubLbl
+            // 
+            majorSubLbl.AutoSize = true;
+            majorSubLbl.BackColor = SystemColors.Control;
+            majorSubLbl.Font = new Font("Poppins SemiBold", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            majorSubLbl.ForeColor = Color.FromArgb(43, 47, 84);
+            majorSubLbl.Location = new Point(377, 122);
+            majorSubLbl.Margin = new Padding(2, 0, 2, 0);
+            majorSubLbl.Name = "majorSubLbl";
+            majorSubLbl.Size = new Size(109, 25);
+            majorSubLbl.TabIndex = 46;
+            majorSubLbl.Text = "Major Subject";
+            majorSubLbl.TextAlign = ContentAlignment.MiddleCenter;
+            majorSubLbl.Visible = false;
+            // 
+            // genBtn
+            // 
+            genBtn.Active = false;
+            genBtn.Activecolor = Color.FromArgb(60, 64, 98);
+            genBtn.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            genBtn.BackColor = Color.FromArgb(43, 47, 84);
+            genBtn.BackgroundImageLayout = ImageLayout.Stretch;
+            genBtn.BorderRadius = 5;
+            genBtn.ButtonText = "";
+            genBtn.DisabledColor = Color.Gray;
+            genBtn.Iconcolor = Color.Transparent;
+            genBtn.Iconimage = (Image)resources.GetObject("genBtn.Iconimage");
+            genBtn.Iconimage_right = null;
+            genBtn.Iconimage_right_Selected = null;
+            genBtn.Iconimage_Selected = null;
+            genBtn.IconMarginLeft = 0;
+            genBtn.IconMarginRight = 0;
+            genBtn.IconRightVisible = false;
+            genBtn.IconRightZoom = 40D;
+            genBtn.IconVisible = true;
+            genBtn.IconZoom = 30D;
+            genBtn.IsTab = false;
+            genBtn.Location = new Point(616, 10);
+            genBtn.Margin = new Padding(4);
+            genBtn.MaximumSize = new Size(35, 30);
+            genBtn.MinimumSize = new Size(35, 30);
+            genBtn.Name = "genBtn";
+            genBtn.Normalcolor = Color.FromArgb(43, 47, 84);
+            genBtn.OnHovercolor = Color.FromArgb(60, 64, 98);
+            genBtn.OnHoverTextColor = Color.White;
+            genBtn.Padding = new Padding(7, 6, 7, 6);
+            genBtn.RightToLeft = RightToLeft.No;
+            genBtn.selected = false;
+            genBtn.Size = new Size(35, 30);
+            genBtn.TabIndex = 52;
+            genBtn.TextAlign = ContentAlignment.MiddleRight;
+            genBtn.Textcolor = Color.White;
+            genBtn.TextFont = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            genBtn.Click += genBtn_Click;
+            genBtn.MouseEnter += genBtn_MouseEnter;
             // 
             // GradingSheet
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1129, 1100);
-            Controls.Add(print_btn);
-            Controls.Add(submit_report_btn);
+            ClientSize = new Size(790, 461);
+            Controls.Add(genBtn);
+            Controls.Add(majorSubTb);
+            Controls.Add(majorSubLbl);
+            Controls.Add(sem_cbx);
+            Controls.Add(label3);
+            Controls.Add(submitReportBtn);
+            Controls.Add(printGradeBtn);
+            Controls.Add(subject_cbx);
+            Controls.Add(label1);
+            Controls.Add(grade_level_cbx);
+            Controls.Add(label5);
             Controls.Add(no_data_panel);
-            Controls.Add(flowLayoutPanel1);
             Controls.Add(add_new_btn);
-            Controls.Add(generate_btn);
             Controls.Add(grading_sheet_dtg);
             Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(2);
             Name = "GradingSheet";
             Text = "GradingSheet";
             ((System.ComponentModel.ISupportInitialize)grading_sheet_dtg).EndInit();
-            flowLayoutPanel1.ResumeLayout(false);
             no_data_panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)no_data_pb).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -685,26 +551,28 @@
 
         private Label label2;
         private Bunifu.Framework.UI.BunifuCustomDataGrid grading_sheet_dtg;
-        private Bunifu.Framework.UI.BunifuFlatButton generate_btn;
+        private Panel no_data_panel;
+        private Label loadingLbl;
+        private PictureBox no_data_pb;
+        private Bunifu.Framework.UI.BunifuFlatButton add_new_btn;
+        private ComboBox grade_level_cbx;
+        private Label label5;
+        private ComboBox subject_cbx;
+        private Label label1;
+        private Bunifu.Framework.UI.BunifuFlatButton printGradeBtn;
+        private Bunifu.Framework.UI.BunifuFlatButton submitReportBtn;
+        private ToolTip toolTip1;
+        private ComboBox sem_cbx;
+        private Label label3;
+        private ComboBox majorSubTb;
+        private Label majorSubLbl;
+        private Bunifu.Framework.UI.BunifuFlatButton genBtn;
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn name;
         private DataGridViewTextBoxColumn subject;
+        private DataGridViewTextBoxColumn sem;
         private DataGridViewTextBoxColumn mid_term;
         private DataGridViewTextBoxColumn final_term;
         private DataGridViewTextBoxColumn final_grade;
-        private Bunifu.Framework.UI.BunifuFlatButton oral_btn;
-        private Bunifu.Framework.UI.BunifuFlatButton komunikasyon_btn;
-        private Bunifu.Framework.UI.BunifuFlatButton century_btn;
-        private Bunifu.Framework.UI.BunifuFlatButton math_btn;
-        private FlowLayoutPanel flowLayoutPanel1;
-        private Bunifu.Framework.UI.BunifuFlatButton philosophy_btn;
-        private Bunifu.Framework.UI.BunifuFlatButton p_e_btn;
-        private Bunifu.Framework.UI.BunifuFlatButton tve_btn;
-        private Panel no_data_panel;
-        private Label label1;
-        private PictureBox pictureBox1;
-        private Bunifu.Framework.UI.BunifuFlatButton submit_report_btn;
-        private Bunifu.Framework.UI.BunifuFlatButton print_btn;
-        private Bunifu.Framework.UI.BunifuFlatButton add_new_btn;
     }
 }

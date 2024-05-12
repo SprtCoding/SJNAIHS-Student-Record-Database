@@ -19,13 +19,14 @@ namespace Student_Record.TeachersModule
     public partial class FacultyHomeDashboard : Form
     {
         string? faculty_id;
+        int totalStudent = 0, totalG11Student = 0, totalG12Student = 0;
         public FacultyHomeDashboard(string? id)
         {
             InitializeComponent();
             this.faculty_id = id;
         }
 
-        private async void getTotalStudent()
+        private async Task<int> getTotalStudent()
         {
             try
             {
@@ -37,20 +38,28 @@ namespace Student_Record.TeachersModule
 
                     Query q = colRef.WhereEqualTo("faculty_id", faculty_id);
 
-                    QuerySnapshot qSnap = await q.GetSnapshotAsync();
+                    QuerySnapshot snap = await q.GetSnapshotAsync();
 
-                    int studentCount = qSnap.Documents.Count();
-                    enrolled_total_lbl.Text = studentCount.ToString();
+                    totalStudent = snap.Documents.Count();
+
+                    /*QuerySnapshot qSnap = await q.GetSnapshotAsync();
+
+                    if(qSnap != null)
+                    {
+                        totalStudent = qSnap.Documents.Count();
+                        //enrolled_total_lbl.Text = studentCount.ToString();
+                    }*/
                 }
+                return totalStudent;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return 0;
             }
         }
 
-        private async void getTotalStudentGrade11()
+        private async Task<int> getTotalStudentGrade11()
         {
             try
             {
@@ -64,18 +73,22 @@ namespace Student_Record.TeachersModule
 
                     QuerySnapshot qSnap = await q.GetSnapshotAsync();
 
-                    int student11Count = qSnap.Documents.Count();
-                    grade11_total_lbl.Text = student11Count.ToString();
+                    if(qSnap != null)
+                    {
+                        totalG11Student = qSnap.Documents.Count();
+                        //grade11_total_lbl.Text = student11Count.ToString();
+                    }
                 }
+                return totalG11Student;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return 0;
             }
         }
 
-        private async void getTotalStudentGrade12()
+        private async Task<int> getTotalStudentGrade12()
         {
             try
             {
@@ -89,18 +102,22 @@ namespace Student_Record.TeachersModule
 
                     QuerySnapshot qSnap = await q.GetSnapshotAsync();
 
-                    int student11Count = qSnap.Documents.Count();
-                    grade12_total_lbl.Text = student11Count.ToString();
+                    if(qSnap != null)
+                    {
+                        totalG12Student = qSnap.Documents.Count();
+                        //grade12_total_lbl.Text = student11Count.ToString();
+                    }
                 }
+                return totalG12Student;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return 0;
             }
         }
 
-        private async void getStudentGrade()
+        private async Task getStudentSection()
         {
             try
             {
@@ -110,63 +127,59 @@ namespace Student_Record.TeachersModule
                 {
                     CollectionReference colRef = db.Collection("students");
 
-                    Query q = colRef.WhereEqualTo("faculty_id", faculty_id);
+                    Query q = colRef.WhereEqualTo("faculty_id", faculty_id)
+                                    .OrderBy("section");
 
-                    QuerySnapshot qSnap = await q.GetSnapshotAsync();
+                    QuerySnapshot snap = await q.GetSnapshotAsync();
 
-                    // Clear existing series from the chart
-                    grade_chart.Series.Clear();
-
-                    // Set the font for the axis titles, axis labels, and legend only once
-                    grade_chart.ChartAreas[0].AxisX.TitleFont = new Font("Poppins", 10, FontStyle.Italic);
-                    grade_chart.ChartAreas[0].AxisY.TitleFont = new Font("Poppins", 10, FontStyle.Italic);
-                    grade_chart.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Poppins", 8, FontStyle.Italic);
-                    grade_chart.ChartAreas[0].AxisY.LabelStyle.Font = new Font("Poppins", 8, FontStyle.Italic);
-                    grade_chart.Legends[0].Font = new Font("Poppins", 6, FontStyle.Bold);
-                    grade_chart.ChartAreas[0].IsSameFontSizeForAllAxes = true;
-
-                    foreach (DocumentSnapshot snapshot in qSnap.Documents)
+                    if (snap != null)
                     {
-                        Students student = snapshot.ConvertTo<Students>();
+                        // Set the font for the axis titles, axis labels, and legend only once
+                        grade_chart.ChartAreas[0].AxisX.TitleFont = new Font("Poppins", 10, FontStyle.Italic);
+                        grade_chart.ChartAreas[0].AxisY.TitleFont = new Font("Poppins", 10, FontStyle.Italic);
+                        grade_chart.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Poppins", 8, FontStyle.Italic);
+                        grade_chart.ChartAreas[0].AxisY.LabelStyle.Font = new Font("Poppins", 8, FontStyle.Italic);
+                        grade_chart.Legends[0].Font = new Font("Poppins", 6, FontStyle.Bold);
+                        grade_chart.ChartAreas[0].IsSameFontSizeForAllAxes = true;
 
-                        // Capitalize the first letter of last_name
-                        string capitalizedLastName = char.ToUpper(student.last_name[0]) + student.last_name.Substring(1);
-                        // Capitalize the first letter of last_name
-                        string capitalizedFirstName = char.ToUpper(student.first_name[0]) + student.first_name.Substring(1);
+                        // Clear existing series from the chart
+                        grade_chart.Series.Clear();
 
-                        string fullname = capitalizedFirstName + " " + student.middle_name.Substring(0, 1).ToUpper() + ". " + capitalizedLastName;
+                        // Create a dictionary to hold the section name and its count
+                        Dictionary<string, int> sectionCounts = new Dictionary<string, int>();
 
-                        double totalGrade = 0, finalAverage = 0;
-
-                        CollectionReference gradeColRef = snapshot.Reference.Collection("Grades");
-
-                        QuerySnapshot gradeSnap = await gradeColRef.GetSnapshotAsync();
-
-                        foreach (DocumentSnapshot gradeSnapShoot in gradeSnap.Documents)
+                        // Populate the dictionary with section names and their counts
+                        foreach (DocumentSnapshot docSnap in snap.Documents)
                         {
-                            Students grade = gradeSnapShoot.ConvertTo<Students>();
+                            if (docSnap.Exists)
+                            {
+                                Students student = docSnap.ConvertTo<Students>();
+                                string section = student.section;
 
-                            totalGrade += (double)grade.final_grade;
+                                if (sectionCounts.ContainsKey(section))
+                                    sectionCounts[section]++;
+                                else
+                                    sectionCounts[section] = 1;
+                            }
                         }
 
-                        finalAverage = totalGrade / gradeSnap.Documents.Count();
+                        // Add each section as a series to the column chart
+                        foreach (var kvp in sectionCounts)
+                        {
+                            Series series = new Series(kvp.Key);
+                            series.ChartType = SeriesChartType.Column;
+                            grade_chart.Series.Add(series);
 
-                        // Create a series for the chart
-                        Series series = new Series(fullname);
-                        series.ChartType = SeriesChartType.Column; // Use a column chart
-                        grade_chart.Series.Add(series);
+                            series.LegendText = kvp.Key;
+                            series.BorderWidth = 2;
+                            series.Points.AddXY(kvp.Key, kvp.Value);
+                            series["PointWidth"] = "1";
+                            series["PixelPointWidth"] = "250";
+                            series.Points[0].ToolTip = $"{kvp.Key}: {kvp.Value}";
 
-                        series.LegendText = fullname;
-                        series.BorderWidth = 2;
-                        series.Points.AddXY("Final Average", finalAverage);
-                        // Add margin to the series
-                        series["PointWidth"] = "1";
-                        series["PixelPointWidth"] = "250";
-                        series.Points[0].ToolTip = $"{fullname}: {Math.Round(finalAverage, 2)}";
-
-                        // Add animation to the series
-                        // Smoothly animate the column to its final value
-                        AnimateColumn(series.Points[0], finalAverage, 1000);
+                            // Add animation to the series
+                            await AnimateColumn(series.Points[0], kvp.Value, 1000);
+                        }
                     }
                 }
             }
@@ -177,7 +190,7 @@ namespace Student_Record.TeachersModule
             }
         }
 
-        private async void AnimateColumn(DataPoint point, double finalValue, int duration)
+        private async Task AnimateColumn(DataPoint point, double finalValue, int duration)
         {
             double initialValue = point.YValues[0];
             double increment = (finalValue - initialValue) / (duration / 20.0); // Adjust the interval (20 ms in this example)
@@ -194,12 +207,23 @@ namespace Student_Record.TeachersModule
             grade_chart.Invalidate(); // Refresh the chart to display changes
         }
 
-        private void FacultyHomeDashboard_Load(object sender, EventArgs e)
+        private async void FacultyHomeDashboard_Load(object sender, EventArgs e)
         {
-            getTotalStudent();
-            getTotalStudentGrade11();
-            getTotalStudentGrade12();
-            getStudentGrade();
+            try
+            {
+                int totalStudentCount = await getTotalStudent();
+                int totalStudentG11Count = await getTotalStudentGrade11();
+                int totalStudentG12Count = await getTotalStudentGrade12();
+
+                enrolled_total_lbl.Text = totalStudentCount.ToString();
+                grade11_total_lbl.Text = totalStudentG11Count.ToString();
+                grade12_total_lbl.Text = totalStudentG12Count.ToString();
+                await getStudentSection();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

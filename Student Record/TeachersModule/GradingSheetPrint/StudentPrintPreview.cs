@@ -59,8 +59,8 @@ namespace Student_Record.TeachersModule.GradingSheetPrint
                         // Capitalize the first letter of last_name
                         string capitalizedFirstName = char.ToUpper(students.first_name[0]) + students.first_name.Substring(1);
 
-                        DateTime dateOfBirth = DateTime.Parse(students.dob);
-                        string date = dateOfBirth.ToString("MM/dd/yyyy");
+                        //DateTime dateOfBirth = DateTime.Parse(students.dob);
+                        string date = students.dob.ToString("MM/dd/yyyy");
 
                         student_dtg.Rows.Add(
                                 students.id,
@@ -73,7 +73,7 @@ namespace Student_Record.TeachersModule.GradingSheetPrint
                                 students.mother_name,
                                 students.guardian_name,
                                 students.last_school_attended,
-                                students.major,
+                                students.strand,
                                 students.contact_number
                             );
                         count++;
@@ -112,8 +112,8 @@ namespace Student_Record.TeachersModule.GradingSheetPrint
                         // Capitalize the first letter of last_name
                         string capitalizedFirstName = char.ToUpper(students.first_name[0]) + students.first_name.Substring(1);
 
-                        DateTime dateOfBirth = DateTime.Parse(students.dob);
-                        string date = dateOfBirth.ToString("MM/dd/yyyy");
+                        //DateTime dateOfBirth = DateTime.Parse(students.dob);
+                        string date = students.dob.ToString("MM/dd/yyyy");
 
                         student_dtg.Rows.Add(
                                 students.id,
@@ -126,7 +126,7 @@ namespace Student_Record.TeachersModule.GradingSheetPrint
                                 students.mother_name,
                                 students.guardian_name,
                                 students.last_school_attended,
-                                students.major,
+                                students.strand,
                                 students.contact_number
                             );
                         count++;

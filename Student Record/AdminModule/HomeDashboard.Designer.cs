@@ -31,9 +31,6 @@
             components = new System.ComponentModel.Container();
             label2 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
-            school_panel = new Panel();
-            label6 = new Label();
-            label7 = new Label();
             student_panel = new Panel();
             label4 = new Label();
             total_student_lbl = new Label();
@@ -44,7 +41,6 @@
             panel2_rad = new Bunifu.Framework.UI.BunifuElipse(components);
             panel3_rad = new Bunifu.Framework.UI.BunifuElipse(components);
             tableLayoutPanel1.SuspendLayout();
-            school_panel.SuspendLayout();
             student_panel.SuspendLayout();
             faculty_panel.SuspendLayout();
             SuspendLayout();
@@ -65,11 +61,10 @@
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.Controls.Add(school_panel, 2, 0);
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 14F));
             tableLayoutPanel1.Controls.Add(student_panel, 1, 0);
             tableLayoutPanel1.Controls.Add(faculty_panel, 0, 0);
             tableLayoutPanel1.Location = new Point(8, 70);
@@ -77,46 +72,8 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(773, 190);
+            tableLayoutPanel1.Size = new Size(773, 259);
             tableLayoutPanel1.TabIndex = 6;
-            // 
-            // school_panel
-            // 
-            school_panel.BackColor = Color.FromArgb(129, 142, 254);
-            school_panel.Controls.Add(label6);
-            school_panel.Controls.Add(label7);
-            school_panel.Dock = DockStyle.Fill;
-            school_panel.Location = new Point(521, 6);
-            school_panel.Margin = new Padding(7, 6, 7, 6);
-            school_panel.Name = "school_panel";
-            school_panel.Size = new Size(245, 178);
-            school_panel.TabIndex = 2;
-            // 
-            // label6
-            // 
-            label6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label6.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.ForeColor = Color.WhiteSmoke;
-            label6.Location = new Point(2, 5);
-            label6.Margin = new Padding(2, 0, 2, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(241, 38);
-            label6.TabIndex = 0;
-            label6.Text = "School";
-            label6.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            label7.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label7.Font = new Font("Segoe UI Black", 36F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.ForeColor = Color.WhiteSmoke;
-            label7.Location = new Point(2, 44);
-            label7.Margin = new Padding(2, 0, 2, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(241, 134);
-            label7.TabIndex = 1;
-            label7.Text = "0";
-            label7.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // student_panel
             // 
@@ -124,10 +81,10 @@
             student_panel.Controls.Add(label4);
             student_panel.Controls.Add(total_student_lbl);
             student_panel.Dock = DockStyle.Fill;
-            student_panel.Location = new Point(264, 6);
+            student_panel.Location = new Point(393, 6);
             student_panel.Margin = new Padding(7, 6, 7, 6);
             student_panel.Name = "student_panel";
-            student_panel.Size = new Size(243, 178);
+            student_panel.Size = new Size(373, 247);
             student_panel.TabIndex = 1;
             // 
             // label4
@@ -138,7 +95,7 @@
             label4.Location = new Point(2, 5);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(239, 38);
+            label4.Size = new Size(369, 38);
             label4.TabIndex = 0;
             label4.Text = "Total Number of Student";
             label4.TextAlign = ContentAlignment.MiddleCenter;
@@ -148,10 +105,10 @@
             total_student_lbl.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             total_student_lbl.Font = new Font("Segoe UI Black", 36F, FontStyle.Bold, GraphicsUnit.Point);
             total_student_lbl.ForeColor = Color.WhiteSmoke;
-            total_student_lbl.Location = new Point(2, 44);
+            total_student_lbl.Location = new Point(2, 56);
             total_student_lbl.Margin = new Padding(2, 0, 2, 0);
             total_student_lbl.Name = "total_student_lbl";
-            total_student_lbl.Size = new Size(239, 134);
+            total_student_lbl.Size = new Size(369, 134);
             total_student_lbl.TabIndex = 1;
             total_student_lbl.Text = "0";
             total_student_lbl.TextAlign = ContentAlignment.MiddleCenter;
@@ -165,7 +122,7 @@
             faculty_panel.Location = new Point(7, 6);
             faculty_panel.Margin = new Padding(7, 6, 7, 6);
             faculty_panel.Name = "faculty_panel";
-            faculty_panel.Size = new Size(243, 178);
+            faculty_panel.Size = new Size(372, 247);
             faculty_panel.TabIndex = 0;
             // 
             // label1
@@ -176,7 +133,7 @@
             label1.Location = new Point(2, 5);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(239, 38);
+            label1.Size = new Size(368, 38);
             label1.TabIndex = 0;
             label1.Text = "Total Number of Faculty";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -186,10 +143,10 @@
             faculty_text_value.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             faculty_text_value.Font = new Font("Segoe UI Black", 36F, FontStyle.Bold, GraphicsUnit.Point);
             faculty_text_value.ForeColor = Color.WhiteSmoke;
-            faculty_text_value.Location = new Point(2, 44);
+            faculty_text_value.Location = new Point(2, 56);
             faculty_text_value.Margin = new Padding(2, 0, 2, 0);
             faculty_text_value.Name = "faculty_text_value";
-            faculty_text_value.Size = new Size(239, 134);
+            faculty_text_value.Size = new Size(368, 134);
             faculty_text_value.TabIndex = 1;
             faculty_text_value.Text = "0";
             faculty_text_value.TextAlign = ContentAlignment.MiddleCenter;
@@ -207,13 +164,13 @@
             // panel3_rad
             // 
             panel3_rad.ElipseRadius = 10;
-            panel3_rad.TargetControl = school_panel;
+            panel3_rad.TargetControl = this;
             // 
             // HomeDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(790, 661);
+            ClientSize = new Size(790, 461);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(label2);
             FormBorderStyle = FormBorderStyle.None;
@@ -222,7 +179,6 @@
             Text = "HomeDashboard";
             Load += HomeDashboard_Load;
             tableLayoutPanel1.ResumeLayout(false);
-            school_panel.ResumeLayout(false);
             student_panel.ResumeLayout(false);
             faculty_panel.ResumeLayout(false);
             ResumeLayout(false);
@@ -233,9 +189,6 @@
 
         private Label label2;
         private TableLayoutPanel tableLayoutPanel1;
-        private Panel school_panel;
-        private Label label6;
-        private Label label7;
         private Panel student_panel;
         private Label label4;
         private Label total_student_lbl;

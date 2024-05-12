@@ -25,8 +25,6 @@ namespace Student_Record.Firebase.Model
         [FirestoreProperty]
         public string? lrn_number { get; set; }
         [FirestoreProperty]
-        public string? dob { get; set; }
-        [FirestoreProperty]
         public string? address { get; set; }
         [FirestoreProperty]
         public string? contact_number { get; set; }
@@ -45,7 +43,7 @@ namespace Student_Record.Firebase.Model
         [FirestoreProperty]
         public string? last_school_attended { get; set; }
         [FirestoreProperty]
-        public string? major { get; set; }
+        public string? strand { get; set; }
         [FirestoreProperty]
         public int? grade_level { get; set; }
         [FirestoreProperty]
@@ -67,10 +65,18 @@ namespace Student_Record.Firebase.Model
         [FirestoreProperty]
         public string? ImageStr { get; set; }
         [FirestoreProperty]
+        public DateTime dob { get; set; }
+        [FirestoreProperty]
+        public DateTime addedOn { get; set; }
+        [FirestoreProperty]
+        public DateTime updatedOn { get; set; }
+        [FirestoreProperty]
         public string? fileUrl { get; set; }
         //with grades, for grading sheet
         [FirestoreProperty]
         public string? subject { get; set; }
+        [FirestoreProperty]
+        public string? sem { get; set; }
         [FirestoreProperty]
         public string? term { get; set; }
         [FirestoreProperty]

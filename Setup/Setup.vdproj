@@ -15,13 +15,43 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_17CA9D36198B41CA8CA800301B01F7A2"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5466ADEBAA114660AFCCD55A12B48407"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_568B5E52B98648779ED8F0B17427AEAC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_7534DBBE967848C49E3969D47195383C"
+        "MsmKey" = "8:_589143A5CFD245128851F15CAA1AA309"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_697D1AD15F1E47D18F3B4B829EF463F3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AE7D2436945C4AC6A379F8E03E6E9738"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D267115DE2D14141A4DFFBBFDCBC703C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -122,12 +152,112 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_17CA9D36198B41CA8CA800301B01F7A2"
+            {
+            "SourcePath" = "8:..\\Student Record\\bin\\Debug\\net7.0-windows8.0\\ExcelTemplate\\student_profile_temp.xlsx"
+            "TargetName" = "8:student_profile_temp.xlsx"
+            "Tag" = "8:"
+            "Folder" = "8:_D934A26E75134FB8BF965369ECD0F426"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5466ADEBAA114660AFCCD55A12B48407"
+            {
+            "SourcePath" = "8:..\\Student Record\\bin\\Debug\\net7.0-windows8.0\\ExcelTemplate\\grading_sheet_temp.xlsx"
+            "TargetName" = "8:grading_sheet_temp.xlsx"
+            "Tag" = "8:"
+            "Folder" = "8:_D934A26E75134FB8BF965369ECD0F426"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_568B5E52B98648779ED8F0B17427AEAC"
             {
             "SourcePath" = "8:..\\..\\..\\..\\Downloads\\sjnaihs template\\sjnaihs_logo.ico"
             "TargetName" = "8:sjnaihs_logo.ico"
             "Tag" = "8:"
             "Folder" = "8:_AF5B588E84DC46E0A0C312A20B55DDBF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_589143A5CFD245128851F15CAA1AA309"
+            {
+            "SourcePath" = "8:..\\Student Record\\bin\\Debug\\net7.0-windows8.0\\ExcelTemplate\\sf9_temp_g12.xlsx"
+            "TargetName" = "8:sf9_temp_g12.xlsx"
+            "Tag" = "8:"
+            "Folder" = "8:_D934A26E75134FB8BF965369ECD0F426"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_697D1AD15F1E47D18F3B4B829EF463F3"
+            {
+            "SourcePath" = "8:..\\Student Record\\bin\\Debug\\net7.0-windows8.0\\ExcelTemplate\\sf10_temp.xlsx"
+            "TargetName" = "8:sf10_temp.xlsx"
+            "Tag" = "8:"
+            "Folder" = "8:_D934A26E75134FB8BF965369ECD0F426"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D267115DE2D14141A4DFFBBFDCBC703C"
+            {
+            "SourcePath" = "8:..\\Student Record\\bin\\Debug\\net7.0-windows8.0\\ExcelTemplate\\sf9_temp.xlsx"
+            "TargetName" = "8:sf9_temp.xlsx"
+            "Tag" = "8:"
+            "Folder" = "8:_D934A26E75134FB8BF965369ECD0F426"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -191,6 +321,17 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_D934A26E75134FB8BF965369ECD0F426"
+                    {
+                    "Name" = "8:ExcelTemplate"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_60FD168584A4446DA6F4D46BD58B05F8"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
         }
@@ -210,13 +351,13 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SJNAIHS"
         "ProductCode" = "8:{6A32F950-B0FC-40E4-A7B1-08D31B27AE16}"
-        "PackageCode" = "8:{80D63758-4529-44AA-B97A-C25098F5C97D}"
+        "PackageCode" = "8:{23909A81-1329-4B1E-8B1D-2EC0621CD229}"
         "UpgradeCode" = "8:{0B7B176A-6EDA-4FB3-8A42-776C9C9EF13C}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "InstallAllUsers" = "11:FALSE"
+        "InstallAllUsers" = "11:TRUE"
         "ProductVersion" = "8:1.0.0"
         "Manufacturer" = "8:sprtCoding"
         "ARPHELPTELEPHONE" = "8:"
@@ -330,7 +471,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_89BE3CA8338B45A29EC7F40B0D8002BE"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_5D3BA72AB9694DB2ABD9A0C8255A1877"
             {
             "Name" = "8:SJNAIHS"
             "Arguments" = "8:"
@@ -338,13 +479,13 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_7534DBBE967848C49E3969D47195383C"
-            "Folder" = "8:_2C49634D01274E5187C88EEE9B445E4E"
+            "Target" = "8:_AE7D2436945C4AC6A379F8E03E6E9738"
+            "Folder" = "8:_2E9EE0190FCB47BAA2294ACE35BA9E8E"
             "WorkingFolder" = "8:_AF5B588E84DC46E0A0C312A20B55DDBF"
             "Icon" = "8:_568B5E52B98648779ED8F0B17427AEAC"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A20B7E24EA1A4F27A668E36678472C46"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_81A9A096A77F475BAA034AFE1A0A8A70"
             {
             "Name" = "8:SJNAIHS"
             "Arguments" = "8:"
@@ -352,8 +493,8 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_7534DBBE967848C49E3969D47195383C"
-            "Folder" = "8:_2E9EE0190FCB47BAA2294ACE35BA9E8E"
+            "Target" = "8:_AE7D2436945C4AC6A379F8E03E6E9738"
+            "Folder" = "8:_2C49634D01274E5187C88EEE9B445E4E"
             "WorkingFolder" = "8:_AF5B588E84DC46E0A0C312A20B55DDBF"
             "Icon" = "8:_568B5E52B98648779ED8F0B17427AEAC"
             "Feature" = "8:"
@@ -757,9 +898,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_7534DBBE967848C49E3969D47195383C"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_AE7D2436945C4AC6A379F8E03E6E9738"
             {
-            "SourcePath" = "8:..\\Student Record\\obj\\Debug\\net7.0-windows7.0\\apphost.exe"
+            "SourcePath" = "8:..\\Student Record\\obj\\Debug\\net7.0-windows8.0\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_AF5B588E84DC46E0A0C312A20B55DDBF"

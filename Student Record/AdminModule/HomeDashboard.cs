@@ -19,69 +19,71 @@ namespace Student_Record.AdminModule
         public HomeDashboard()
         {
             InitializeComponent();
-            // Example usage in your form's method
-            if (!InternetConnectionChecker.IsInternetAvailable())
-            {
-                MessageBox.Show("No internet connection!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
         }
 
-        private async void getTotalFaculty()
+        private async Task<int> GetTotalFaculty()
         {
             try
             {
                 var db = FirestoreHelper.database;
                 if (db != null)
                 {
-                    // Reference to your Firestore collection
                     CollectionReference collectionRef = db.Collection("users");
-
-                    // Create a query to filter documents with "sms_type" equal to "emergency"
                     Query query = collectionRef.WhereEqualTo("account_type", "faculty");
-
-                    // Fetch the documents
                     QuerySnapshot snapshot = await query.GetSnapshotAsync();
-
-                    int facultyCount = snapshot.Documents.Count;
-                    faculty_text_value.Text = facultyCount.ToString();
+                    return snapshot.Documents.Count;
+                }
+                else
+                {
+                    MessageBox.Show("Firestore database is not available.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return 0;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occurred while fetching faculty count: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
             }
         }
 
-        private async void getTotalStudent()
+        private async Task<int> GetTotalStudent()
         {
             try
             {
                 var db = FirestoreHelper.database;
                 if (db != null)
                 {
-                    // Reference to your Firestore collection
                     CollectionReference collectionRef = db.Collection("students");
-
-                    // Create a query to filter documents with "sms_type" equal to "emergency"
-                    //Query query = collectionRef.WhereEqualTo("account_type", "faculty");
-
-                    // Fetch the documents
                     QuerySnapshot snapshot = await collectionRef.GetSnapshotAsync();
-
-                    int studentCount = snapshot.Documents.Count;
-                    total_student_lbl.Text = studentCount.ToString();
+                    return snapshot.Documents.Count;
+                }
+                else
+                {
+                    MessageBox.Show("Firestore database is not available.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return 0;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occurred while fetching student count: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
             }
         }
 
-        private void HomeDashboard_Load(object sender, EventArgs e)
+        private async void HomeDashboard_Load(object sender, EventArgs e)
         {
-            getTotalFaculty();
-            getTotalStudent();
+            try
+            {
+                int facultyCount = await GetTotalFaculty();
+                faculty_text_value.Text = facultyCount.ToString();
+
+                int studentCount = await GetTotalStudent();
+                total_student_lbl.Text = studentCount.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while loading dashboard: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

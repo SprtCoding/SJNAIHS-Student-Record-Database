@@ -56,7 +56,7 @@
             nav_panel.Dock = DockStyle.Left;
             nav_panel.Location = new Point(0, 0);
             nav_panel.Name = "nav_panel";
-            nav_panel.Size = new Size(346, 1050);
+            nav_panel.Size = new Size(346, 1022);
             nav_panel.TabIndex = 1;
             // 
             // pictureBox1
@@ -108,7 +108,7 @@
             menu_panel.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             menu_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 83F));
             menu_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            menu_panel.Size = new Size(340, 692);
+            menu_panel.Size = new Size(340, 664);
             menu_panel.TabIndex = 5;
             // 
             // student_record_btn
@@ -318,7 +318,7 @@
             logout_btn.IconVisible = true;
             logout_btn.IconZoom = 25D;
             logout_btn.IsTab = false;
-            logout_btn.Location = new Point(6, 576);
+            logout_btn.Location = new Point(6, 588);
             logout_btn.Margin = new Padding(6, 7, 6, 7);
             logout_btn.Name = "logout_btn";
             logout_btn.Normalcolor = Color.FromArgb(129, 142, 254);
@@ -412,17 +412,17 @@
             main_panel.Dock = DockStyle.Fill;
             main_panel.Location = new Point(346, 0);
             main_panel.Name = "main_panel";
-            main_panel.Size = new Size(1128, 1050);
+            main_panel.Size = new Size(1128, 1022);
             main_panel.TabIndex = 2;
             // 
             // FacultyDashboard
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1474, 1050);
+            ClientSize = new Size(1474, 1022);
             Controls.Add(main_panel);
             Controls.Add(nav_panel);
-            MinimumSize = new Size(1488, 1078);
+            MinimumSize = new Size(1488, 768);
             Name = "FacultyDashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FacultyDashboard";

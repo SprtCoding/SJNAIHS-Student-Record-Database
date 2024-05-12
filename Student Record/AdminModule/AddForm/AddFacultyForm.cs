@@ -167,12 +167,16 @@ namespace Student_Record.AdminModule.AddForm
             var db = FirestoreHelper.database;
             if (db != null)
             {
+                // Get the current date and time in UTC format
+                DateTime currentDateTime = DateTime.UtcNow;
+
                 CollectionReference userColRef = db.Collection("users");
                 Dictionary<string, object> userData = new Dictionary<string, object>()
                     {
                         {"name", name },
                         {"email", email },
-                        {"position", position }
+                        {"position", position },
+                        {"updatedOn", currentDateTime }
                     };
 
                 var info = await userColRef.Document(loginCode).UpdateAsync(userData);
@@ -213,6 +217,9 @@ namespace Student_Record.AdminModule.AddForm
             var db = FirestoreHelper.database;
             if (db != null)
             {
+                // Get the current date and time in UTC format
+                DateTime currentDateTime = DateTime.UtcNow;
+
                 CollectionReference userColRef = db.Collection("users");
                 Dictionary<string, object> userData = new Dictionary<string, object>()
                     {
@@ -221,7 +228,8 @@ namespace Student_Record.AdminModule.AddForm
                         {"email", email },
                         {"login_code", new_code },
                         {"position", position },
-                        {"account_type", account_type }
+                        {"account_type", account_type },
+                        {"createdOn", currentDateTime }
                     };
 
                 var info = await userColRef.Document(new_code).CreateAsync(userData);
@@ -254,6 +262,9 @@ namespace Student_Record.AdminModule.AddForm
 
                 if (db != null)
                 {
+                    // Get the current date and time in UTC format
+                    DateTime currentDateTime = DateTime.UtcNow;
+
                     CollectionReference userColRef = db.Collection("users");
                     Dictionary<string, object> userData = new Dictionary<string, object>()
                     {
@@ -262,7 +273,8 @@ namespace Student_Record.AdminModule.AddForm
                         {"email", email },
                         {"login_code", loginCode },
                         {"position", position },
-                        {"account_type", accountType }
+                        {"account_type", accountType },
+                        {"createdOn", currentDateTime }
                     };
 
                     var info = await userColRef.Document(loginCode).CreateAsync(userData);
@@ -295,69 +307,84 @@ namespace Student_Record.AdminModule.AddForm
 
         public async void loadData()
         {
+            myDTG.DataSource = null;
             try
             {
                 var db = FirestoreHelper.database;
                 if (db != null)
                 {
-                    Query userQuery = db.Collection("users").WhereEqualTo("account_type", "faculty");
+                    Query userQuery = db.Collection("users").WhereEqualTo("account_type", "faculty").OrderByDescending("createdOn");
                     QuerySnapshot snap = await userQuery.GetSnapshotAsync();
+
+                    bool isDataFound = false;
+
+                    // Add columns to the DataGridView if they are not already added
+                    if (myDTG.Columns.Count == 0)
+                    {
+                        myDTG.Columns.Add("id", "ID");
+                        myDTG.Columns.Add("name", "Name");
+                        myDTG.Columns.Add("email", "Email");
+                        myDTG.Columns.Add("position", "Position");
+                        myDTG.Columns.Add("edit", "Edit");
+                        myDTG.Columns.Add("delete", "Delete");
+                    }
 
                     foreach (DocumentSnapshot snapshot in snap.Documents)
                     {
                         if (snapshot.Exists)
                         {
                             Users users = snapshot.ConvertTo<Users>(); // Make sure "Users" class is defined correctly
-                            if (myDTG != null)
-                            {
-                                myDTG.Rows.Insert(0,
-                                    users.id,
-                                    users.name,
-                                    users.email,
-                                    users.position,
-                                    Properties.Resources.edit,
-                                    Properties.Resources.trash);
 
-                                // Add the CellFormatting event to set the tooltip for the Warning column
-                                myDTG.CellFormatting += (sender, e) =>
-                                {
-                                    if (e.ColumnIndex == 4 && e.RowIndex >= 0 && e.RowIndex < myDTG.Rows.Count)
-                                    {
-                                        DataGridViewCell cell = myDTG.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                                        cell.ToolTipText = "Edit";
-                                    }
-                                    else if (e.ColumnIndex == 5 && e.RowIndex >= 0 && e.RowIndex < myDTG.Rows.Count)
-                                    {
-                                        DataGridViewCell cell = myDTG.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                                        cell.ToolTipText = "Delete " + myDTG.Rows[e.RowIndex].Cells["name"].Value.ToString() + "?";
-                                    }
-                                };
+                            myDTG.Rows.Add(
+                                users.id,
+                                users.name,
+                                users.email,
+                                users.position,
+                                Properties.Resources.edit,
+                                Properties.Resources.trash);
 
-                                // Add the CellMouseEnter event to change the cursor to a hand cursor
-                                myDTG.CellMouseEnter += (sender, e) =>
-                                {
-                                    if (e.ColumnIndex == 4 && e.RowIndex >= 0 && e.RowIndex < myDTG.Rows.Count)
-                                    {
-                                        myDTG.Cursor = Cursors.Hand;
-                                    }
-                                    else if (e.ColumnIndex == 5 && e.RowIndex >= 0 && e.RowIndex < myDTG.Rows.Count)
-                                    {
-                                        myDTG.Cursor = Cursors.Hand;
-                                    }
-                                };
+                            // Add the CellFormatting event to set the tooltip for the Warning column
+                            isDataFound = true;
 
-                                // Add the CellMouseLeave event to revert the cursor to the default cursor
-                                myDTG.CellMouseLeave += (sender, e) =>
-                                {
-                                    myDTG.Cursor = Cursors.Default;
-                                };
-                            }
                         }
                         else
                         {
-                            MessageBox.Show("No data found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            isDataFound = false;
                         }
                     }
+
+                    myDTG.CellFormatting += (sender, e) =>
+                    {
+                        if (e.ColumnIndex == 4 && e.RowIndex >= 0 && e.RowIndex < myDTG.Rows.Count)
+                        {
+                            DataGridViewCell cell = myDTG.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                            cell.ToolTipText = "Edit";
+                        }
+                        else if (e.ColumnIndex == 5 && e.RowIndex >= 0 && e.RowIndex < myDTG.Rows.Count)
+                        {
+                            DataGridViewCell cell = myDTG.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                            cell.ToolTipText = "Delete " + myDTG.Rows[e.RowIndex].Cells["name"].Value.ToString() + "?";
+                        }
+                    };
+
+                    // Add the CellMouseEnter event to change the cursor to a hand cursor
+                    myDTG.CellMouseEnter += (sender, e) =>
+                    {
+                        if (e.ColumnIndex == 4 && e.RowIndex >= 0 && e.RowIndex < myDTG.Rows.Count)
+                        {
+                            myDTG.Cursor = Cursors.Hand;
+                        }
+                        else if (e.ColumnIndex == 5 && e.RowIndex >= 0 && e.RowIndex < myDTG.Rows.Count)
+                        {
+                            myDTG.Cursor = Cursors.Hand;
+                        }
+                    };
+
+                    // Add the CellMouseLeave event to revert the cursor to the default cursor
+                    myDTG.CellMouseLeave += (sender, e) =>
+                    {
+                        myDTG.Cursor = Cursors.Default;
+                    };
                 }
             }
             catch (Exception ex)

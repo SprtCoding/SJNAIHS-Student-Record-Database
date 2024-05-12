@@ -221,10 +221,10 @@
             grade_chart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             grade_chart.Legends.Add(legend1);
-            grade_chart.Location = new Point(8, 285);
+            grade_chart.Location = new Point(15, 285);
             grade_chart.Margin = new Padding(2);
             grade_chart.Name = "grade_chart";
-            grade_chart.Size = new Size(773, 370);
+            grade_chart.Size = new Size(759, 165);
             grade_chart.TabIndex = 8;
             grade_chart.Text = "chart1";
             // 
@@ -233,7 +233,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(790, 661);
+            ClientSize = new Size(790, 461);
             Controls.Add(grade_chart);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(label2);

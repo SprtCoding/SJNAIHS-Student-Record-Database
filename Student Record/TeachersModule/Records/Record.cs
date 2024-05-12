@@ -62,19 +62,19 @@ namespace Student_Record.TeachersModule.Records
                 {
                     Students student = docSnap.ConvertTo<Students>();
                     if(student.lrn_number != null && student.section != null && student.gender != null && student.dob != null && student.address != null
-                        && student.last_school_attended != null && student.contact_number != null && student.major != null && student.father_name != null && student.father_contact != null 
+                        && student.last_school_attended != null && student.contact_number != null && student.strand != null && student.father_name != null && student.father_contact != null 
                         && student.mother_name != null && student.mother_contact != null && student.guardian_name != null && student.guardian_contact != null && student.ImageStr != null
                         && student.grade_level != null)
                     {
                         string _lrn = student.lrn_number;
                         string _section = student.section;
                         string _gender = student.gender;
-                        string _dob = student.dob;
+                        DateTime _dob = student.dob;
                         string _address = student.address;
                         string _grade_lvl = student.grade_level.ToString();
                         string _last_attended = student.last_school_attended;
                         string _contact_number = student.contact_number;
-                        string _major = student.major;
+                        string _major = student.strand;
                         string _father = student.father_name;
                         string _father_contact = student.father_contact;
                         string _mother = student.mother_name;
@@ -87,7 +87,7 @@ namespace Student_Record.TeachersModule.Records
                         grade_lvl_lbl.Text = _grade_lvl;
                         section_lbl.Text = _section;
                         gender_lbl.Text = _gender;
-                        dob_lbl.Text = _dob;
+                        dob_lbl.Text = _dob.ToString("MMMM dd, yyyy");
                         address_lbl.Text = _address;
                         last_attended_lbl.Text = _last_attended;
                         c_no_lbl.Text = _contact_number;

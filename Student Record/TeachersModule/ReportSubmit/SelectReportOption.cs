@@ -19,6 +19,7 @@ namespace Student_Record.TeachersModule.ReportSubmit
     {
         string? faculty_id, faculty_name;
         private Guid uid = Guid.NewGuid();
+        List<(string filePath, string fileName, string fileURL)> data = new List<(string filePath, string fileName, string fileURL)>();
 
         public SelectReportOption(string? faculty_id, string? faculty_name)
         {
@@ -27,19 +28,15 @@ namespace Student_Record.TeachersModule.ReportSubmit
             this.faculty_name = faculty_name;
         }
 
-        void Wait()
-        {
-            for (int i = 0; i < 200; i++)
-            {
-                Thread.Sleep(5);
-            }
-        }
-
         private async void submitReport()
         {
+            lbl.Visible = true;
+            loadingProgress.Visible = true;
+            loadingProgress.Value = 25;
+
             string report_id = uid.ToString();
-            string report_type = report_type_cbx.Text;
-            string status = status_cbx.Text;
+            string report_type = report_cbx.SelectedItem.ToString();
+            string status = status_cbx.SelectedItem.ToString();
 
             try
             {
@@ -49,14 +46,39 @@ namespace Student_Record.TeachersModule.ReportSubmit
                 {
                     CollectionReference colRef = db.Collection("Reports");
 
-                    Query q = colRef.WhereEqualTo("faculty_id", faculty_id);
+                    loadingProgress.Value = 50;
 
-                    QuerySnapshot qSnap = await q.GetSnapshotAsync();
+                    DateTime now = DateTime.UtcNow;
 
-                    if (qSnap.Count > 0)
+                    foreach (var item in data)
+                    {
+                        Dictionary<string, object> reportData = new Dictionary<string, object>()
+                            {
+                                {"report_id", report_id },
+                                {"faculty_id", this.faculty_id },
+                                {"faculty_name", faculty_name },
+                                {"report_type", report_type },
+                                {"docs_name", item.fileName },
+                                {"docs_path", item.filePath },
+                                {"docs_url", item.fileURL },
+                                {"status", status },
+                                {"submitted_at", now }
+                            };
+
+                        await colRef.Document(report_id).CreateAsync(reportData);
+                        sendEmail(faculty_name, report_type, status);
+                        loadingProgress.Value = 75;
+                    }
+
+                    /*Query q = colRef.WhereEqualTo("faculty_id", faculty_id);
+
+                    QuerySnapshot qSnap = await q.GetSnapshotAsync();*/
+
+                    /*if (qSnap.Count > 0)
                     {
                         foreach (DocumentSnapshot documentSnapshot in qSnap.Documents)
                         {
+
                             // Get the reference to the document
                             DocumentReference docRef = documentSnapshot.Reference;
 
@@ -70,28 +92,17 @@ namespace Student_Record.TeachersModule.ReportSubmit
                             // Update the document
                             await docRef.UpdateAsync(updates);
 
-                            sendEmail(faculty_name, "Honors Report", "Done");
+                            sendEmail(faculty_name, report_type, status);
                         }
-                    }
-                    else
-                    {
-                        Dictionary<string, object> reportData = new Dictionary<string, object>()
-                            {
-                                {"report_id", report_id },
-                                {"faculty_id", faculty_id },
-                                {"faculty_name", faculty_name },
-                                {"report_type", report_type },
-                                {"status", status }
-                            };
-
-                        await colRef.Document(report_id).CreateAsync(reportData);
-                        sendEmail(faculty_name, report_type, status);
-                    }
+                    }*/
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lbl.Visible = false;
+                loadingProgress.Visible = false;
+                loadingProgress.Value = 0;
             }
         }
 
@@ -107,6 +118,8 @@ namespace Student_Record.TeachersModule.ReportSubmit
 
                 QuerySnapshot qSnap = await q.GetSnapshotAsync();
 
+                loadingProgress.Value = 100;
+
                 if (qSnap.Count > 0)
                 {
                     foreach (DocumentSnapshot docSnap in qSnap.Documents)
@@ -120,16 +133,22 @@ namespace Student_Record.TeachersModule.ReportSubmit
                             {
                                 try
                                 {
-                                    EmailSender.SendEmail(admin_email, "Report Submitted", "Hi, " + faculty_name + " is submitted a report.\nWith status of " + status + "\nReport type of " + report_type + "\n\nThank you!");
+                                    List<string> attachments = new List<string>();
+
+                                    foreach (var fileData in data)
+                                    {
+                                        attachments.Add(fileData.filePath);
+                                    }
+
+                                    EmailSenderWithAttachment.SendEmail(admin_email, "Report Submitted", "Hi, " + faculty_name + " has submitted a report.\nWith status of " + status + "\nReport type of " + report_type + "\n\nThank you!", attachments);
                                     MessageBox.Show("Report submitted!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    report_type_cbx.SelectedIndex = 0;
-                                    status_cbx.SelectedIndex = 0;
                                     Hide();
                                 }
                                 catch (Exception ex)
                                 {
                                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
+
                             }
                         }
                     }
@@ -139,18 +158,118 @@ namespace Student_Record.TeachersModule.ReportSubmit
 
         private void submit_btn_Click(object sender, EventArgs e)
         {
-            using (FRM_Wait frm_wait = new FRM_Wait(Wait))
-            {
-                frm_wait.ShowDialog(this);
-            }
             submitReport();
         }
 
         private void cancel_btn_Click(object sender, EventArgs e)
         {
-            report_type_cbx.SelectedIndex = 0;
-            status_cbx.SelectedIndex = 0;
             Hide();
+        }
+
+        private async void SelectReportOption_Load(object sender, EventArgs e)
+        {
+            //MessageBox.Show(await getFacultyEmail());
+        }
+
+        private async void open_file_btn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Documents|*.docx;*.pdf;*.xlsx;*.xls|All Files|*.*";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog.FileName;
+                string fileName = Path.GetFileName(filePath);
+
+                // Check file size
+                long fileSize = new FileInfo(filePath).Length; // Size in bytes
+                long maxSize = 5 * 1024 * 1024; // 5MB in bytes
+                if (fileSize > maxSize)
+                {
+                    MessageBox.Show("File size exceeds 5MB limit.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                string collectionName = "uploads";
+
+                // Upload file to Firestore
+                var result = await UploadFileToFirestore(filePath, fileName, collectionName);
+
+                if (result.url != null && result.fileName != null)
+                {
+                    data.Add((result.path, result.fileName, result.url));
+
+                    // Create a label for the uploaded file
+                    Label label = new Label();
+                    label.Text = "     " + result.fileName;
+                    // Set AutoSize property to true
+                    label.AutoSize = true;
+                    // Set font and font size
+                    label.Font = new System.Drawing.Font("Poppins", 10, FontStyle.Regular);
+                    label.TextAlign = ContentAlignment.MiddleLeft;
+                    label.ImageAlign = ContentAlignment.MiddleLeft;
+                    label.Image = Properties.Resources.checkbox;
+
+                    // Add the label to the FlowLayoutPanel
+                    //uploaded_panel.Controls.Add(label);
+                }
+                else
+                {
+                    MessageBox.Show("Error uploading file to Firestore.");
+                }
+
+                //string collectionName = "uploads";
+                //
+                //// Upload file to Firestore
+                //await UploadFileToFirestore(filePath, fileName, collectionName);
+
+                file_name_tb.Text = fileName;
+            }
+        }
+
+        private async Task<(string url, string fileName, string path)> UploadFileToFirestore(string filePath, string fileName, string collectionName)
+        {
+            var db = FirestoreHelper.database;
+            if (db != null)
+            {
+                try
+                {
+                    CollectionReference collectionRef = db.Collection(collectionName);
+
+                    // Read the file as bytes
+                    byte[] fileBytes = File.ReadAllBytes(filePath);
+
+                    // Convert bytes to Base64 string
+                    string fileBase64 = Convert.ToBase64String(fileBytes);
+
+                    Dictionary<string, object> data = new Dictionary<string, object>()
+                    {
+                        { "File", fileBase64 },
+                        { "FileName", fileName },
+                        { "FilePath", filePath }
+                    };
+
+                    // Upload file Base64 string to Firestore
+                    await collectionRef.Document(fileName).SetAsync(data);
+
+                    // Get download URL of the uploaded file
+                    var snapshot = await db.Collection(collectionName).Document(fileName).GetSnapshotAsync();
+                    var fileUrl = snapshot.Exists ? snapshot.GetValue<string>("File") : null;
+                    var fileNames = snapshot.Exists ? snapshot.GetValue<string>("FileName") : null;
+                    var Path = snapshot.Exists ? snapshot.GetValue<string>("FilePath") : null;
+
+                    return (fileUrl, fileNames, Path);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error uploading file to Firestore: " + ex.Message);
+                    return (null, null, null);
+                }
+            }
+            else
+            {
+                throw new Exception("Firestore database is not initialized.");
+            }
         }
     }
 }

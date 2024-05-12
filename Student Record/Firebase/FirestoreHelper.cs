@@ -13,16 +13,16 @@ namespace Student_Record.Firebase
         static string fireconfig = @"
             {
               ""type"": ""service_account"",
-              ""project_id"": ""studentrecorddb"",
-              ""private_key_id"": ""bbaccc339c9717b8f5e086703542b5b1f599367e"",
-              ""private_key"": ""-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDTyjow5NxHoIiy\n96ajFzMg1/2BvPRdMNzt+Yxb020XtL+krJwYjIwf+VVNhb5vMmb29SHCObtlj1VF\nIeH3YmcRuSC5YJpLqPzNrmjLs8BUPZ7dWxvKLWLfXW4sk+RjlAtGYmGTB+vq0/sN\nwVAOOxAzfRVsZdSohdfPax4vGA9fXxh5rkiDAx5/RprJ8v/3ty+2umKphJsm6M2+\nTqZ4berUycz8Qk+dt8Ha0bOep7dgFSFhRNN1eC5eb4kDIkBjC7A8U71HbzrWwodI\n9v/1VKl0QvGHGHAYfj1Qiy2PFy/QD2NZOPRePsY+u2J/E7NbBedzARCyafW2Dlor\nVxLlXIyPAgMBAAECggEAMOv1PicXdRoxiXmoTeMFhfAumGHv5njrh7MNx4ZSnFe9\nrwnKMueAVMBxAmvC/geb/i7IogdY8NBHp6T4f/8EhPUJCJk2ewSphM9lWKyIYE0t\nnb82b6DFRohb80MkThY79oGyPVbmmYNm6hn95pOhHeumX7g0A8uK+tgpDELYBjTT\nB6Ljt/qrmXATMTPD0et9Bi4rT8/puUxXwJiyPL/lKVLZ72itCxRhuVWDTVtsX1tk\n4nHYr1tFgYvH8GVi7339ZhMs52pLK5+PVZijJeXiOHX2+z/CrgqmpLS91alo9fwQ\nlZe9IUK5ArtnCbQCyLix7SMOrEft7Z0HCXThmqUfhQKBgQD1VD2KmZkM2kgXqpNN\nghBjs4ICXge+m0kXIEcFylzCosYTMKHCmqXHfnZgjM/hMHc734YAKUxjEq0U8Kyl\nnBUUqGXUyLz0M8gNCU0VH/k61z+naTJYmi47Ryp366PCVr3wD6RYzq+AOkgY2hTZ\nvs3kIojuBxI4T+GyjCXpDCzuEwKBgQDdAIatYCDLVlCk+QV++Ow5WmqEGEMPi0JZ\nd3mDsBGUztex4HwCC6DTEu+I1JkLQ25xBXl5HmUfhZsLLnurfKJlKJ9RHmm4SQTc\nfwcoZ3At5j2hvld+tcyAB+q9sq7iCjlaB2VL9FlQ3cKx55JI4KfzHeyK0MW/a1Dk\nOJJoC3uHFQKBgAvfu+rNbF724a5jjyWdOfXZZl1+95j+Ixd/dHCPTtYM0tFy9SFa\nItP5Bvm9VwJrOhonw3CWjx/sc3wj+fc6CrspO2SFIsAfEXuwC48OMR3r9STBLrKj\nI8GyvBd5zD9Hu4G3ABlcR5pJN9wcEg5H8ecs1LvQk80t8JqXte4FrNcJAoGBALH2\niHz4ma/j89DFDp3uiRquKnPwrZ/IvkcZJGrcz2uLHLoKURG8l2chKm5+9DbTuA2f\nIPBdf4Tgq7dXWRMArCzVh2VlHjDd6+I7EGKC2Ry8+QhUJFTOxLyco3TafGVdYk2T\nAwkk3P93dB6aoXu6HMRzZlVqRLMeEeeVfp/2DyT5AoGBALX3SbMl56fmL3eCa0xu\n94uia3VGHjWa7lErJvET3RiWotV9rDdrv3pIibCDGpKxrRAaTgR5vhC2SE4AXU3t\nuU+f3+v71AQ685BVz7K9WIh8XvHEf8RZ5ROu+zwhQCGKPxVi2aqmHYQDSs8h3kOM\n9igcrDf8guOFejp2bdBHuNYX\n-----END PRIVATE KEY-----\n"",
-              ""client_email"": ""firebase-adminsdk-q5kqp@studentrecorddb.iam.gserviceaccount.com"",
-              ""client_id"": ""108373405273174804915"",
-              ""auth_uri"": ""https://accounts.google.com/o/oauth2/auth"",
-              ""token_uri"": ""https://oauth2.googleapis.com/token"",
-              ""auth_provider_x509_cert_url"": ""https://www.googleapis.com/oauth2/v1/certs"",
-              ""client_x509_cert_url"": ""https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-q5kqp%40studentrecorddb.iam.gserviceaccount.com"",
-              ""universe_domain"": ""googleapis.com""
+  ""project_id"": ""sjnaihs-62774"",
+  ""private_key_id"": ""ca74b7cb5b4793d8b0f5406a23ceb04150f32d54"",
+  ""private_key"": ""-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDZn1NUVu2kCzFn\nzGzTbbcsMQSbWtzvzc/cRHiOVh6PFXJvp9ifTfqfj+FipbXT1kP3XSEzqhq+Dld9\nTf+LiHFSm0SUr9IJ/VWyOE8g8/HDCtddbsISUyZrglfYIGia+xeqtyPbnNI94FjJ\nsw4IrNlLrKuvSXUHGZBw00bY2f5YRYEZ1au0QhbA29fHbDdk22yLj+M6zZXiQEl8\nIq9Nag+v1EHZUgiM3lvSuoaDzqlO4zC0WC1t/I4Pr/YFEKkp/TuuZ72YnYin5ioB\nSu0gbt1m2+tbGnx0It4H/xKlkhDkyg4Ud0s0OmKGtNMds5LRv/SHAx6WBj+UYMW1\nctnte4sPAgMBAAECggEACK8gbzY5GwLIwv9ljufB14waoiwjIHQP/AQgUW91nkrL\nTb/DafdrbYK/9+3aMyOlFfZnWWsU0IoF1CuZ2VKlmnM1AL/vFx1jg9d69yi+Cqmp\nuyas9gph0pqZcKWDAD8XQy6j3HVGE+q+3f9YGRfPiEwtSyC9NyLQhRpaYC8NoC4y\nb/1I/t1v/C5ZgC8TwMsV8Hz7/aJPUoGcRApO9S1JYorqgFmqhWqCmc3KsNTbuyOn\nPtmROzAJrCGMBbClW1FjiXChSJ3WOqlSpRlpbo9xlPTCwkLueVjAO0zdvMnEb4mh\n3I3AIZJtsM09utE44tobpaEYo5pWou/9PZv6szxqRQKBgQDyY3QdQY+OsA3+m57a\numCv30BpScnBXL4Ib6VbiXYvjhQeWYE17viNzGQrkyDDPbRR4I0pFzfC7L2iff8N\nVS95WdikUwCitRMy1IAwK6y5RuTXfnss1MO2thU6jRap7UvqzwOqQY9FH/0tomRW\nhL+IDTHdfN8QwVLLjGbhbM97WwKBgQDl19ZVCRwndXbAY1NQnD7Tyd+SEsyRuv9i\nnCCD0PY/K6gjPEi4lZaKjkCafipoNBPoB07NXQrPxtUyRWzHzs0vnKM/t9LAjFfu\nbbUkw0fimSHAAQLjxyJrgim72oZmV7Qls0diyPR6S8wzMNzjewDAoUODWz5/uv1Y\nvTqQPK8hXQKBgCV6FRj06xJfzDoiq6QcDxkCRr5Ax24bPdKmGIYXsetWZ2vt4NmK\n8mlSQeau3/DwGHJUat8AlQGRgxydqJLSKf30U1fM8Zs2rho82vkXt6QJ/xYGm1rq\nJryYWJ3t9KQfaY6LpYBslI9Wi9nDcwohik+p4pzhUsgPbBLGyZ1vKoFjAoGBALp5\ngcAeEwSEjaMLMsY87dBAga3uqKA3egnUJ6EqgQ7BabmkqE9xteCWBx4Q7HD8h4YB\nn9KIAUSPydrubpIxW1GcoOoKRufHNXQQ+B1qfkD/Al3XtDN/FZLp2Ng7ND2GPHc1\n293uskMiifqiUyQQYIzoiXDiL3PMDs3XQNNTGLdVAoGBAO7Y/cpjkXQU/EbZZMRN\n9QatJ7qJ3iS0CWBn7LYy08RcVRKZA8jJdavPh6YhZCdfa3O1FQ4VCpwxsqBW6rQf\n1ADwRiwWZy6Wshet4QInN2PkNSuIjTaAkQIGuHnmyIzlSKuL2weh4jtW6YBnscuz\nH4lzL7PoAsQDy8UJyyLdu7kA\n-----END PRIVATE KEY-----\n"",
+  ""client_email"": ""firebase-adminsdk-v8bsp@sjnaihs-62774.iam.gserviceaccount.com"",
+  ""client_id"": ""102199939381079415195"",
+  ""auth_uri"": ""https://accounts.google.com/o/oauth2/auth"",
+  ""token_uri"": ""https://oauth2.googleapis.com/token"",
+  ""auth_provider_x509_cert_url"": ""https://www.googleapis.com/oauth2/v1/certs"",
+  ""client_x509_cert_url"": ""https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-v8bsp%40sjnaihs-62774.iam.gserviceaccount.com"",
+  ""universe_domain"": ""googleapis.com""
             }
         ";
 
@@ -35,7 +35,7 @@ namespace Student_Record.Firebase
             File.WriteAllText(filepath, fireconfig);
             File.SetAttributes(filepath, FileAttributes.Hidden);
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", filepath);
-            database = FirestoreDb.Create("studentrecorddb");
+            database = FirestoreDb.Create("sjnaihs-62774");
             File.Delete(filepath);
         }
     }

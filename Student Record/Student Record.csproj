@@ -2,13 +2,22 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows7.0</TargetFramework>
+    <TargetFramework>net7.0-windows8.0</TargetFramework>
     <RootNamespace>Student_Record</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>False</UseWPF>
     <StartupObject>Student_Record.Program</StartupObject>
+    <ApplicationIcon>sjnaihs_logo.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <WarningLevel>0</WarningLevel>
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,11 +42,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="sjnaihs_logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Bunifu.UI.WinForms" Version="2.1.0" />
-    <PackageReference Include="EPPlus" Version="7.0.8" />
-    <PackageReference Include="Google.Cloud.Firestore" Version="3.5.0" />
-    <PackageReference Include="System.Data.OleDb" Version="8.0.0-preview.7.23375.6" />
-    <PackageReference Include="WinForms.DataVisualization" Version="1.9.1" />
+    <PackageReference Include="EPPlus" Version="7.1.2" />
+    <PackageReference Include="Google.Cloud.Firestore" Version="3.6.0" />
+    <PackageReference Include="System.Data.OleDb" Version="9.0.0-preview.3.24172.9" />
+    <PackageReference Include="WinForms.DataVisualization" Version="1.9.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -61,6 +74,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -82,6 +100,10 @@
     <None Update="DataSets\UserDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>UserDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
 
